@@ -18,7 +18,7 @@ Quikfolioz is a collection of ready-to-use vibe-coded portfolio website template
 - **[Jelly/Wobble](templates/jelly_wobble_portfolio.html)** - Animated/bouncy interactions
 - **[Space Terminal](templates/space_terminal_portfolio.html)** - Space-themed terminal
 - **[Retro Game](templates/retro_game_portfolio.html)** - 8-bit/16-bit gaming style
-- **[Aqueous](templates/Aqueous_portfolio.html)** - Water/fluid themed
+- **[Aqueous](templates/aqueous_portfolio.html)** - Water/fluid themed
 - **[Doodle](templates/doodle_portfolio.html)** - Hand-drawn/sketchy style
 - **[And many more...](templates/)** - Explore growing collection of unique portfolio templates!
 
