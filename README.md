@@ -15,7 +15,7 @@ Quikfolioz is a collection of ready-to-use vibe-coded portfolio website template
 - **[Cyberpunk](templates/cyberpunk_portfolio.html)** - Neon-styled futuristic theme
 - **[Terminal](templates/terminal_portfolio.html)** - Command-line interface style
 - **[Crystal](templates/crystal_portfolio.html)** - Glass/crystal morphism effects
-- **[Jelly/Wobble](templates/Jelly_wobble_portfolio.html)** - Animated/bouncy interactions
+- **[Jelly/Wobble](templates/jelly_wobble_portfolio.html)** - Animated/bouncy interactions
 - **[Space Terminal](templates/space_terminal_portfolio.html)** - Space-themed terminal
 - **[Retro Game](templates/retro_game_portfolio.html)** - 8-bit/16-bit gaming style
 - **[Aqueous](templates/Aqueous_portfolio.html)** - Water/fluid themed
