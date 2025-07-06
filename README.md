@@ -89,12 +89,6 @@ Some code in this repository was generated using AI tools. If you believe any co
 - [Google Gemini](https://deepmind.google/technologies/gemini/) - Google's Multimodal AI Model
 - [Claude](https://www.anthropic.com/claude) - Anthropic's AI Assistant
 
-## 📞 Contact
-
-- LinkedIn: [Your Name](https://linkedin.com/in/yourusername)
-- Twitter: [@yourusername](https://twitter.com/yourusername)
-
-
 This repo showcases how modern AI tools can accelerate website prototyping. Every template here was generated with the help of Gemini, Claude and ChatGPT, then reviewed, categorized, and cleaned by me.
 
 ---
