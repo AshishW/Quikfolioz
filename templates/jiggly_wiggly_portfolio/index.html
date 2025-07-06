@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiggly Portfolio 2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F0529;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.4), transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(219, 39, 119, 0.4), transparent 40%);
+            overflow-x: hidden;
+        }
+
+        /* Define the jiggle animation */
+        @keyframes jiggle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-2deg) scale(1.05); }
+            50% { transform: rotate(2deg) scale(1.05); }
+            75% { transform: rotate(-1deg) scale(1.02); }
+        }
+
+        /* Define a subtle floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Glassmorphism base style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Class to apply the jiggle animation on hover */
+        .jiggle-on-hover:hover {
+            animation: jiggle 0.6s ease-in-out;
+        }
+
+        /* Button styles */
+        .jiggly-button {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(236, 72, 153, 0.8));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .jiggly-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* The main floating avatar */
+        .floating-avatar {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Gooey Blob Cursor */
+        #goo-blob {
+            background: linear-gradient(45deg, #a855f7, #ec4899);
+            width: 350px;
+            height: 350px;
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: -1;
+            opacity: 0.5;
+            transition: left 0.2s ease-out, top 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="text-white">
+    
+    <div id="goo-blob"></div>
+
+    <div class="container mx-auto px-6 py-10">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-20">
+            <div class="text-2xl font-bold jiggle-on-hover cursor-pointer">JD.</div>
+            <nav>
+                <ul class="flex items-center space-x-6">
+                    <li><a href="#projects" class="font-medium hover:text-pink-400 transition-colors duration-300 jiggle-on-hover inline-block">Projects</a></li>
+                    <li><a href="#about" class="font-medium hover:text-pink-400 transition-colors duration-300 jiggle-on-hover inline-block">About</a></li>
+                    <li><a href="#contact" class="jiggly-button jiggle-on-hover rounded-full px-5 py-2 font-medium transition-transform">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="grid md:grid-cols-2 gap-10 items-center mb-32">
+            <div class="text-center md:text-left">
+                <span class="text-pink-400 font-semibold">Hi, I'm Jane Doe</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mt-2 mb-4 leading-tight">I build wobbly things for the web.</h1>
+                <p class="text-lg text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
+                    A frontend developer who finds joy in creating fluid, playful, and unforgettable digital interactions.
+                </p>
+                <a href="#projects" class="jiggly-button jiggle-on-hover inline-block rounded-full px-8 py-4 text-lg font-semibold transition-transform">
+                    Explore My Work
+                </a>
+            </div>
+            <div class="relative flex justify-center items-center">
+                 <div class="floating-avatar z-10">
+                    <img src="https://placehold.co/250x250/ec4899/FFFFFF?text=JD" alt="Jane Doe" class="jiggle-on-hover rounded-full border-4 border-white/20 shadow-2xl w-48 h-48 md:w-64 md:h-64 cursor-pointer">
+                 </div>
+                 <div class="absolute w-64 h-64 bg-purple-600/50 rounded-full blur-3xl"></div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-32">
+            <h2 class="text-4xl font-bold text-center mb-12">Featured Projects</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="glass-card jiggle-on-hover rounded-3xl p-6 group cursor-pointer">
+                    <div class="h-40 bg-pink-500/80 rounded-2xl mb-4 transition-transform duration-300 group-hover:scale-105"></div>
+                    <h3 class="text-2xl font-bold mb-2">Liquid Slider</h3>
+                    <p class="text-gray-300">An image slider with a mesmerizing liquid distortion effect on transition.</p>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="glass-card jiggle-on-hover rounded-3xl p-6 group cursor-pointer">
+                    <div class="h-40 bg-purple-500/80 rounded-2xl mb-4 transition-transform duration-300 group-hover:scale-105"></div>
+                    <h3 class="text-2xl font-bold mb-2">Elastic Buttons</h3>
+                    <p class="text-gray-300">Buttons that stretch and deform on hover, providing tactile feedback.</p>
+                </div>
+                <!-- Project Card 3 -->
+                 <div class="glass-card jiggle-on-hover rounded-3xl p-6 group cursor-pointer">
+                    <div class="h-40 bg-teal-400/80 rounded-2xl mb-4 transition-transform duration-300 group-hover:scale-105"></div>
+                    <h3 class="text-2xl font-bold mb-2">Wobbly Modals</h3>
+                    <p class="text-gray-300">Modal windows that bounce into view with a delightful jelly-like motion.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mb-32 glass-card rounded-3xl p-8 md:p-12">
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="md:col-span-1">
+                    <h2 class="text-3xl font-bold mb-2">A Bit About Me</h2>
+                    <div class="w-20 h-1 bg-pink-500 rounded-full"></div>
+                </div>
+                <div class="md:col-span-2 text-gray-300 text-lg space-y-4">
+                    <p>I'm a code artist who believes the digital world should be less rigid and more fun. My expertise lies in turning static designs into dynamic, breathing experiences using modern CSS and JavaScript.</p>
+                    <p>My toolkit includes React, GSAP, Three.js, and a whole lot of imagination. When I'm not making pixels dance, I'm probably exploring generative art or trying to brew the perfect cup of coffee.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="text-center">
+            <h2 class="text-4xl font-bold">Have a project?</h2>
+            <p class="text-lg text-gray-300 mt-2 mb-8">Let's make something amazing together.</p>
+             <a href="mailto:hello@janedoe.com" class="jiggly-button jiggle-on-hover inline-block rounded-full px-12 py-5 text-xl font-semibold transition-transform">
+                Get In Touch
+            </a>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="text-center mt-24 py-8 border-t border-white/10">
+        <p class="text-gray-400">Crafted with wiggles and jiggles © 2024</p>
+    </footer>
+
+    <script>
+        // Gooey blob cursor effect
+        const blob = document.getElementById('goo-blob');
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 3000, fill: "forwards" });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

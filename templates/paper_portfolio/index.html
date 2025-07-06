@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Developer Portfolio</title>
+    <!-- Paper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/papercss@1.9.2/dist/paper.min.css">
+    <!-- Google Fonts - Patrick Hand for a hand-drawn feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        /* Apply the custom font and some basic styling */
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background-color: #f1f1f1; /* A light grey background to make the paper pop */
+            color: #333;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px dashed #999;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #2c3e50;
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #34495e;
+            text-decoration: underline;
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            color: #2980b9;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+        .skill-badge {
+            background: #e0e0e0;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .project-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .contact-links {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .contact-links a {
+            margin: 0 1rem;
+            font-size: 1.2rem;
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-links a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px dashed #999;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body class="paper">
+    <div class="container">
+
+        <!-- Header Section -->
+        <header class="header">
+            <h1>John Doe</h1>
+            <p>Creative Web Developer & Open Source Enthusiast</p>
+        </header>
+
+        <main>
+            <!-- About Me Section -->
+            <section id="about">
+                <h2 class="section-title">About Me</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <p>
+                            Hello! I'm John, a passionate developer with a knack for building beautiful and functional web applications. I love turning complex problems into simple, elegant solutions. When I'm not coding, you can find me exploring the latest tech trends, contributing to open-source projects, or enjoying a good cup of coffee.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2 class="section-title">My Skills</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="skills-grid">
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">React.js</span>
+                            <span class="skill-badge">Node.js</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Firebase</span>
+                            <span class="skill-badge">Git & GitHub</span>
+                            <span class="skill-badge">Figma</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects">
+                <h2 class="section-title">My Projects</h2>
+                <div class="row">
+                    <!-- Project 1 -->
+                    <div class="col-6 col-md-12">
+                        <div class="card project-card">
+                            <img src="https://placehold.co/600x400/3498db/ffffff?text=Project+One" alt="Project One Placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title">E-commerce Platform</h3>
+                                <p class="card-text">A full-featured e-commerce website built with the MERN stack. Includes product listings, shopping cart, user authentication, and a payment gateway.</p>
+                                <a href="#" class="btn-secondary">Live Demo</a>
+                                <a href="#" class="btn-primary">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="col-6 col-md-12">
+                        <div class="card project-card">
+                            <img src="https://placehold.co/600x400/2ecc71/ffffff?text=Project+Two" alt="Project Two Placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title">Task Management App</h3>
+                                <p class="card-text">A collaborative task management tool built with React and Firebase. Features real-time updates, drag-and-drop functionality, and user roles.</p>
+                                <a href="#" class="btn-secondary">Live Demo</a>
+                                <a href="#" class="btn-primary">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Project 3 -->
+                    <div class="col-6 col-md-12">
+                        <div class="card project-card">
+                           <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Project+Three" alt="Project Three Placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title">Portfolio Website</h3>
+                                <p class="card-text">This very portfolio! A responsive personal website designed with Paper CSS to showcase my skills and projects in a fun, creative way.</p>
+                                <a href="#" class="btn-secondary">Live Demo</a>
+                                <a href="#" class="btn-primary">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Project 4 -->
+                     <div class="col-6 col-md-12">
+                        <div class="card project-card">
+                           <img src="https://placehold.co/600x400/f39c12/ffffff?text=Project+Four" alt="Project Four Placeholder">
+                            <div class="card-body">
+                                <h3 class="card-title">Weather Dashboard</h3>
+                                <p class="card-text">A simple and clean weather dashboard that fetches data from a third-party API to display the current weather and forecast for any city.</p>
+                                <a href="#" class="btn-secondary">Live Demo</a>
+                                <a href="#" class="btn-primary">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-links">
+                    <a href="mailto:john.doe@example.com">Email</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">Twitter</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 John Doe. Made with ❤️ and Paper CSS.</p>
+        </footer>
+
+    </div>
+</body>
+</html>

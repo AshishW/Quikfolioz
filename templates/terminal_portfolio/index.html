@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] - Terminal Portfolio v2.1</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset and Global Styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background-color: #0D0D0D;
+            --text-color: #00FF00;
+            --prompt-color: #00CD00;
+            --link-color: #00FFFF;
+            --link-hover-color: #FFFF00;
+            --link-hover-bg-color: #333333;
+            --error-color: #FF4136;
+            --info-color: #7FDBFF;
+            --project-title-color: #FFFF00;
+            --cmd-hl-color: #FF851B;
+            --history-command-text-color: #B2FFB2;
+            --system-message-color: #00FF00;
+            --welcome-message-color: #00FF00;
+            --scrollbar-thumb-color: #00FF00;
+            --scrollbar-track-color: #1a1a1a;
+            --scrollbar-thumb-hover-color: #00CC00;
+            --caret-color: #00FF00;
+            --neofetch-logo-color: var(--text-color);
+            --neofetch-label-color: var(--prompt-color);
+            --neofetch-value-color: var(--text-color);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Prevent body scroll, terminal handles its own */
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+            font-size: 18px; /* Base font size, adjust as needed */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Terminal Container */
+        #terminal {
+            height: 100vh; /* Full viewport height */
+            padding: 15px;
+            overflow-y: auto; /* Allow scrolling for output */
+            word-wrap: break-word; /* Break long words to prevent horizontal scroll */
+        }
+
+        /* Output Area */
+        #output div {
+            margin-bottom: 5px; /* Space between lines */
+            line-height: 1.4;
+        }
+
+        /* Input Line Styling */
+        #input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .prompt-live, .prompt-echo {
+            color: var(--prompt-color);
+            margin-right: 8px;
+            flex-shrink: 0; /* Prevent prompt from shrinking */
+        }
+
+        #command-input {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-color);
+            font-family: 'VT323', monospace;
+            font-size: inherit; /* Inherit font size from body */
+            width: 100%; /* Take remaining width */
+            flex-grow: 1;
+            caret-color: var(--caret-color); /* Blinking cursor color */
+        }
+        /* Hide browser's default spellcheck/autocomplete noise */
+        #command-input::-webkit-search-decoration,
+        #command-input::-webkit-search-cancel-button,
+        #command-input::-webkit-search-results-button,
+        #command-input::-webkit-search-results-decoration {
+            display: none;
+        }
+
+
+        /* Styling for Links */
+        .terminal-link {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+        .terminal-link:hover {
+            color: var(--link-hover-color);
+            background-color: var(--link-hover-bg-color);
+        }
+
+        /* Specific Text Styles */
+        .welcome-message {
+            color: var(--welcome-message-color);
+        }
+        .error-text {
+            color: var(--error-color);
+        }
+        .info-text {
+            color: var(--info-color);
+        }
+        .project-title {
+            color: var(--project-title-color);
+        }
+        .cmd-hl { /* Command highlight in help text */
+            color: var(--cmd-hl-color);
+        }
+        .history-command .command-text {
+            color: var(--history-command-text-color);
+        }
+        .system-message {
+             color: var(--system-message-color);
+        }
+        .theme-list-item {
+            margin-left: 1em;
+        }
+        .theme-name {
+            font-weight: bold;
+            color: var(--project-title-color);
+        }
+        .neofetch-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping if space is too small */
+        }
+        .neofetch-ascii {
+            white-space: pre;
+            margin-right: 20px;
+            color: var(--neofetch-logo-color);
+            line-height: 1.1; /* Adjust line height for ASCII art */
+             flex-shrink: 0;
+        }
+        .neofetch-info {
+            white-space: pre; /* Keep alignment for info section */
+            line-height: 1.3;
+        }
+        .neofetch-label {
+            color: var(--neofetch-label-color);
+            display: inline-block;
+            width: 120px; /* Adjust as needed for alignment */
+        }
+        .neofetch-value {
+            color: var(--neofetch-value-color);
+        }
+
+        .project-cards-output {
+            white-space: pre; /* Crucial for ASCII art layout */
+            line-height: 1.3; /* Can be adjusted for visual density */
+            font-family: 'VT323', monospace; /* Ensure monospace for ASCII cards */
+        }
+
+
+        /* Scrollbar Styling (Optional, for a more thematic look) */
+        #terminal::-webkit-scrollbar {
+            width: 8px;
+        }
+        #terminal::-webkit-scrollbar-track {
+            background: var(--scrollbar-track-color);
+        }
+        #terminal::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb-color);
+            border-radius: 4px;
+        }
+        #terminal::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-thumb-hover-color);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+            <span class="prompt-live">user@portfolio:~$</span>
+            <input type="text" id="command-input" spellcheck="false" autocomplete="off" autofocus>
+        </div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const commandInput = document.getElementById('command-input');
+        const terminal = document.getElementById('terminal');
+        const portfolioVersion = "v2.1";
+        const portfolioOwnerName = "Jon Doe"; // IMPORTANT: Replace with your name!
+        let commandHistory = [];
+        const startTime = new Date();
+
+        const themes = {
+            default: {
+                '--background-color': '#0D0D0D',
+                '--text-color': '#00FF00',
+                '--prompt-color': '#00CD00',
+                '--link-color': '#00FFFF',
+                '--link-hover-color': '#FFFF00',
+                '--link-hover-bg-color': '#333333',
+                '--error-color': '#FF4136',
+                '--info-color': '#7FDBFF',
+                '--project-title-color': '#FFFF00',
+                '--cmd-hl-color': '#FF851B',
+                '--history-command-text-color': '#B2FFB2',
+                '--system-message-color': '#00FF00',
+                '--welcome-message-color': '#00FF00',
+                '--scrollbar-thumb-color': '#00FF00',
+                '--scrollbar-track-color': '#1a1a1a',
+                '--scrollbar-thumb-hover-color': '#00CC00',
+                '--caret-color': '#00FF00',
+                '--neofetch-logo-color': '#00FF00',
+                '--neofetch-label-color': '#00CD00',
+                '--neofetch-value-color': '#00FF00',
+            },
+            amber: {
+                '--background-color': '#241A00',
+                '--text-color': '#FFB300',
+                '--prompt-color': '#FFC107',
+                '--link-color': '#FFD54F',
+                '--link-hover-color': '#FFFFFF',
+                '--link-hover-bg-color': '#5D4037',
+                '--error-color': '#FF6F00',
+                '--info-color': '#FFE082',
+                '--project-title-color': '#FFECB3',
+                '--cmd-hl-color': '#FF8F00',
+                '--history-command-text-color': '#FFCA28',
+                '--system-message-color': '#FFB300',
+                '--welcome-message-color': '#FFB300',
+                '--scrollbar-thumb-color': '#FFB300',
+                '--scrollbar-track-color': '#3E2723',
+                '--scrollbar-thumb-hover-color': '#FFA000',
+                '--caret-color': '#FFB300',
+                '--neofetch-logo-color': '#FFB300',
+                '--neofetch-label-color': '#FFC107',
+                '--neofetch-value-color': '#FFB300',
+            },
+            ice: {
+                '--background-color': '#0C141F',
+                '--text-color': '#90CAF9',
+                '--prompt-color': '#64B5F6',
+                '--link-color': '#42A5F5',
+                '--link-hover-color': '#E3F2FD',
+                '--link-hover-bg-color': '#1976D2',
+                '--error-color': '#EF5350',
+                '--info-color': '#81D4FA',
+                '--project-title-color': '#BBDEFB',
+                '--cmd-hl-color': '#29B6F6',
+                '--history-command-text-color': '#ADD8E6',
+                '--system-message-color': '#90CAF9',
+                '--welcome-message-color': '#90CAF9',
+                '--scrollbar-thumb-color': '#90CAF9',
+                '--scrollbar-track-color': '#1E2B3A',
+                '--scrollbar-thumb-hover-color': '#42A5F5',
+                '--caret-color': '#90CAF9',
+                '--neofetch-logo-color': '#90CAF9',
+                '--neofetch-label-color': '#64B5F6',
+                '--neofetch-value-color': '#90CAF9',
+            },
+            'hacker-blue': {
+                '--background-color': '#050A16',
+                '--text-color': '#00BFFF',
+                '--prompt-color': '#1E90FF',
+                '--link-color': '#87CEFA',
+                '--link-hover-color': '#FFFFFF',
+                '--link-hover-bg-color': '#0000CD',
+                '--error-color': '#DC143C',
+                '--info-color': '#ADD8E6',
+                '--project-title-color': '#AFEEEE',
+                '--cmd-hl-color': '#00FFFF',
+                '--history-command-text-color': '#6CB4EE',
+                '--system-message-color': '#00BFFF',
+                '--welcome-message-color': '#00BFFF',
+                '--scrollbar-thumb-color': '#00BFFF',
+                '--scrollbar-track-color': '#04080F',
+                '--scrollbar-thumb-hover-color': '#1E90FF',
+                '--caret-color': '#00BFFF',
+                '--neofetch-logo-color': '#00BFFF',
+                '--neofetch-label-color': '#1E90FF',
+                '--neofetch-value-color': '#00BFFF',
+            }
+        };
+        let currentThemeName = 'default';
+
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            if (!theme) {
+                console.error("Theme not found:", themeName);
+                return false;
+            }
+            for (const [key, value] of Object.entries(theme)) {
+                document.documentElement.style.setProperty(key, value);
+            }
+            currentThemeName = themeName;
+            localStorage.setItem('terminalTheme', themeName);
+            return true;
+        }
+
+        function loadThemePreference() {
+            const savedTheme = localStorage.getItem('terminalTheme');
+            if (savedTheme && themes[savedTheme]) {
+                applyTheme(savedTheme);
+            } else {
+                applyTheme('default'); // Default theme
+            }
+        }
+
+
+        const content = {
+            welcome: `Welcome to ${portfolioOwnerName}'s Interactive Portfolio ${portfolioVersion}\nSystem Initialized. Standby...\nType 'help' for a list of available commands.\n--------------------------------------------------\n`,
+            help: "Available commands:\n" +
+                  "  <span class='cmd-hl'>about</span>    - Display information about me\n" +
+                  "  <span class='cmd-hl'>projects</span> - Show my recent projects\n" +
+                  "  <span class='cmd-hl'>skills</span>   - List my technical skills\n" +
+                  "  <span class='cmd-hl'>contact</span>  - Get my contact details\n" +
+                  "  <span class='cmd-hl'>social</span>   - Find me on social media\n" +
+                  "  <span class='cmd-hl'>theme</span>    - Change terminal theme (e.g., 'theme ice', 'theme list')\n" +
+                  "  <span class='cmd-hl'>neofetch</span> - Display portfolio system information\n" +
+                  "  <span class='cmd-hl'>date</span>     - Show current date and time\n" +
+                  "  <span class='cmd-hl'>history</span>  - Show command history\n" +
+                  "  <span class='cmd-hl'>clear</span>    - Clear the terminal screen\n" +
+                  "  <span class='cmd-hl'>welcome</span>  - Display the welcome message again",
+            about: `Accessing personnel file...\n\nName: ${portfolioOwnerName}\nDesignation: Senior Frontend Engineer & UI/UX Expert\nCore Directive: Crafting elegant and performant solutions for complex web challenges.\nBio: A lifelong learner with a passion for cutting-edge web technologies, Gemini API integration, and intuitive user experiences. I thrive on challenges and believe in the power of well-designed code to transform ideas into reality. When not at the keyboard, I enjoy exploring new design patterns and contributing to open-source projects.\n\n\"The future belongs to those who believe in the beauty of their dreams.\" - Eleanor Roosevelt\n`,
+            projects: [
+                { name: `Portfolio Terminal ${portfolioVersion}`, description: "This very interactive terminal interface you're using now! Crafted with vanilla HTML, CSS, and JavaScript, featuring theming, command history, and dynamic content.", url: "#" },
+                { name: "Gemini AI Storyteller", description: "A web application that uses the Google Gemini API to generate creative stories based on user prompts. Focuses on smooth streaming of responses and a clean UI.", url: "https://github.com/yourusername/gemini-storyteller" },
+                { name: "Project Phoenix", description: "A full-stack e-commerce platform with a custom admin dashboard. Tech stack: React, Node.js, PostgreSQL, and integrated with Stripe for payments.", url: "https://github.com/yourusername/project-phoenix" },
+                { name: "Automated CI/CD Pipeline Visualizer", description: "A tool built with D3.js to visualize complex Jenkins CI/CD pipelines, providing real-time status updates via WebSockets.", url: null } // No URL example
+            ],
+            skills: "Compiling skill matrix...\n\nProgramming Languages:\n  - JavaScript (ESNext), TypeScript, Python, Go\n\nFrontend Development:\n  - HTML5, CSS3 (Sass/LESS), React, Next.js, Vue.js, Angular, WebAssembly\n  - UI/UX Design, Responsive Design, Accessibility (WCAG)\n\nBackend Development:\n  - Node.js, Express.js, NestJS, Django, Flask, GraphQL\n\nDatabases:\n  - MongoDB, PostgreSQL, MySQL, Redis, Firebase, Supabase\n\nAPIs & AI:\n  - Google Gemini API, OpenAI API, RESTful APIs, gRPC\n\nTools & Platforms:\n  - Git, Docker, Kubernetes, AWS (EC2, S3, Lambda), GCP, Jenkins, Figma\n\n// Skill assessment complete.",
+            contact: "Establishing secure connection...\n\n  Email    : <a href='mailto:your.email@example.com' class='terminal-link'>your.email@example.com</a>\n  LinkedIn : <a href='https://linkedin.com/in/yourprofile' target='_blank' class='terminal-link'>linkedin.com/in/yourprofile</a>\n  GitHub   : <a href='https://github.com/yourusername' target='_blank' class='terminal-link'>github.com/yourusername</a>\n\n// Connection active. Awaiting your message.",
+            social: "Scanning social channels...\n\n  Twitter  : <a href='https://twitter.com/yourusername' target='_blank' class='terminal-link'>@yourusername</a>\n  Dev.to   : <a href='https://dev.to/yourusername' target='_blank' class='terminal-link'>dev.to/yourusername</a>\n  Medium   : <a href='https://medium.com/@yourusername' target='_blank' class='terminal-link'>medium.com/@yourusername</a>\n\n// Social links displayed."
+        };
+
+        function escapeHtml(unsafe) {
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+
+        function typeEffect(element, text, speed, callback) {
+            const processedText = text.replace(/\n/g, '<br>');
+            let currentIndex = 0;
+            element.innerHTML = '';
+
+            function typeCharacter() {
+                if (currentIndex < processedText.length) {
+                    // Preserve existing HTML if it's part of the text (e.g. from help)
+                    // This is a simplified approach; more complex HTML might need robust parsing.
+                    let nextSubstring = processedText.substring(0, currentIndex + 1);
+                    // Check if we are in the middle of an HTML tag
+                    const openTagMatch = nextSubstring.match(/<[^>]*$/);
+                    if (openTagMatch && !nextSubstring.endsWith('>')) {
+                         // Try to complete the tag or wait
+                        const fullTagMatch = processedText.substring(currentIndex).match(/^([^<]*?>)/);
+                        if (fullTagMatch) {
+                            nextSubstring = processedText.substring(0, currentIndex + fullTagMatch[0].length);
+                            currentIndex += fullTagMatch[0].length -1; // Adjust index past the tag
+                        }
+                    }
+                    element.innerHTML = nextSubstring;
+                    currentIndex++;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    setTimeout(typeCharacter, speed);
+                } else {
+                    element.innerHTML = processedText; // Ensure final full text is set
+                    terminal.scrollTop = terminal.scrollHeight;
+                    if (callback) {
+                        callback();
+                    }
+                }
+            }
+            typeCharacter();
+        }
+
+        function appendOutput(text, className = 'response-text', useTyping = true, speed = 30, onComplete = null) {
+            const newLine = document.createElement('div');
+            if(className) {
+                newLine.className = className;
+            }
+
+            if (useTyping && text && text.length > 0 && speed > 0) {
+                output.appendChild(newLine);
+                typeEffect(newLine, text, speed, () => {
+                    terminal.scrollTop = terminal.scrollHeight;
+                    if (onComplete) onComplete();
+                });
+            } else {
+                newLine.innerHTML = text.replace(/\n/g, '<br>'); // Basic newline handling for non-typed preformatted text
+                 if (className === 'project-cards-output') { // Special handling for pre-formatted ASCII cards
+                    newLine.innerHTML = text; // Text already contains \n and HTML for links
+                }
+                output.appendChild(newLine);
+                terminal.scrollTop = terminal.scrollHeight;
+                if (onComplete) onComplete();
+            }
+        }
+
+        function getUptime() {
+            const now = new Date();
+            const diffMs = now - startTime;
+            const diffS = Math.floor(diffMs / 1000);
+            const days = Math.floor(diffS / 86400);
+            const hours = Math.floor((diffS % 86400) / 3600);
+            const minutes = Math.floor((diffS % 3600) / 60);
+            const seconds = diffS % 60;
+            let uptimeStr = "";
+            if (days > 0) uptimeStr += `${days}d `;
+            if (hours > 0) uptimeStr += `${hours}h `;
+            if (minutes > 0) uptimeStr += `${minutes}m `;
+            uptimeStr += `${seconds}s`;
+            return uptimeStr.trim();
+        }
+
+        function generateNeofetchOutput() {
+            const asciiArt = `
+<span class="neofetch-ascii">      .--.
+     |o_o |
+     |:_/ |
+    //   \\ \\
+   (|     | )
+  /'\\_   _/ \`\\
+  \\___)=(___/</span>`;
+
+            const info = `
+<span class="neofetch-info"><span class="neofetch-label">${portfolioOwnerName}</span><span class="neofetch-value">@PortfolioTerminal</span>
+<span class="neofetch-label">--------------</span><span class="neofetch-value">----------------</span>
+<span class="neofetch-label">OS:</span><span class="neofetch-value">Web Browser Runtime</span>
+<span class="neofetch-label">Host:</span><span class="neofetch-value">Portfolio Terminal ${portfolioVersion}</span>
+<span class="neofetch-label">Kernel:</span><span class="neofetch-value">JavaScript ${navigator.productSub || 'N/A'}</span>
+<span class="neofetch-label">Uptime:</span><span class="neofetch-value">${getUptime()}</span>
+<span class="neofetch-label">Shell:</span><span class="neofetch-value">Terminus.js (custom)</span>
+<span class="neofetch-label">Resolution:</span><span class="neofetch-value">${window.innerWidth}x${window.innerHeight}</span>
+<span class="neofetch-label">Theme:</span><span class="neofetch-value">${currentThemeName}</span>
+<span class="neofetch-label">CPU:</span><span class="neofetch-value">Human Brain Interface</span>
+<span class="neofetch-label">GPU:</span><span class="neofetch-value">Imagination Engine</span>
+<span class="neofetch-label">Memory:</span><span class="neofetch-value">Fueled by Coffee & Dreams</span>
+</span>`;
+            return `<div class="neofetch-container">${asciiArt}${info}</div>`;
+        }
+
+        /**
+         * Wraps text to a given maximum width.
+         * @param {string} inputText - The text to wrap.
+         * @param {number} maxWidth - The maximum width of a line.
+         * @returns {string[]} - An array of strings, each representing a line.
+         */
+        function wrapText(inputText, maxWidth) {
+            if (!inputText || inputText.trim() === "") return [""]; 
+            
+            const words = inputText.split(' ');
+            const lines = [];
+            let currentLine = "";
+
+            for (const word of words) {
+                if (word.length > maxWidth) { // Handle word longer than maxWidth
+                    if (currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = "";
+                    }
+                    let tempWord = word;
+                    while (tempWord.length > 0) {
+                        lines.push(tempWord.substring(0, maxWidth));
+                        tempWord = tempWord.substring(maxWidth);
+                    }
+                } else { // Word fits or can start a new line
+                    if (currentLine.length + (currentLine.length > 0 ? 1 : 0) + word.length <= maxWidth) {
+                        currentLine += (currentLine.length > 0 ? " " : "") + word;
+                    } else { 
+                        lines.push(currentLine);
+                        currentLine = word;
+                    }
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines.length > 0 ? lines : [""];
+        }
+
+        /**
+         * Generates an ASCII-art style card for a project.
+         * @param {object} project - The project object.
+         * @param {number} cardInnerWidth - The inner width of the card content area.
+         * @returns {string} - HTML string representing the project card.
+         */
+        function generateProjectCard(project, cardInnerWidth = 60) {
+            const e = escapeHtml;
+            let cardHtml = "";
+
+            const border = `+${'-'.repeat(cardInnerWidth + 2)}+`;
+            const emptyContentLineText = ' '.repeat(cardInnerWidth);
+            const emptyContentLine = `| ${emptyContentLineText} |`;
+
+            // Title
+            let rawProjectName = project.name;
+            const activeSystemSuffix = " (Active System)";
+            const availableTitleWidth = cardInnerWidth;
+            let projectDisplayName;
+
+            if (project.url === "#") {
+                if ((rawProjectName + activeSystemSuffix).length > availableTitleWidth) {
+                    // Truncate name part if name + suffix is too long
+                    rawProjectName = rawProjectName.substring(0, Math.max(0, availableTitleWidth - activeSystemSuffix.length - 3)) + "...";
+                }
+                projectDisplayName = e(rawProjectName) + activeSystemSuffix;
+            } else {
+                if (rawProjectName.length > availableTitleWidth) {
+                    rawProjectName = rawProjectName.substring(0, Math.max(0, availableTitleWidth - 3)) + "...";
+                }
+                projectDisplayName = e(rawProjectName);
+            }
+            
+            const titleHtmlPart = `<span class="project-title">${projectDisplayName}</span>`;
+            const plainTitleTextForPadding = project.url === "#" ? (rawProjectName + activeSystemSuffix) : rawProjectName;
+            const titlePadding = ' '.repeat(Math.max(0, cardInnerWidth - plainTitleTextForPadding.length));
+            
+            cardHtml += `${border}\n`;
+            cardHtml += `| ${titleHtmlPart}${titlePadding} |\n`;
+            cardHtml += `${border}\n`;
+
+            // Description
+            const descPrefix = "Desc: ";
+            const descContentWidth = cardInnerWidth - descPrefix.length;
+            // Ensure description is a string before passing to e() and wrapText
+            const projectDescription = typeof project.description === 'string' ? project.description : "";
+            const wrappedDescLines = wrapText(e(projectDescription), descContentWidth);
+
+            if (wrappedDescLines.length === 1 && wrappedDescLines[0].trim() === "") { 
+                cardHtml += `| ${descPrefix}${ ' '.repeat(descContentWidth)} |\n`;
+            } else {
+                wrappedDescLines.forEach((line, index) => {
+                    const currentPrefix = (index === 0) ? descPrefix : ' '.repeat(descPrefix.length);
+                    cardHtml += `| ${currentPrefix}${line.padEnd(descContentWidth)} |\n`;
+                });
+            }
+
+            cardHtml += `${emptyContentLine}\n`;
+
+            // URL/Link
+            let linkLineHtmlEmbed = ""; 
+            let linkLinePlainTextForLength = ""; 
+
+            if (project.url && project.url === "#") {
+                const text = "Location: Currently active system!";
+                linkLineHtmlEmbed = `<span class="info-text">${text}</span>`;
+                linkLinePlainTextForLength = text;
+            } else if (project.url) {
+                const prefix = "Link: ";
+                const urlText = project.url; // No need to escape here, will be an href attribute and display text
+                const maxUrlDisplayLength = cardInnerWidth - prefix.length;
+                
+                let displayableUrlText = urlText;
+                if (urlText.length > maxUrlDisplayLength) {
+                    displayableUrlText = urlText.substring(0, maxUrlDisplayLength - 3) + "...";
+                }
+                linkLineHtmlEmbed = `${prefix}<a href="${e(urlText)}" target="_blank" class="terminal-link">${e(displayableUrlText)}</a>`;
+                linkLinePlainTextForLength = prefix + displayableUrlText;
+
+            } else {
+                const text = "URL: N/A (Offline or Conceptual)";
+                linkLineHtmlEmbed = `<span class="info-text">${text}</span>`;
+                linkLinePlainTextForLength = text;
+            }
+            
+            const linkPadding = ' '.repeat(Math.max(0, cardInnerWidth - linkLinePlainTextForLength.length));
+            cardHtml += `| ${linkLineHtmlEmbed}${linkPadding} |\n`;
+            cardHtml += `${border}\n\n`;
+
+            return cardHtml;
+        }
+
+
+        function processCommand(fullCommandStr) {
+            const trimmedCommand = fullCommandStr.trim();
+            if (trimmedCommand !== '') {
+                commandHistory.push(trimmedCommand);
+            }
+
+            const [command, ...args] = trimmedCommand.toLowerCase().split(/\s+/);
+
+            switch (command) {
+                case 'help':
+                    appendOutput(content.help, 'info-text', true, 15);
+                    break;
+                case 'about':
+                    appendOutput(content.about, 'response-text', true, 15);
+                    break;
+                case 'projects':
+                    appendOutput("Initiating project scan...", 'info-text', true, 10, () => {
+                        let cardsOutput = "";
+                        if (content.projects.length === 0) {
+                            cardsOutput = "No projects to display yet.\n";
+                            appendOutput(cardsOutput, 'info-text', false);
+                        } else {
+                            content.projects.forEach(p => {
+                                cardsOutput += generateProjectCard(p);
+                            });
+                            appendOutput(cardsOutput.trimEnd(), 'project-cards-output', false);
+                        }
+                    });
+                    break;
+                case 'skills':
+                    appendOutput(content.skills, 'response-text', true, 15);
+                    break;
+                case 'contact':
+                    appendOutput(content.contact, 'response-text', true, 20);
+                    break;
+                case 'social':
+                    appendOutput(content.social, 'response-text', true, 20);
+                    break;
+                case 'theme':
+                    const themeArg = args[0];
+                    if (!themeArg || themeArg === 'list') {
+                        let themeListOutput = "Available themes:\n";
+                        Object.keys(themes).forEach(tName => {
+                            themeListOutput += `<span class="theme-list-item">- <span class="theme-name">${tName}</span>${tName === currentThemeName ? ' (current)' : ''}</span>\n`;
+                        });
+                        themeListOutput += "\nUsage: theme &lt;themeName&gt;";
+                        appendOutput(themeListOutput, 'info-text', true, 10);
+                    } else if (themes[themeArg]) {
+                        if (applyTheme(themeArg)) {
+                            appendOutput(`Theme changed to: <span class="theme-name">${themeArg}</span>`, 'system-message', false);
+                        } else {
+                             appendOutput(`Error: Could not apply theme '${escapeHtml(themeArg)}'.`, 'error-text', false);
+                        }
+                    } else {
+                        appendOutput(`Error: Theme '${escapeHtml(themeArg)}' not found. Type 'theme list' for options.`, 'error-text', false);
+                    }
+                    break;
+                case 'date':
+                    appendOutput(new Date().toString(), 'info-text', false);
+                    break;
+                case 'neofetch':
+                    appendOutput(generateNeofetchOutput(), 'response-text', true, 5);
+                    break;
+                case 'history':
+                    if (commandHistory.length === 0) {
+                        appendOutput("No commands in history yet.", 'info-text', false);
+                    } else {
+                        let historyOutput = "Command history:\n";
+                        commandHistory.forEach((cmd, index) => {
+                            historyOutput += `  ${index + 1}: ${escapeHtml(cmd)}\n`;
+                        });
+                        // For history, typing effect can be slow for long lists.
+                        // Let's make it faster or disable typing if too many items.
+                        const typeHistory = commandHistory.length < 15;
+                        appendOutput(historyOutput.trim(), 'response-text', typeHistory, typeHistory ? 5 : 0);
+                    }
+                    break;
+                case 'clear':
+                    output.innerHTML = '';
+                    const clearHeader = `${portfolioOwnerName}'s Portfolio Terminal ${portfolioVersion} (Theme: ${currentThemeName})\nType 'help' for commands.`;
+                    appendOutput(clearHeader, 'system-message', false);
+                    break;
+                case 'welcome':
+                    appendOutput(content.welcome, 'welcome-message', true, 30);
+                    break;
+                case '':
+                    break; // Do nothing for empty command
+                default:
+                    appendOutput(`Error: Command not recognized: '${escapeHtml(fullCommandStr)}'.\nType 'help' for a list of valid commands.`, 'error-text', true, 10);
+                    break;
+            }
+        }
+
+        commandInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const commandStr = commandInput.value;
+
+                const commandEchoDiv = document.createElement('div');
+                commandEchoDiv.className = 'history-command';
+                // For echo, ensure prompt is not part of the command text if it's multi-line (it's not here, but good practice)
+                commandEchoDiv.innerHTML = `<span class="prompt-echo">user@portfolio:~$</span><span class="command-text">${escapeHtml(commandStr)}</span>`;
+                output.appendChild(commandEchoDiv);
+
+                commandInput.value = ''; // Clear input AFTER getting its value
+
+                processCommand(commandStr);
+
+                commandInput.focus(); // Ensure focus remains
+                terminal.scrollTop = terminal.scrollHeight; // Scroll to bottom
+            } else if (event.key === 'Tab') {
+                event.preventDefault(); // Basic tab prevention for now
+                // Future: implement tab completion here
+            }
+            // Add up/down arrow for history - for later enhancement
+        });
+
+        // Ensure the terminal scrolls to the bottom when new content is added,
+        // especially for async operations or large outputs.
+        const observer = new MutationObserver(() => {
+            terminal.scrollTop = terminal.scrollHeight;
+        });
+        observer.observe(output, { childList: true, subtree: true });
+
+
+        window.onload = () => {
+            // Attempt to fill in the name if placeholder is still there
+            if (portfolioOwnerName === "[Your Name]") {
+                const newName = prompt("Please enter your name for the portfolio terminal:", "Anonymous User");
+                if (newName) {
+                    // This is a bit of a hack as portfolioOwnerName is const.
+                    // For a real app, this would be handled differently (e.g., build step, server-side config)
+                    // Here, we'll just update the title and welcome message dynamically if possible.
+                    // Note: The const 'portfolioOwnerName' itself cannot be reassigned.
+                    // This means other direct uses of it won't update. This part needs a rethink
+                    // if dynamic name setting is a hard requirement post-load.
+                    // For now, we'll update things that are easy to update.
+                    document.title = `${newName} - Terminal Portfolio ${portfolioVersion}`;
+                    // Manually update the welcome message content if it uses the placeholder.
+                    // This is imperfect as 'content' is also const.
+                    // A better approach would be to make portfolioOwnerName a 'let' if it needs to be dynamic post-load.
+                    // Given the current structure, this will have limited effect.
+                    // Let's assume portfolioOwnerName should be set correctly in the script before deployment.
+                    console.warn("Portfolio owner name placeholder detected. Please replace '[Your Name]' in the script.");
+                }
+            } else {
+                 document.title = `${portfolioOwnerName} - Terminal Portfolio ${portfolioVersion}`;
+            }
+
+
+            loadThemePreference(); // Load saved theme or apply default
+
+            commandInput.focus();
+            // Display welcome message
+            appendOutput(content.welcome, 'welcome-message', true, 30, () => {
+                commandInput.focus(); // Re-focus after typing welcome
+                terminal.scrollTop = terminal.scrollHeight;
+            });
+            terminal.scrollTop = terminal.scrollHeight; // Initial scroll to bottom
+        };
+
+    </script>
+</body>
+</html>

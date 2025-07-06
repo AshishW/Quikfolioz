@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Modern Web Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0; /* Light Gray Background */
+            color: #1a202c; /* Dark Gray Text */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5; /* Indigo scrollbar thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4338ca; /* Darker indigo on hover */
+        }
+
+        .section-padding {
+            padding-top: 6rem; /* 96px */
+            padding-bottom: 6rem; /* 96px */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 8rem; /* 128px */
+                padding-bottom: 8rem; /* 128px */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation Bar -->
+    <header class="bg-gray-900 shadow-xl fixed w-full z-10 py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="text-white text-3xl font-extrabold tracking-tight">Your<span class="text-indigo-500">Dev</span></a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#hero" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-lg font-medium">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-lg font-medium">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-lg font-medium">Skills</a>
+                <a href="#process" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-lg font-medium">Process</a>
+                <a href="#projects" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-lg font-medium">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition duration-300 text-lg font-medium">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-300 hover:text-indigo-400 focus:outline-none md:hidden">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 mt-4 py-4 px-4 shadow-lg">
+            <a href="#hero" class="block py-2 text-gray-300 hover:text-indigo-400 transition duration-300 text-lg">Home</a>
+            <a href="#about" class="block py-2 text-gray-300 hover:text-indigo-400 transition duration-300 text-lg">About</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-indigo-400 transition duration-300 text-lg">Skills</a>
+            <a href="#process" class="block py-2 text-gray-300 hover:text-indigo-400 transition duration-300 text-lg">Process</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-indigo-400 transition duration-300 text-lg">Projects</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-indigo-400 transition duration-300 text-lg">Contact</a>
+        </div>
+    </header>
+
+    <main class="pt-20"> <!-- Padding to account for fixed header -->
+
+        <!-- Hero Section - Centered with Subtle Background -->
+        <section id="hero" class="section-padding bg-gray-800 text-white flex items-center min-h-[calc(100vh-5rem)] relative overflow-hidden">
+            <!-- Background Blob/Shape (Optional, for visual flair) -->
+            <div class="absolute inset-0 z-0 opacity-10">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                    <path fill="#4F46E5" d="M48.1,-37.8C59.9,-20.7,65,-1.9,60.8,17.4C56.5,36.7,43,56.4,24.4,65.3C5.8,74.2,-17.8,72.4,-33.5,61.9C-49.2,51.4,-57.1,32.3,-58.5,13.7C-59.8,-4.9,-54.6,-23.1,-43.5,-40.4C-32.5,-57.7,-16.2,-74.1,0.2,-74.2C16.6,-74.4,33.3,-58.2,48.1,-37.8Z" transform="translate(100 100) scale(1.2)" />
+                </svg>
+            </div>
+
+            <div class="container mx-auto text-center px-4 md:px-0 relative z-10">
+                <p class="text-lg uppercase tracking-widest font-semibold text-indigo-300 mb-4 animate-fade-in-up">Hello, I'm</p>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-up delay-100">
+                    [Your Name]
+                </h1>
+                <p class="text-2xl sm:text-3xl font-light mb-10 max-w-4xl mx-auto text-gray-300 animate-fade-in-up delay-200">
+                    A dedicated **full-stack developer** passionate about building high-performance, scalable, and intuitive web applications.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-300">
+                    <a href="#projects" class="inline-block bg-indigo-600 text-white font-bold px-10 py-4 rounded-lg shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition duration-300">
+                        View My Work <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="inline-block border-2 border-indigo-600 text-indigo-300 font-semibold px-10 py-4 rounded-lg hover:bg-indigo-600 hover:text-white transform hover:scale-105 transition duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section-padding bg-white shadow-lg mx-4 md:mx-auto rounded-xl -mt-20 relative z-10 max-w-6xl">
+            <div class="container mx-auto px-4 md:px-0 text-center">
+                <span class="text-indigo-600 uppercase text-sm font-semibold tracking-wider mb-2 block">Who I Am</span>
+                <h2 class="text-4xl font-bold text-gray-800 mb-12">Building Digital Experiences</h2>
+                <div class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
+                    <p>
+                        I'm a software engineer with [X years] of experience, specializing in turning complex ideas into elegant, functional, and user-friendly web applications. My expertise lies in both **frontend craftsmanship** (React, Vue, modern CSS) and **backend architecture** (Node.js, Python, database design), enabling me to create seamless, end-to-end solutions.
+                    </p>
+                    <p>
+                        My journey began with a curiosity for how software shapes our world, evolving into a dedication to **clean code, robust testing, and scalable solutions**. I'm a lifelong learner, always exploring new technologies and methodologies to deliver optimal results.
+                    </p>
+                    <p>
+                        I thrive in dynamic environments and am passionate about collaborating with teams to solve challenging problems. When I'm not coding, you can find me [mention a hobby or two, e.g., exploring new APIs, playing chess, reading sci-fi novels].
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section - Grouped by Category -->
+        <section id="skills" class="section-padding bg-gray-100">
+            <div class="container mx-auto px-4 md:px-0">
+                <span class="text-indigo-600 uppercase text-sm font-semibold tracking-wider mb-2 block text-center">My Toolkit</span>
+                <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Technologies I Master</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <!-- Frontend -->
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-indigo-500 transform transition duration-300 hover:scale-[1.01] hover:shadow-lg">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-laptop-code text-3xl text-indigo-600 mr-4"></i>Frontend</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">HTML5</span>
+                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">CSS3 (Tailwind, SASS)</span>
+                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">JavaScript (ES6+)</span>
+                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">React.js</span>
+                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">Vue.js</span>
+                            <span class="px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-sm font-medium shadow-sm">TypeScript</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-emerald-500 transform transition duration-300 hover:scale-[1.01] hover:shadow-lg">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-server text-3xl text-emerald-600 mr-4"></i>Backend</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium shadow-sm">Node.js (Express)</span>
+                            <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium shadow-sm">Python (Django, Flask)</span>
+                            <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium shadow-sm">GoLang</span>
+                            <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium shadow-sm">RESTful APIs</span>
+                            <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium shadow-sm">GraphQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases & Tools -->
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-rose-500 transform transition duration-300 hover:scale-[1.01] hover:shadow-lg">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center"><i class="fas fa-database text-3xl text-rose-600 mr-4"></i>Databases & Tools</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-rose-50 text-rose-700 rounded-full text-sm font-medium shadow-sm">MongoDB</span>
+                            <span class="px-4 py-2 bg-rose-50 text-rose-700 rounded-full text-sm font-medium shadow-sm">PostgreSQL</span>
+                            <span class="px-4 py-2 bg-rose-50 text-rose-700 rounded-full text-sm font-medium shadow-sm">MySQL</span>
+                            <span class="px-4 py-2 bg-rose-50 text-rose-700 rounded-full text-sm font-medium shadow-sm">Git / GitHub</span>
+                            <span class="px-4 py-2 bg-rose-50 text-rose-700 rounded-full text-sm font-medium shadow-sm">Docker</span>
+                            <span class="px-4 py-2 bg-rose-50 text-rose-700 rounded-full text-sm font-medium shadow-sm">AWS / GCP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process/Approach Section - New Component -->
+        <section id="process" class="section-padding bg-gray-800 text-white">
+            <div class="container mx-auto px-4 md:px-0 text-center">
+                <span class="text-indigo-300 uppercase text-sm font-semibold tracking-wider mb-2 block">My Approach</span>
+                <h2 class="text-4xl font-bold mb-12">How I Bring Ideas to Life</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="p-6 rounded-xl bg-gray-700 shadow-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-xl">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold shadow-md">1</div>
+                        <h3 class="text-2xl font-semibold mb-3">Discovery & Planning</h3>
+                        <p class="text-gray-300 text-sm">
+                            Understanding your vision, requirements, and user needs to create a solid roadmap.
+                        </p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="p-6 rounded-xl bg-gray-700 shadow-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-xl">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold shadow-md">2</div>
+                        <h3 class="text-2xl font-semibold mb-3">Design & Prototyping</h3>
+                        <p class="text-gray-300 text-sm">
+                            Translating concepts into intuitive UI/UX designs and interactive prototypes.
+                        </p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="p-6 rounded-xl bg-gray-700 shadow-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-xl">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold shadow-md">3</div>
+                        <h3 class="text-2xl font-semibold mb-3">Development & Coding</h3>
+                        <p class="text-gray-300 text-sm">
+                            Writing clean, efficient, and well-documented code for robust functionality.
+                        </p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="p-6 rounded-xl bg-gray-700 shadow-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-xl">
+                        <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold shadow-md">4</div>
+                        <h3 class="text-2xl font-semibold mb-3">Testing & Deployment</h3>
+                        <p class="text-gray-300 text-sm">
+                            Rigorously testing and deploying the application, ensuring performance and reliability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - Cards with Images and Overlay -->
+        <section id="projects" class="section-padding bg-gray-100">
+            <div class="container mx-auto px-4 md:px-0">
+                <span class="text-indigo-600 uppercase text-sm font-semibold tracking-wider mb-2 block text-center">My Portfolio</span>
+                <h2 class="text-4xl font-bold text-gray-800 text-center mb-12">Showcasing My Latest Work</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="relative group rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Project+App" alt="Project Thumbnail" class="w-full h-56 object-cover transform transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                            <h3 class="text-2xl font-bold mb-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">SaaS Dashboard</h3>
+                            <p class="text-gray-300 text-sm mb-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out delay-100">
+                                Intuitive dashboard for managing subscriptions and analytics.
+                            </p>
+                            <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out delay-200">
+                                <a href="https://github.com/yourusername/project-saas" target="_blank" class="text-indigo-400 hover:text-white flex items-center font-medium">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                                <a href="#" target="_blank" class="text-indigo-400 hover:text-white flex items-center font-medium">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Live
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="relative group rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Project+E-comm" alt="Project Thumbnail" class="w-full h-56 object-cover transform transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                            <h3 class="text-2xl font-bold mb-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">Custom E-commerce</h3>
+                            <p class="text-gray-300 text-sm mb-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out delay-100">
+                                High-performance online store with integrated payment gateway.
+                            </p>
+                            <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out delay-200">
+                                <a href="https://github.com/yourusername/project-ecommerce" target="_blank" class="text-indigo-400 hover:text-white flex items-center font-medium">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                                <a href="#" target="_blank" class="text-indigo-400 hover:text-white flex items-center font-medium">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Live
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="relative group rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                        <img src="https://placehold.co/600x400/4f46e5/ffffff?text=Project+Blog" alt="Project Thumbnail" class="w-full h-56 object-cover transform transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                            <h3 class="text-2xl font-bold mb-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">Blogging Platform</h3>
+                            <p class="text-gray-300 text-sm mb-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out delay-100">
+                                Feature-rich CMS and blog for content creators.
+                            </p>
+                            <div class="flex space-x-4 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out delay-200">
+                                <a href="https://github.com/yourusername/project-blog" target="_blank" class="text-indigo-400 hover:text-white flex items-center font-medium">
+                                    <i class="fab fa-github mr-2"></i>Code
+                                </a>
+                                <a href="#" target="_blank" class="text-indigo-400 hover:text-white flex items-center font-medium">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Live
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-gray-900 text-white">
+            <div class="container mx-auto px-4 md:px-0 text-center">
+                <span class="text-indigo-300 uppercase text-sm font-semibold tracking-wider mb-2 block">Reach Out</span>
+                <h2 class="text-4xl font-bold mb-8">Let's Build Something Great</h2>
+                <p class="text-xl font-light mb-10 max-w-2xl mx-auto text-gray-300">
+                    I'm always eager to discuss new opportunities, collaborate on exciting projects, or just chat about technology.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="mailto:your.email@example.com" class="inline-block bg-indigo-600 text-white font-bold px-10 py-4 rounded-lg shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition duration-300">
+                        <i class="fas fa-envelope mr-2"></i> Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="inline-block border-2 border-indigo-600 text-indigo-300 font-semibold px-10 py-4 rounded-lg hover:bg-indigo-600 hover:text-white transform hover:scale-105 transition duration-300">
+                        <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-8 text-center">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/yourusername" target="_blank" class="text-gray-500 hover:text-white transition duration-300 text-2xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-gray-500 hover:text-white transition duration-300 text-2xl">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/yourtwitter" target="_blank" class="text-gray-500 hover:text-white transition duration-300 text-2xl">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking a link
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle functionality
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Simple fade-in animations on scroll
+        const fadeInObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        document.querySelectorAll('.animate-fade-in-up').forEach(element => {
+            element.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+            fadeInObserver.observe(element);
+        });
+
+        document.querySelectorAll('.animate-scale-in').forEach(element => {
+            element.classList.add('opacity-0', 'scale-95', 'transition-all', 'duration-700', 'ease-out');
+            fadeInObserver.observe(element);
+        });
+
+        // Add observer for section titles (h2 with mb-12)
+        document.querySelectorAll('h2.text-4xl.font-bold.text-gray-800.mb-12').forEach(element => {
+            element.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-700', 'ease-out');
+            fadeInObserver.observe(element);
+        });
+
+        // Add observer for about section text
+        document.querySelectorAll('#about .max-w-3xl.mx-auto p').forEach(element => {
+            element.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-700', 'ease-out');
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>

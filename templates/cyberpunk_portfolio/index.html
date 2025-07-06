@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] Dev - Cyber Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nes.css/2.3.0/css/nes.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff41;
+            --neon-purple: #8b00ff;
+            --neon-orange: #ff6600;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+            color: var(--text-primary);
+            font-family: "JetBrains Mono", monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%);
+            animation: backgroundPulse 6s ease-in-out infinite alternate;
+            z-index: -2;
+        }
+
+        @keyframes backgroundPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Grid Pattern Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 10px 20px;
+            z-index: 1000;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: top 0.3s, border-radius 0.3s, left 0.3s, right 0.3s, transform 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.2), transparent);
+            transition: left 0.5s;
+        } */
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            /* transform: translateY(-2px); */
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding-top: 120px;
+            margin-bottom: 80px;
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+            animation: headerGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes headerGlow {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .header h1 {
+            font-family: "Press Start 2P", monospace;
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-green));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(0,255,255,0.5);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glass Morphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.4),
+                0 0 20px rgba(0,255,255,0.2);
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-family: "Press Start 2P", monospace;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            border-radius: 2px;
+            animation: titleUnderline 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleUnderline {
+            0% { width: 50%; transform: translateX(50%);}
+            100% { width: 100%; transform: translateX(0); }
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--glass-bg), rgba(0,0,0,0.2));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--neon-cyan), transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .stat-box:hover::before {
+            opacity: 0.1;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stat-number {
+            font-family: "Press Start 2P", monospace;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0,255,65,0.5);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, var(--glass-bg), rgba(0,0,0,0.3));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-green));
+            background-size: 200% 100%;
+            animation: gradientFlow 3s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) rotateX(5deg) scale(1.03);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.5),
+                0 0 30px rgba(0,255,255,0.3);
+        }
+
+        .project-card:hover .project-title {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .project-title {
+            font-family: "Press Start 2P", monospace;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(139,0,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(139,0,255,0.5);
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-green));
+            color: #0a0a0f;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,255,255,0.3);
+            z-index: 1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,255,255,0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            box-shadow: none;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--glass-bg);
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        }
+
+
+        /* Terminal */
+        .terminal {
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--neon-green);
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+            box-shadow: 
+                0 0 20px rgba(0,255,65,0.3),
+                inset 0 0 20px rgba(0,255,65,0.1);
+            max-width: 600px;
+            width: 90%;
+            margin-top: 40px;
+        }
+
+        .terminal-header {
+            background: #333;
+            padding: 8px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .terminal-header::before {
+            content: '● ● ●';
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            line-height: 1;
+            padding-left: 10px;
+        }
+
+        .terminal-content {
+            margin-top: 30px;
+            color: var(--neon-green);
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        .typing-animation {
+            display: inline-block;
+            border-right: 3px solid var(--neon-green);
+            animation: typing 3s steps(22), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 100%;
+            vertical-align: middle;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--neon-green); }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--glass-bg), rgba(0,0,0,0.4));
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--neon-pink) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: contactPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes contactPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: 600;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--neon-cyan), transparent);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            color: var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan);
+            box-shadow: 0 10px 30px rgba(0,255,255,0.4);
+        }
+
+        .social-link:hover::before {
+            width: 200%;
+            height: 200%;
+            opacity: 0.2;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out;
+            box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50vw) rotate(720deg); opacity: 0; }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-green));
+        }
+
+        /* =================================== */
+        /* ========== Responsive Design ========== */
+        /* =================================== */
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+
+            .navbar { 
+                top: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                border-radius: 0;
+                padding: 10px;
+                width: 100%;
+            }
+            .nav-links { 
+                justify-content: center;
+                gap: 5px; 
+            }
+            .nav-link {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .header { 
+                padding-top: 80px; 
+                min-height: 70vh;
+                margin-bottom: 40px;
+            }
+            .header h1 { 
+                font-size: 2.2rem; 
+            }
+            .header p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .glass-card {
+                padding: 25px;
+                margin-bottom: 40px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .stats-grid { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+            }
+            .stat-box { padding: 20px; }
+            .stat-number { font-size: 2rem; }
+            
+            .project-grid { 
+                grid-template-columns: 1fr; 
+                gap: 25px;
+            }
+             .project-card { padding: 25px; }
+             .project-title { font-size: 1.1rem; }
+             .project-desc { font-size: 0.9rem; }
+             
+             .btn {
+                 padding: 10px 20px;
+                 font-size: 0.9rem;
+             }
+
+            .tech-tags {
+                gap: 6px;
+            }
+            .tech-tag {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+            
+            .contact-section {
+                padding: 40px 20px;
+            }
+            .social-links { 
+                gap: 15px; 
+            }
+            .social-link {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    <div class="particles" id="particles"></div>
+    
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#about" class="nav-link">ABOUT</a></li>
+            <li><a href="#skills" class="nav-link">SKILLS</a></li>
+            <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+            <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header class="header" id="home">
+            <h1>NAME.DEV</h1>
+            <p>Cyberpunk Developer • Digital Architect • Code Wizard</p>
+            <div class="terminal">
+                <div class="terminal-header"></div>
+                <div class="terminal-content">
+                    &gt; <span class="typing-animation">./init_portfolio.sh</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="about" class="glass-card fade-in">
+                <h2 class="section-title" style="color: var(--neon-cyan);">NEURAL-LINK STATUS</h2>
+                <p style="font-size: 1.1rem; text-align: center; color: var(--text-secondary); max-width: 800px; margin: 0 auto 40px;">
+                    Elite cyberpunk developer specializing in cutting-edge web technologies and immersive digital experiences. 
+                    From neon-lit interfaces to quantum algorithms, I architect the future of digital interaction with precision and style.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">75+</span>
+                        <span class="stat-label">Missions Completed</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Years In Cyberspace</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">1.2K</span>
+                        <span class="stat-label">Code Commits</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">System Uptime</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="glass-card fade-in">
+                <h2 class="section-title" style="color: var(--neon-pink);">CYBERNETIC ENHANCEMENTS</h2>
+                <div class="tech-tags" style="justify-content: center; margin-bottom: 20px; gap: 12px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Three.js</span>
+                    <span class="tech-tag">WebGL</span>
+                    <span class="tech-tag">GraphQL</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Kubernetes</span>
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Blockchain</span>
+                    <span class="tech-tag">Web3</span>
+                    <span class="tech-tag">AI/ML</span>
+                    <span class="tech-tag">Next.js</span>
+                </div>
+            </section>
+
+            <section id="projects" class="glass-card fade-in">
+                <h2 class="section-title" style="color: var(--neon-green);">DIGITAL ARTIFACTS</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3 class="project-title">🌐 NEURAL MARKETPLACE</h3>
+                        <p class="project-desc">
+                            Next-gen NFT trading platform with AI-powered price predictions, real-time 3D asset visualization, 
+                            and quantum-encrypted transactions. Features advanced WebGL rendering and blockchain integration.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">Web3</span>
+                            <span class="tech-tag">Solidity</span>
+                        </div>
+                        <div style="display: flex; gap: 15px; margin-top: auto;">
+                            <a href="#" class="btn" target="_blank" rel="noopener noreferrer">ENTER MATRIX</a>
+                            <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">VIEW CODE</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">🚀 QUANTUM DASHBOARD</h3>
+                        <p class="project-desc">
+                            Revolutionary data visualization platform with holographic displays, real-time analytics, 
+                            and AI-driven insights. Features particle effects and immersive 3D data landscapes.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">WebGL</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div style="display: flex; gap: 15px; margin-top: auto;">
+                            <a href="#" class="btn" target="_blank" rel="noopener noreferrer">LAUNCH</a>
+                            <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">SOURCE</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">🎮 CYBERPUNK ARCADE</h3>
+                        <p class="project-desc">
+                            Immersive browser-based gaming platform with neon aesthetics, WebXR support, 
+                            and multiplayer functionality. Features advanced physics and particle systems.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">WebXR</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">WASM</span>
+                        </div>
+                        <div style="display: flex; gap: 15px; margin-top: auto;">
+                            <a href="#" class="btn" target="_blank" rel="noopener noreferrer">PLAY NOW</a>
+                            <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">GITHUB</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3 class="project-title">🤖 AI SENTINEL</h3>
+                        <p class="project-desc">
+                            Advanced machine learning platform with real-time training visualization, 
+                            automated model optimization, and quantum computing integration for next-gen AI.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Quantum</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div style="display: flex; gap: 15px; margin-top: auto;">
+                            <a href="#" class="btn" target="_blank" rel="noopener noreferrer">ACTIVATE</a>
+                            <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">CODE</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section fade-in">
+                <h2 class="section-title" style="color: var(--neon-purple);">INITIATE CONTACT</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: -20px auto 30px;">
+                    Have a high-stakes project or a data heist? My services are available. Let's build the future, one line of code at a time.
+                </p>
+                <a href="mailto:name.dev@example.com" class="btn" style="background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink)); box-shadow: 0 4px 15px rgba(255,0,255,0.3);">
+                    SEND ENCRYPTED MESSAGE
+                </a>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">Codepen</a>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 NAME.DEV // All rights reserved in this timeline.</p>
+        </footer>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- Particle Animation ---
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+        const colors = ['var(--neon-cyan)', 'var(--neon-pink)', 'var(--neon-green)', 'var(--neon-purple)'];
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 5 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.left = `${Math.random() * 100}vw`;
+            
+            const animationDuration = Math.random() * 20 + 15; // 15 to 35 seconds
+            particle.style.animationDuration = `${animationDuration}s`;
+            
+            const animationDelay = Math.random() * 15; // 0 to 15 seconds
+            particle.style.animationDelay = `-${animationDelay}s`;
+
+            particlesContainer.appendChild(particle);
+        }
+
+        // --- Scroll Fade-in Animation ---
+        const faders = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -20px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // --- Active Nav Link on Scroll ---
+        const sections = document.querySelectorAll('main > section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            rootMargin: '-40% 0px -60% 0px'
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+    });
+    </script>
+</body>
+</html>

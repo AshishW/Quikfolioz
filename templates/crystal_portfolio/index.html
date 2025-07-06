@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Dev - Crystal Developer Timeline</title>
+    <style>
+        /* CSS Variables for Crystal Theme */
+        :root {
+            --dark-bg-deep: #0a0a1a;
+            --dark-bg-medium: #15152a;
+            --crystal-purple: #8a2be2; /* Blue Violet */
+            --crystal-blue: #00bfff;  /* Deep Sky Blue */
+            --crystal-pink: #ff69b4;  /* Hot Pink */
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --border-glow: rgba(255, 255, 255, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.4);
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --transition-speed: 0.4s;
+            --cubic-bezier: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* General Body Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(145deg, var(--dark-bg-deep) 0%, var(--dark-bg-medium) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Crystal Particle Background Animation */
+        .crystal-particle {
+            position: fixed;
+            background: linear-gradient(45deg, var(--crystal-purple), var(--crystal-blue));
+            border-radius: 2px; /* Small rectangular shards */
+            opacity: 0.2;
+            animation: float-rotate 15s infinite ease-in-out;
+            z-index: 0;
+            pointer-events: none;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes float-rotate {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.2;
+            }
+            25% {
+                transform: translate(20px, -15px) rotate(45deg);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translate(0, -30px) rotate(90deg);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translate(-15px, 10px) rotate(135deg);
+                opacity: 0.35;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1; /* Ensures content is above particles */
+        }
+
+        /* Shared Card Styles (Crystal Facet Effect) */
+        .crystal-card {
+            background: rgba(var(--crystal-purple), 0.05); /* Very subtle base */
+            border: 1px solid rgba(var(--border-glow), 0.3);
+            border-radius: 15px; /* Softer edges for cards */
+            padding: 2.5rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px var(--shadow-strong), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-speed) var(--cubic-bezier);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crystal-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--crystal-blue), var(--crystal-purple), var(--crystal-pink), var(--crystal-blue), transparent);
+            animation: crystal-border-rotate 8s linear infinite;
+            z-index: -1;
+            opacity: 0.1;
+            transition: opacity var(--transition-speed) ease-out;
+        }
+
+        @keyframes crystal-border-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .crystal-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .crystal-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 45px var(--shadow-strong), 0 0 25px var(--crystal-blue), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(var(--border-glow), 0.5);
+        }
+
+        /* Section Titles (Glowing Crystal Cut) */
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: linear-gradient(90deg, var(--crystal-pink) 0%, var(--crystal-blue) 50%, var(--crystal-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            text-shadow: 0 0 15px rgba(var(--crystal-pink), 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--crystal-purple), var(--crystal-blue), var(--crystal-pink));
+            border-radius: 3px;
+            animation: pulse-light 2s infinite alternate;
+        }
+
+        @keyframes pulse-light {
+            0% { box-shadow: 0 0 10px var(--crystal-blue), 0 0 20px var(--crystal-purple); opacity: 0.8; }
+            100% { box-shadow: 0 0 20px var(--crystal-blue), 0 0 40px var(--crystal-purple); opacity: 1; }
+        }
+
+        /* Navigation Bar (Crystal Segmented) */
+        .nav {
+            background: rgba(var(--dark-bg-medium), 0.5);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(var(--border-glow), 0.2);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.8rem 1.8rem;
+            border-radius: 10px;
+            transition: all var(--transition-speed) ease-out;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            background: rgba(var(--crystal-blue), 0.2);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(var(--crystal-blue), 0.5);
+            color: var(--crystal-blue);
+        }
+
+        /* Hero Section (Main Crystal Display) */
+        .hero {
+            display: flex; /* Changed to flex for single column layout */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--crystal-pink) 0%, var(--crystal-blue) 50%, var(--crystal-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            text-shadow: 0 0 30px rgba(var(--crystal-pink), 0.5), 0 0 60px rgba(var(--crystal-blue), 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.85;
+            line-height: 1.7;
+            text-shadow: 0 2px 10px var(--shadow-strong);
+            max-width: 800px; /* Constrain width for readability */
+            margin: 0 auto;
+        }
+
+        /* Profile Picture (Encased Crystal) */
+        .profile-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--crystal-purple) 0%, var(--crystal-blue) 100%);
+            box-shadow:
+                0 0 50px rgba(var(--crystal-purple), 0.6),
+                0 0 100px rgba(var(--crystal-blue), 0.4);
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 3s ease-in-out infinite;
+            border: 5px solid transparent; /* Placeholder for pseudo-element border */
+        }
+
+        .profile-pic::before {
+            content: '';
+            position: absolute;
+            inset: 8px; /* Inner glow/border */
+            background: linear-gradient(135deg, var(--dark-bg-medium) 0%, var(--dark-bg-deep) 100%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Orbital Crystal Shards - Adjusted for centered profile */
+        .orbital-shard {
+            position: absolute;
+            background: linear-gradient(45deg, var(--crystal-pink), var(--crystal-blue));
+            opacity: 0.6;
+            animation: rotate-orbit 10s linear infinite, scale-pulse 3s infinite alternate;
+            z-index: -1;
+            filter: blur(0.5px); /* Soften edges */
+            box-shadow: 0 0 10px rgba(var(--crystal-pink), 0.5);
+            /* Center the shards relative to their parent (.profile-container) */
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+        }
+
+        /* Adjust transform-origin and translateX for orbiting effect */
+        .shard-1 { width: 30px; height: 10px; animation-duration: 12s; }
+        .shard-2 { width: 20px; height: 8px; animation-duration: 18s; animation-direction: reverse; }
+        .shard-3 { width: 25px; height: 12px; animation-duration: 25s; }
+
+        @keyframes rotate-orbit {
+            0% { transform: translate(-50%, -50%) rotate(0deg) translateX(150px); }
+            100% { transform: translate(-50%, -50%) rotate(360deg) translateX(150px); }
+        }
+        @keyframes scale-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Skills Section (My Facets) */
+        .skills-section {
+            margin-bottom: 6rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-card {
+            /* Inherits .crystal-card styles */
+            padding: 3rem;
+        }
+
+        .skill-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--crystal-blue) 0%, var(--crystal-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            text-shadow: 0 0 10px rgba(var(--crystal-blue), 0.5);
+        }
+
+        .skill-description {
+            opacity: 0.8;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Projects Section (Refracting Creations) */
+        .projects-section {
+            margin-bottom: 6rem;
+        }
+
+        .projects-grid { /* Renamed for clarity vs timeline grid */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            /* Inherits .crystal-card styles */
+            padding: 2rem;
+            border-radius: 10px; /* Sharper project card corners */
+            box-shadow: 0 8px 20px var(--shadow-strong);
+        }
+        .project-card:hover {
+            transform: translateY(-10px) rotateX(3deg) rotateY(2deg); /* Subtle 3D effect */
+            box-shadow: 0 15px 35px var(--shadow-strong), 0 0 20px var(--crystal-pink), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--crystal-pink) 0%, var(--crystal-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 5px rgba(var(--crystal-pink), 0.3);
+        }
+
+        .project-tech {
+            font-size: 1rem;
+            opacity: 0.7;
+            color: var(--crystal-blue);
+            font-weight: 500;
+        }
+
+
+        /* Crystal Timeline Section */
+        .timeline-section {
+            margin-bottom: 6rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--crystal-pink), var(--crystal-blue), var(--crystal-purple));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            box-shadow: 0 0 15px var(--crystal-blue);
+        }
+
+        .timeline-entry {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 3rem; /* Space between entries */
+        }
+
+        .timeline-entry::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background: linear-gradient(45deg, var(--crystal-blue), var(--crystal-purple));
+            border: 4px solid var(--dark-bg-deep);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--crystal-blue), 0 0 20px var(--crystal-purple);
+        }
+
+        .timeline-entry-left {
+            left: 0;
+        }
+
+        .timeline-entry-right {
+            left: 50%;
+        }
+
+        .timeline-entry-left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--crystal-blue);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--crystal-blue);
+        }
+
+        .timeline-entry-right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--crystal-blue);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--crystal-blue) transparent transparent;
+        }
+
+        .timeline-entry-right::after {
+            left: -17px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: rgba(var(--dark-bg-medium), 0.6);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-strong);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(var(--border-glow), 0.2);
+            transition: all 0.3s ease-out;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(var(--crystal-blue), 0.5);
+        }
+
+        .timeline-date {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--crystal-pink);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(var(--crystal-pink), 0.5);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--crystal-blue);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px rgba(var(--crystal-blue), 0.5);
+        }
+
+        .timeline-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-tech-stack {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        .timeline-tech-stack span {
+            color: var(--crystal-blue);
+            font-weight: 600;
+        }
+
+        /* Crystal Buttons */
+        .crystal-btn {
+            background: linear-gradient(135deg, var(--crystal-pink) 0%, var(--crystal-blue) 100%);
+            border: none;
+            border-radius: 8px; /* Slightly sharper button edges */
+            padding: 1.2rem 2.8rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-speed) var(--cubic-bezier);
+            box-shadow: 0 10px 25px rgba(var(--crystal-pink), 0.4);
+            margin: 1.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .crystal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .crystal-btn:hover::before {
+            left: 100%;
+        }
+
+        .crystal-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 18px 40px rgba(var(--crystal-blue), 0.6), 0 0 30px rgba(var(--crystal-pink), 0.8);
+            filter: brightness(1.2); /* Enhance glow on hover */
+        }
+
+        .crystal-btn.secondary {
+            background: linear-gradient(135deg, var(--crystal-blue) 0%, var(--crystal-purple) 100%);
+            box-shadow: 0 10px 25px rgba(var(--crystal-blue), 0.4);
+        }
+        .crystal-btn.secondary:hover {
+            box-shadow: 0 18px 40px rgba(var(--crystal-purple), 0.6), 0 0 30px rgba(var(--crystal-blue), 0.8);
+        }
+
+
+        /* Contact Form (Geode Interface) */
+        .contact-form {
+            /* Inherits .crystal-card styles */
+            border-radius: 20px;
+            padding: 3.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form .crystal-card::before {
+            animation-duration: 6s; /* Slightly faster border animation */
+            opacity: 0.2;
+        }
+        .contact-form:hover .crystal-card::before {
+            opacity: 0.4;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease-out;
+            backdrop-filter: blur(8px);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--crystal-blue);
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 15px rgba(var(--crystal-blue), 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2.5rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(0deg, var(--dark-bg-deep) 0%, transparent 100%);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+
+            .nav-item {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .profile-pic {
+                width: 180px;
+                height: 180px;
+                font-size: 3.5rem;
+            }
+            .orbital-shard {
+                animation: none; /* Disable orbital shards on small screens for performance/simplicity */
+            }
+            @keyframes rotate-orbit { /* Adjust for mobile, smaller radius */
+                0% { transform: translate(-50%, -50%) rotate(0deg) translateX(100px); }
+                100% { transform: translate(-50%, -50%) rotate(360deg) translateX(100px); }
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 3rem;
+            }
+            .section-title::after {
+                width: 80px;
+            }
+
+            .crystal-card, .contact-form {
+                padding: 2rem;
+            }
+
+            .crystal-btn {
+                width: 100%;
+                margin: 0.8rem 0;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            /* Timeline specific responsive styles */
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-entry {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-entry::before {
+                left: 60px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--crystal-blue) transparent transparent;
+            }
+
+            .timeline-entry::after {
+                left: 15px;
+            }
+
+            .timeline-entry-right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Crystal Particles (Generated by JS) -->
+
+    <div class="container">
+        <!-- Navigation - Crystal Segments -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item" onclick="scrollToSection('home')">💎 Intro</li>
+                <li class="nav-item" onclick="scrollToSection('skills')">🧩 Skills</li>
+                <li class="nav-item" onclick="scrollToSection('projects')">✨ Projects</li>
+                <li class="nav-item" onclick="scrollToSection('timeline')">⏳ Timeline</li>
+                <li class="nav-item" onclick="scrollToSection('contact')">🔮 Contact</li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section - The Core Crystal -->
+        <section id="home" class="hero">
+            <div class="crystal-card" style="width: 100%; max-width: 900px;">
+                <h1 class="hero-title">Alex Dev</h1>
+                <p class="hero-subtitle">A **Crystal Developer** crafting robust architectures and luminous interfaces. I specialize in unearthing intricate solutions and polishing digital experiences to their brilliant core.</p>
+                <div style="margin-top: 3rem;">
+                    <button class="crystal-btn" onclick="downloadResume()">📥 Unearth Resume</button>
+                    <button class="crystal-btn secondary" onclick="scrollToSection('contact')">💬 Facet with Me</button>
+                </div>
+            </div>
+            <div class="profile-container">
+                <!-- Orbital Shards around profile pic -->
+                <div class="orbital-shard shard-1"></div>
+                <div class="orbital-shard shard-2"></div>
+                <div class="orbital-shard shard-3"></div>
+                <div class="profile-pic" onclick="profileClick()">✨</div>
+            </div>
+        </section>
+
+        <!-- Skills Section - My Facets -->
+        <section id="skills" class="skills-section">
+            <h2 class="section-title">🌟 My Facets</h2>
+            <div class="skills-grid">
+                <div class="crystal-card skill-card">
+                    <h3 class="skill-title">💻 Code Crystallization</h3>
+                    <p class="skill-description">Transforming complex concepts into clean, efficient, and well-structured code. Expertise in JavaScript, Python, Go, and building robust, scalable applications.</p>
+                </div>
+                <div class="crystal-card skill-card">
+                    <h3 class="skill-title">🌌 Architectural Geodes</h3>
+                    <p class="skill-description">Designing and implementing resilient system architectures. From microservices to serverless, I build foundational structures that stand the test of time, like natural geological formations.</p>
+                </div>
+                <div class="crystal-card skill-card">
+                    <h3 class="skill-title">✨ UI Illumination</h3>
+                    <p class="skill-description">Crafting intuitive and visually stunning user interfaces. Focusing on clarity, elegance, and user experience, ensuring every interaction shines like a perfectly cut gem.</p>
+                </div>
+                 <div class="crystal-card skill-card">
+                    <h3 class="skill-title">📊 Data Refinement</h3>
+                    <p class="skill-description">Extracting, transforming, and loading data with precision. Building efficient pipelines and insightful visualizations that reveal the hidden patterns within raw information.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - Crafted Creations -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title">🔮 Crafted Creations</h2>
+            <div class="projects-grid">
+                <div class="crystal-card project-card">
+                    <h4 class="project-title">🌐 LuminaSphere VR</h4>
+                    <p class="project-tech">React VR • Node.js • WebGL • Three.js</p>
+                </div>
+                <div class="crystal-card project-card">
+                    <h4 class="project-title">📈 QuantumAnalytics Dashboard</h4>
+                    <p class="project-tech">Vue.js • D3.js • GraphQL • PostgreSQL</p>
+                </div>
+                <div class="crystal-card project-card">
+                    <h4 class="project-title">🔒 CryptoVault Secure</h4>
+                    <p class="project-tech">Python • Blockchain • Flask • Docker</p>
+                </div>
+                <div class="crystal-card project-card">
+                    <h4 class="project-title">🎨 Fractal Art Generator</h4>
+                    <p class="project-tech">Canvas API • Vanilla JS • Web Workers</p>
+                </div>
+                 <div class="crystal-card project-card">
+                    <h4 class="project-title">🔬 Bio-Informatics Portal</h4>
+                    <p class="project-tech">Django • R • Data Science • AWS</p>
+                </div>
+                <div class="crystal-card project-card">
+                    <h4 class="project-title">💬 Ethereal Chat Platform</h4>
+                    <p class="project-tech">Socket.io • Express.js • MongoDB • React</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section - Geode Unfolding -->
+        <section id="timeline" class="timeline-section">
+            <h2 class="section-title">⏳ My Journey - A Geode Unfolding</h2>
+            <div class="timeline">
+                <div class="timeline-entry timeline-entry-left">
+                    <div class="timeline-content">
+                        <h4 class="timeline-date">2020 - Present</h4>
+                        <h3 class="timeline-title">Lead Software Engineer @ Stellar Innovations</h3>
+                        <p class="timeline-description">Architected and led the development of a real-time analytics platform handling petabytes of data, reducing query times by 70%. Mentored junior developers and fostered a culture of clean code and continuous integration.</p>
+                        <p class="timeline-tech-stack"><span>Tech Stack:</span> Python, Go, Kubernetes, Kafka, PostgreSQL, AWS</p>
+                    </div>
+                </div>
+
+                <div class="timeline-entry timeline-entry-right">
+                    <div class="timeline-content">
+                        <h4 class="timeline-date">2018 - 2020</h4>
+                        <h3 class="timeline-title">Senior Frontend Developer @ PixelForge Studio</h3>
+                        <p class="timeline-description">Developed highly interactive and performant user interfaces for flagship SaaS products. Introduced React and Redux into the tech stack, improving development efficiency and user engagement.</p>
+                        <p class="timeline-tech-stack"><span>Tech Stack:</span> React, Redux, TypeScript, Webpack, Styled Components</p>
+                    </div>
+                </div>
+
+                <div class="timeline-entry timeline-entry-left">
+                    <div class="timeline-content">
+                        <h4 class="timeline-date">2016 - 2018</h4>
+                        <h3 class="timeline-title">Software Engineer @ DataGlimmer Inc.</h3>
+                        <p class="timeline-description">Built RESTful APIs and optimized database queries for a financial data visualization tool. Contributed to microservice migration, enhancing system modularity and scalability.</p>
+                        <p class="timeline-tech-stack"><span>Tech Stack:</span> Node.js, Express, MongoDB, D3.js, Jest</p>
+                    </div>
+                </div>
+
+                <div class="timeline-entry timeline-entry-right">
+                    <div class="timeline-content">
+                        <h4 class="timeline-date">2014</h4>
+                        <h3 class="timeline-title">Graduated University of Code & Logic</h3>
+                        <p class="timeline-description">Achieved a B.Sc. in Computer Science with specialization in data structures and algorithms. Developed a passion for creative problem-solving.</p>
+                        <p class="timeline-tech-stack"><span>Focus:</span> Data Structures, Algorithms, C++, Java</p>
+                    </div>
+                </div>
+
+                <div class="timeline-entry timeline-entry-left">
+                    <div class="timeline-content">
+                        <h4 class="timeline-date">2012</h4>
+                        <h3 class="timeline-title">First Dive into Programming</h3>
+                        <p class="timeline-description">Discovered the magic of coding with a simple Python script, sparking a lifelong fascination with software development and digital creation.</p>
+                        <p class="timeline-tech-stack"><span>Languages:</span> Python</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section - Open Geode -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">📨 Connect with the Core</h2>
+            <div class="contact-form crystal-card"> <!-- Apply crystal-card styling to the form itself -->
+                <input type="text" class="form-input" placeholder="Your Name" aria-label="Your Name">
+                <input type="email" class="form-input" placeholder="Your Email" aria-label="Your Email">
+                <textarea class="form-input" rows="6" placeholder="Your Message" aria-label="Your Message"></textarea>
+                <button class="crystal-btn" onclick="sendMessage()">✨ Send Transmission</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 [your_name]. Built with crystalline precision. 💎</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation items
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Placeholder for resume download
+        function downloadResume() {
+            console.log("Resume download initiated!");
+            // In a real application, you'd trigger a file download here.
+            // Example: window.open('/path/to/your/resume.pdf', '_blank');
+            alert("Your resume, polished to perfection, is downloading!"); // Using alert for demo, replace with custom UI
+        }
+
+        // Placeholder for profile picture click
+        function profileClick() {
+            console.log("Profile picture clicked!");
+            alert("A glimmer of insight!"); // Using alert for demo, replace with custom UI
+        }
+
+        // Placeholder for sending a message
+        function sendMessage() {
+            const name = document.querySelector('.contact-form input[type="text"]').value;
+            const email = document.querySelector('.contact-form input[type="email"]').value;
+            const message = document.querySelector('.contact-form textarea').value;
+
+            if (name && email && message) {
+                console.log("Message Sent!");
+                console.log(`Name: ${name}`);
+                console.log(`Email: ${email}`);
+                console.log(`Message: ${message}`);
+                alert("Message crystallized and sent! I'll connect soon."); // Using alert for demo, replace with custom UI
+                // In a real app, you'd send this data to a backend server.
+            } else {
+                alert("Please fill out all fields to send your crystal transmission."); // Using alert for demo, replace with custom UI
+            }
+        }
+
+        // Dynamic particle generation (Crystal Shards)
+        function generateCrystalParticles(numParticles = 25) {
+            const body = document.body;
+            const colors = [
+                'var(--crystal-purple)',
+                'var(--crystal-blue)',
+                'var(--crystal-pink)'
+            ];
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('crystal-particle');
+
+                const size = Math.random() * 8 + 4; // Size between 4px and 12px
+                const width = size;
+                const height = Math.random() * size + size / 2; // Vary aspect ratio for shard-like look
+                particle.style.width = `${width}px`;
+                particle.style.height = `${height}px`;
+
+                const color1 = colors[Math.floor(Math.random() * colors.length)];
+                let color2 = colors[Math.floor(Math.random() * colors.length)];
+                while(color2 === color1) { // Ensure different colors for gradient
+                    color2 = colors[Math.floor(Math.random() * colors.length)];
+                }
+                particle.style.background = `linear-gradient(${Math.random() * 360}deg, ${color1}, ${color2})`;
+                particle.style.opacity = (Math.random() * 0.2) + 0.1; // Opacity between 0.1 and 0.3
+
+                const top = Math.random() * 100; // Random top position
+                const left = Math.random() * 100; // Random left position
+                particle.style.top = `${top}%`;
+                particle.style.left = `${left}%`;
+
+                const delay = Math.random() * 10; // Random animation delay up to 10s
+                particle.style.animationDelay = `${delay}s`;
+
+                // Add random initial rotation
+                particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+                body.appendChild(particle);
+            }
+        }
+
+        // Call generateCrystalParticles on window load
+        window.onload = function() {
+            generateCrystalParticles();
+        };
+
+    </script>
+</body>
+</html>

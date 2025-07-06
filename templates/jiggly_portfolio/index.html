@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelly Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the jelly/glassmorphism effect */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a103c;
+            background-image: radial-gradient(circle at 10% 20%, rgba(129, 61, 224, 0.3), transparent 30%),
+                              radial-gradient(circle at 80% 90%, rgba(224, 61, 146, 0.3), transparent 40%);
+        }
+
+        .jelly-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .jelly-button {
+            background: linear-gradient(135deg, rgba(190, 89, 235, 0.8), rgba(228, 93, 161, 0.8));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Jelly hover/active animation */
+        @keyframes jelly-press {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.92); }
+        }
+
+        .jelly-interactive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(224, 61, 146, 0.3), 0 0 30px rgba(129, 61, 224, 0.3);
+        }
+
+        .jelly-interactive:active {
+            animation: jelly-press 0.3s ease-in-out;
+        }
+
+        /* Gooey Cursor Effect */
+        #cursor-blur {
+            background: linear-gradient(135deg, #813de0, #e03d92);
+            height: 300px;
+            width: 300px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            transition: left 0.1s ease-out, top 0.1s ease-out;
+        }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden">
+
+    <!-- Gooey Cursor Background Effect -->
+    <div id="cursor-blur"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Header Navigation -->
+        <header class="flex justify-center mb-16">
+            <nav class="jelly-card jelly-interactive rounded-full p-2">
+                <ul class="flex items-center space-x-2 sm:space-x-4">
+                    <li><a href="#home" class="jelly-button rounded-full px-4 sm:px-6 py-2 text-sm sm:text-base font-medium block transition">Home</a></li>
+                    <li><a href="#projects" class="hover:bg-white/10 rounded-full px-4 sm:px-6 py-2 text-sm sm:text-base font-medium block transition">Projects</a></li>
+                    <li><a href="#about" class="hover:bg-white/10 rounded-full px-4 sm:px-6 py-2 text-sm sm:text-base font-medium block transition">About</a></li>
+                    <li><a href="#contact" class="hover:bg-white/10 rounded-full px-4 sm:px-6 py-2 text-sm sm:text-base font-medium block transition">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="home">
+            <!-- Hero Section -->
+            <section class="text-center mb-24">
+                <div class="relative inline-block mb-6">
+                    <img src="https://placehold.co/128x128/813de0/FFFFFF?text=JD" alt="Jane Doe" class="rounded-full w-32 h-32 border-4 border-white/20 shadow-lg">
+                    <div class="absolute top-0 right-0 w-8 h-8 bg-pink-500 rounded-full jelly-interactive animate-pulse"></div>
+                    <div class="absolute bottom-0 left-0 w-6 h-6 bg-purple-500 rounded-full jelly-interactive"></div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-2">Jane Doe</h1>
+                <p class="text-xl md:text-2xl text-purple-300">Creative Frontend Developer</p>
+                <p class="max-w-2xl mx-auto mt-4 text-gray-300">
+                    I build squishy, gooey, and delightful experiences for the web.
+                    My passion is creating interfaces that are not only functional but also fun to interact with.
+                </p>
+                <a href="#projects" class="jelly-button jelly-interactive inline-block mt-8 px-8 py-3 rounded-full font-semibold text-lg">
+                    See My Work
+                </a>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="mb-24">
+                <h2 class="text-3xl font-bold text-center mb-12">My Squishy Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="jelly-card jelly-interactive rounded-3xl p-6 flex flex-col">
+                        <div class="relative w-16 h-16 bg-pink-500/80 rounded-2xl mb-4 jelly-interactive"></div>
+                        <h3 class="text-2xl font-bold mb-2">Gooey Forms</h3>
+                        <p class="text-gray-300 flex-grow">A concept for form inputs that wobble and react when you type, making data entry surprisingly fun.</p>
+                        <button class="jelly-button jelly-interactive mt-4 self-start px-5 py-2 rounded-full font-semibold">View Project</button>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="jelly-card jelly-interactive rounded-3xl p-6 flex flex-col">
+                        <div class="relative w-16 h-16 bg-purple-500/80 rounded-2xl mb-4 jelly-interactive"></div>
+                        <h3 class="text-2xl font-bold mb-2">Jelly Nav</h3>
+                        <p class="text-gray-300 flex-grow">An interactive navigation menu with a satisfying, jelly-like press effect on click.</p>
+                        <button class="jelly-button jelly-interactive mt-4 self-start px-5 py-2 rounded-full font-semibold">View Project</button>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="jelly-card jelly-interactive rounded-3xl p-6 flex flex-col">
+                         <div class="relative w-16 h-16 bg-teal-400/80 rounded-2xl mb-4 jelly-interactive"></div>
+                        <h3 class="text-2xl font-bold mb-2">Blobby Dashboard</h3>
+                        <p class="text-gray-300 flex-grow">Data visualization with morphing, blob-like charts that animate in real-time.</p>
+                        <button class="jelly-button jelly-interactive mt-4 self-start px-5 py-2 rounded-full font-semibold">View Project</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Me Section -->
+            <section id="about" class="mb-24 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                 <div class="jelly-card jelly-interactive rounded-3xl p-8 md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                    <p class="text-gray-300 mb-4">
+                        Hello! I'm Jane, a developer with a knack for playful and engaging UI/UX design. I believe that software should have personality. My goal is to bring a sense of joy and discovery to every project I touch.
+                    </p>
+                    <p class="text-gray-300">
+                        When I'm not coding, you can find me experimenting with motion graphics or tending to my collection of succulents.
+                    </p>
+                </div>
+                <div class="jelly-card jelly-interactive rounded-3xl p-6 md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">My Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-white/10 rounded-full px-4 py-1">HTML</span>
+                        <span class="bg-white/10 rounded-full px-4 py-1">CSS</span>
+                        <span class="bg-white/10 rounded-full px-4 py-1">JavaScript</span>
+                        <span class="bg-white/10 rounded-full px-4 py-1">React</span>
+                        <span class="bg-white/10 rounded-full px-4 py-1">Figma</span>
+                        <span class="bg-white/10 rounded-full px-4 py-1">GSAP</span>
+                        <span class="bg-white/10 rounded-full px-4 py-1">Three.js</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold mb-4">Let's Connect!</h2>
+                <p class="text-gray-300 mb-8">
+                    Have a project in mind or just want to say hi? I'd love to hear from you.
+                </p>
+                <div class="jelly-card jelly-interactive rounded-3xl p-8">
+                     <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 rounded-full px-6 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+                     <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 rounded-full px-6 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+                     <textarea placeholder="Your Message" rows="4" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"></textarea>
+                     <button class="jelly-button jelly-interactive w-full px-8 py-3 rounded-full font-semibold text-lg">Send Message</button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-24 py-8 border-t border-white/10">
+            <p class="text-gray-400">Designed with a wibble and a wobble by Jane Doe.</p>
+             <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition">GitHub</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">LinkedIn</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Twitter</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Gooey cursor effect
+        const cursorBlur = document.getElementById('cursor-blur');
+        document.addEventListener('mousemove', (e) => {
+            cursorBlur.style.left = e.clientX - cursorBlur.offsetWidth / 2 + 'px';
+            cursorBlur.style.top = e.clientY - cursorBlur.offsetHeight / 2 + 'px';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // For the nav, highlight the active link
+                if(this.closest('nav')) {
+                    this.closest('nav').querySelectorAll('a').forEach(link => {
+                        link.classList.remove('jelly-button');
+                        link.classList.add('hover:bg-white/10');
+                    });
+                    this.classList.add('jelly-button');
+                    this.classList.remove('hover:bg-white/10');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

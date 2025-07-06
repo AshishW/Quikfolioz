@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Doodle - Developer Portfolio</title>
+    <!-- Fonts from the original Doodle UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Root Variables from Doodle UI --- */
+        :root {
+            --doodle-primary: #2D3748;
+            --doodle-secondary: #4A5568;
+            --doodle-accent: #3182CE; /* Changed to a nice blue for a portfolio */
+            --doodle-success: #38A169;
+            --doodle-warning: #D69E2E;
+            --doodle-info: #E53E3E; /* Swapped with accent for variety */
+            --doodle-paper: #FEFEFE;
+            --doodle-line: #2D3748;
+            --doodle-shadow: rgba(45, 55, 72, 0.1);
+            --doodle-highlight: #FFF5B7;
+        }
+
+        /* --- Basic Setup --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Kalam', cursive;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Dotted background overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20px 50px, #ddd 1px, transparent 1px),
+                radial-gradient(circle at 40px 80px, #ddd 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* --- Header / Hero Section --- */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--doodle-paper);
+            border: 3px solid var(--doodle-line);
+            border-radius: 15px;
+            box-shadow: 8px 8px 0px var(--doodle-shadow);
+            transform: rotate(-1deg);
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 4em;
+            color: var(--doodle-accent);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            transform: rotate(1deg);
+        }
+
+        .header p {
+            font-size: 1.5em;
+            color: var(--doodle-secondary);
+            margin: 10px 0 0 0;
+        }
+
+        /* --- Section Styling --- */
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: var(--doodle-paper);
+            border: 2px solid var(--doodle-line);
+            border-radius: 20px;
+            box-shadow: 4px 4px 0px var(--doodle-shadow);
+            position: relative;
+        }
+
+        .section::before {
+            content: attr(data-title);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--doodle-highlight);
+            padding: 5px 15px;
+            border: 2px solid var(--doodle-line);
+            border-radius: 10px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--doodle-line);
+            transform: rotate(-3deg);
+        }
+        
+        .section-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--doodle-primary);
+            text-align: center;
+        }
+
+        /* --- Doodle Components (Buttons, Cards, etc.) --- */
+        
+        /* Navigation */
+        .doodle-nav {
+            background: var(--doodle-paper);
+            border: 3px solid var(--doodle-line);
+            border-radius: 25px;
+            padding: 10px 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            box-shadow: 4px 4px 0px var(--doodle-shadow);
+            transform: rotate(-0.5deg);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .doodle-nav-item {
+            font-family: 'Kalam', cursive;
+            text-decoration: none;
+            color: var(--doodle-line);
+            padding: 8px 16px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        .doodle-nav-item:hover {
+            background: var(--doodle-highlight);
+            transform: rotate(2deg) scale(1.05);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Cards (for projects) */
+        .doodle-card {
+            background: var(--doodle-paper);
+            border: 3px solid var(--doodle-line);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 6px 6px 0px var(--doodle-shadow);
+            position: relative;
+            transition: all 0.3s ease;
+            transform: rotate(-1.5deg);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .doodle-card:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 10px 10px 0px var(--doodle-shadow);
+        }
+
+        .doodle-card h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 2em;
+            color: var(--doodle-accent);
+            margin: 0 0 10px 0;
+            transform: rotate(1deg);
+        }
+        
+        .doodle-card p {
+            flex-grow: 1;
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+        }
+        
+        .card-footer {
+            margin-top: auto;
+        }
+
+        /* Buttons */
+        .doodle-btn {
+            font-family: 'Kalam', cursive;
+            font-size: 1.1em;
+            font-weight: 400;
+            padding: 12px 24px;
+            border: 3px solid var(--doodle-line);
+            border-radius: 25px;
+            background: var(--doodle-paper);
+            color: var(--doodle-line);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            transform: rotate(-1deg);
+            box-shadow: 4px 4px 0px var(--doodle-shadow);
+            margin: 5px;
+        }
+
+        .doodle-btn:hover {
+            transform: rotate(1deg) translateY(-2px);
+            box-shadow: 6px 6px 0px var(--doodle-shadow);
+            background: var(--doodle-highlight);
+        }
+
+        .doodle-btn:active {
+            transform: rotate(1deg) translateY(1px);
+            box-shadow: 2px 2px 0px var(--doodle-shadow);
+        }
+
+        .doodle-btn.primary {
+            background: var(--doodle-accent);
+            color: white;
+        }
+        .doodle-btn.primary:hover { background: #2B6CB0; background: var(--doodle-highlight); color: var(--doodle-line); }
+
+        .doodle-btn.success { background: var(--doodle-success); color: white; }
+        .doodle-btn.success:hover { background: var(--doodle-highlight); color: var(--doodle-line); }
+        
+        /* Sticky Notes (for skills) */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .doodle-sticky {
+            background: #FFE135;
+            border: none;
+            padding: 20px;
+            font-family: 'Kalam', cursive;
+            font-size: 1.1em;
+            color: var(--doodle-line);
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+            transform: rotate(3deg);
+            position: relative;
+            width: 220px;
+            min-height: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .doodle-sticky:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+        }
+
+        .doodle-sticky h4 {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            border-bottom: 2px dotted var(--doodle-line);
+            padding-bottom: 5px;
+        }
+        
+        .doodle-sticky ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .doodle-sticky li {
+            margin-bottom: 8px;
+        }
+        .doodle-sticky li::before {
+            content: '✏️';
+            margin-right: 8px;
+        }
+        
+        /* Contact Section Specifics */
+        .contact-area {
+            text-align: center;
+        }
+        .contact-area p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 1em;
+            color: var(--doodle-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="doodle-nav">
+            <a href="#about" class="doodle-nav-item">About</a>
+            <a href="#projects" class="doodle-nav-item">Projects</a>
+            <a href="#skills" class="doodle-nav-item">Skills</a>
+            <a href="#contact" class="doodle-nav-item">Contact</a>
+        </nav>
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Alex Doodle</h1>
+            <p>Creative Web Developer & UI Enthusiast</p>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="section" data-title="A Little About Me">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+                <div style="flex: 2; min-width: 300px;">
+                    <p style="font-size: 1.2em; line-height: 1.7;">
+                        Hello! I'm Alex, a developer with a passion for building fun, intuitive, and beautiful web experiences. I believe that the best websites are not only functional but also delightful to use. My journey into code started with a curiosity for how things work, and it has evolved into a full-blown love for creating digital magic.
+                        <br><br>
+                        When I'm not coding, you can find me sketching, exploring new coffee shops, or trying to keep my houseplants alive. Let's build something amazing together!
+                    </p>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                     <div class="doodle-sticky" style="background: #4ECDC4; transform: rotate(4deg);">
+                        <h4>Fun Fact</h4>
+                        <p>I believe every great project is fueled by an irresponsible amount of coffee. ☕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section" data-title="My Creations">
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="doodle-card">
+                    <h3>TaskMingle</h3>
+                    <p>A collaborative to-do list application with a playful, hand-drawn interface. Users can create shared lists, assign tasks, and get real-time updates. Built with React and Firebase.</p>
+                    <div class="card-footer">
+                        <a href="#" class="doodle-btn primary">Live Demo</a>
+                        <a href="#" class="doodle-btn">GitHub</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="doodle-card">
+                    <h3>Pixel Painter</h3>
+                    <p>A retro, browser-based pixel art editor built purely with HTML5 Canvas and JavaScript. It features a customizable color palette, grid toggling, and the ability to export your creations as PNGs.</p>
+                    <div class="card-footer">
+                         <a href="#" class="doodle-btn primary">Try It Out</a>
+                        <a href="#" class="doodle-btn">GitHub</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="doodle-card">
+                    <h3>WeatherVibe</h3>
+                    <p>A quirky weather app that changes its entire theme—colors, icons, and doodles—based on the current forecast. It makes checking the weather a surprisingly delightful experience.</p>
+                     <div class="card-footer">
+                        <a href="#" class="doodle-btn primary">Check Vibe</a>
+                        <a href="#" class="doodle-btn">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section" data-title="My Toolkit">
+            <div class="skills-container">
+                <div class="doodle-sticky" style="transform: rotate(-2deg);">
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>JavaScript (ES6+)</li>
+                        <li>HTML5</li>
+                        <li>CSS3 / SCSS</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+                <div class="doodle-sticky" style="background: #FF6B9D; transform: rotate(1deg);">
+                    <h4>Frameworks</h4>
+                    <ul>
+                        <li>React.js</li>
+                        <li>Vue.js</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                    </ul>
+                </div>
+                <div class="doodle-sticky" style="background: #95E1D3; transform: rotate(-3deg);">
+                    <h4>Tools & Tech</h4>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Figma</li>
+                        <li>Firebase</li>
+                        <li>Webpack</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section" data-title="Let's Connect">
+            <div class="contact-area">
+                <h2 class="section-title">Get In Touch!</h2>
+                <p>
+                    I'm currently open to new opportunities and collaborations. Whether you have a question or just want to say hi, feel free to reach out. Let's make something cool together!
+                </p>
+                <div>
+                    <a href="mailto:hello@example.com" class="doodle-btn success">Email Me</a>
+                    <a href="#" class="doodle-btn">LinkedIn</a>
+                    <a href="#" class="doodle-btn">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Hand-drawn with care by Alex Doodle © 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add some random rotation to elements on load for that extra "doodle" feel
+        window.addEventListener('load', function() {
+            // Apply to project cards
+            const cards = document.querySelectorAll('.doodle-card');
+            cards.forEach(card => {
+                const rotation = (Math.random() - 0.5) * 3; // Random rotation between -1.5 and 1.5 degrees
+                card.style.transform = `rotate(${rotation}deg)`;
+            });
+
+            // Apply to sticky notes
+            const stickies = document.querySelectorAll('.doodle-sticky');
+            stickies.forEach(sticky => {
+                const existingTransform = sticky.style.transform;
+                if (!existingTransform.includes('rotate')) {
+                    const rotation = (Math.random() - 0.5) * 6; // Random rotation between -3 and 3 degrees
+                    sticky.style.transform = `rotate(${rotation}deg)`;
+                }
+            });
+
+            // Restore original rotation on mouse leave for cards
+            cards.forEach(card => {
+                const originalRotation = card.style.transform;
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = originalRotation;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

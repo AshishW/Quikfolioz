@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Web Developer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light Gray Background */
+            color: #1f2937; /* Dark Gray Text */
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* Light Blue-Gray */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* Darker Blue-Gray on hover */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl w-full space-y-16">
+
+            <!-- Hero Section -->
+            <section id="about" class="text-center bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-[1.005]">
+                <div class="flex flex-col items-center">
+                    <!-- Profile Picture Placeholder -->
+                    <img src="https://placehold.co/120x120/a78bfa/ffffff?text=JP" alt="Your Name" class="rounded-full w-32 h-32 object-cover mb-6 border-4 border-purple-300 shadow-md">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-2">Hi, I'm [Your Name]!</h1>
+                    <p class="text-xl text-gray-700 mb-6 max-w-2xl">
+                        A passionate web developer specializing in creating beautiful, responsive, and user-friendly web applications. I love bringing ideas to life through code.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75 transition duration-200">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="px-6 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 transition duration-200">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-[1.005]">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">My Skills</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <!-- Skill Card 1 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/fbcfe8/be185d?text=HTML" alt="HTML Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">HTML5</span>
+                    </div>
+                    <!-- Skill Card 2 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/dbeafe/1d4ed8?text=CSS" alt="CSS Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">CSS3</span>
+                    </div>
+                    <!-- Skill Card 3 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/fef08a/b45309?text=JS" alt="JavaScript Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">JavaScript</span>
+                    </div>
+                    <!-- Skill Card 4 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/dcfce7/15803d?text=REACT" alt="React Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">React.js</span>
+                    </div>
+                    <!-- Skill Card 5 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/ffe4e6/be123c?text=NODE" alt="Node.js Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">Node.js</span>
+                    </div>
+                    <!-- Skill Card 6 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/e0e7ff/4338ca?text=SQL" alt="Database Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">Databases</span>
+                    </div>
+                    <!-- Skill Card 7 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/e9d5ff/8b5cf6?text=GIT" alt="Git Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">Git/GitHub</span>
+                    </div>
+                    <!-- Skill Card 8 -->
+                    <div class="flex flex-col items-center p-4 bg-purple-50 rounded-lg shadow-sm hover:shadow-md transition duration-200">
+                        <img src="https://placehold.co/40x40/dbeafe/2563eb?text=API" alt="API Icon" class="mb-2 w-10 h-10">
+                        <span class="font-medium text-gray-800">RESTful APIs</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-[1.005]">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="bg-purple-50 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-200">
+                        <img src="https://placehold.co/600x400/9333ea/ffffff?text=Project+One" alt="Project One Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Title One</h3>
+                            <p class="text-gray-700 mb-4">
+                                A brief description of Project One. This project showcases my skills in [mention key tech] and [another tech].
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/yourusername/project-one" target="_blank" class="text-purple-600 hover:text-purple-800 font-medium transition duration-200 flex items-center">
+                                    <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.83 9.504.471.085.678-.233.678-.516 0-.256-.009-1.04-.015-2.04c-2.782.6-3.37-1.34-3.37-1.34-.454-1.15-.11-1.46-.083-1.56.31-.214.024-.209.231-.209 0 0 2.76.199 4.212 2.152.261.455.65.729 1.004.918.026.199.102.355.187.437.085.082.19.147.288.196.113.056.248.093.385.093.472 0 .864-.176 1.11-.486 0 0 .199-.864.199-1.096-2.61.295-5.068-1.31-5.068-4.935 0-1.09.39-1.986 1.03-2.68-.103-.298-.448-1.27.097-2.65 0 0 .84-.269 2.75 1.025.798-.222 1.654-.333 2.504-.336.85.003 1.706.114 2.504.336 1.909-1.294 2.748-1.025 2.748-1.025.546 1.38.201 2.352.098 2.65.64.694 1.029 1.59 1.029 2.68 0 3.633-2.463 5.228-5.074 4.935.011.21.017.418.017.636 0 .464-.131.996-.688.857-3.96-1.32-6.824-5.086-6.824-9.504C2 6.484 6.477 2 12 2Z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                                <a href="#" target="_blank" class="text-purple-600 hover:text-purple-800 font-medium transition duration-200 flex items-center">
+                                    <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-1-10h2v4h-2zm0 5h2v2h-2z"/></svg>
+                                    Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-purple-50 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-200">
+                        <img src="https://placehold.co/600x400/9333ea/ffffff?text=Project+Two" alt="Project Two Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Title Two</h3>
+                            <p class="text-gray-700 mb-4">
+                                This project demonstrates my ability to build [specific feature] using [framework/library].
+                            </p>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/yourusername/project-two" target="_blank" class="text-purple-600 hover:text-purple-800 font-medium transition duration-200 flex items-center">
+                                    <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.418 2.865 8.18 6.83 9.504.471.085.678-.233.678-.516 0-.256-.009-1.04-.015-2.04c-2.782.6-3.37-1.34-3.37-1.34-.454-1.15-.11-1.46-.083-1.56.31-.214.024-.209.231-.209 0 0 2.76.199 4.212 2.152.261.455.65.729 1.004.918.026.199.102.355.187.437.085.082.19.147.288.196.113.056.248.093.385.093.472 0 .864-.176 1.11-.486 0 0 .199-.864.199-1.096-2.61.295-5.068-1.31-5.068-4.935 0-1.09.39-1.986 1.03-2.68-.103-.298-.448-1.27.097-2.65 0 0 .84-.269 2.75 1.025.798-.222 1.654-.333 2.504-.336.85.003 1.706.114 2.504.336 1.909-1.294 2.748-1.025 2.748-1.025.546 1.38.201 2.352.098 2.65.64.694 1.029 1.59 1.029 2.68 0 3.633-2.463 5.228-5.074 4.935.011.21.017.418.017.636 0 .464-.131.996-.688.857-3.96-1.32-6.824-5.086-6.824-9.504C2 6.484 6.477 2 12 2Z" clip-rule="evenodd"></path></svg>
+                                    GitHub
+                                </a>
+                                <a href="#" target="_blank" class="text-purple-600 hover:text-purple-800 font-medium transition duration-200 flex items-center">
+                                    <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-1-10h2v4h-2zm0 5h2v2h-2z"/></svg>
+                                    Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more project cards as needed -->
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="bg-white p-8 rounded-xl shadow-lg text-center transform transition duration-300 hover:scale-[1.005]">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+                <p class="text-gray-700 mb-6 max-w-xl mx-auto">
+                    I'm currently open to new opportunities and collaborations. Feel free to reach out!
+                </p>
+                <div class="space-y-4">
+                    <p class="text-lg text-gray-800">
+                        Email: <a href="mailto:your.email@example.com" class="text-purple-600 hover:underline">your.email@example.com</a>
+                    </p>
+                    <p class="text-lg text-gray-800">
+                        LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-purple-600 hover:underline">linkedin.com/in/yourprofile</a>
+                    </p>
+                    <p class="text-lg text-gray-800">
+                        GitHub: <a href="https://github.com/yourusername" target="_blank" class="text-purple-600 hover:underline">github.com/yourusername</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center text-gray-600 text-sm mt-12 py-4 border-t border-gray-200">
+                &copy; 2025 [Your Name]. All rights reserved.
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

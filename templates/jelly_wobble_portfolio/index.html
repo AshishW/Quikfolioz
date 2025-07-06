@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Creative Developer</title>
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f23 0%, #1a0f2e 25%, #2d1b4e 50%, #1a0f3d 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Particles */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.7; }
+            25% { transform: translateY(-30px) rotate(90deg) scale(1.1); opacity: 1; }
+            50% { transform: translateY(-15px) rotate(180deg) scale(0.9); opacity: 0.8; }
+            75% { transform: translateY(-25px) rotate(270deg) scale(1.05); opacity: 0.9; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Advanced Jelly Animations */
+        @keyframes jelly-wobble {
+            0% { transform: scale(1) rotate(0deg); }
+            15% { transform: scale(1.1, 0.9) rotate(-2deg); }
+            30% { transform: scale(0.95, 1.1) rotate(1deg); }
+            45% { transform: scale(1.05, 0.95) rotate(-1deg); }
+            60% { transform: scale(0.98, 1.02) rotate(0.5deg); }
+            75% { transform: scale(1.02, 0.98) rotate(-0.3deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes morphing {
+            0%, 100% { border-radius: 50px; transform: rotate(0deg); }
+            25% { border-radius: 35px 65px 35px 65px; transform: rotate(5deg); }
+            50% { border-radius: 65px 35px 65px 35px; transform: rotate(-3deg); }
+            75% { border-radius: 40px 60px 30px 70px; transform: rotate(2deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px rgba(255, 105, 180, 0.4),
+                    0 0 40px rgba(138, 43, 226, 0.3),
+                    0 0 60px rgba(65, 105, 225, 0.2);
+            }
+            50% {
+                box-shadow:
+                    0 0 30px rgba(255, 105, 180, 0.7),
+                    0 0 60px rgba(138, 43, 226, 0.5),
+                    0 0 90px rgba(65, 105, 225, 0.4);
+            }
+        }
+
+        @keyframes liquid-motion {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(10px, -5px) scale(1.02); }
+            66% { transform: translate(-8px, 3px) scale(0.98); }
+        }
+
+        /* Navigation with Liquid Effect */
+        .nav {
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 105, 180, 0.9) 0%,
+                    rgba(138, 43, 226, 0.8) 30%,
+                    rgba(65, 105, 225, 0.9) 60%,
+                    rgba(0, 191, 255, 0.8) 100%);
+            border-radius: 60px;
+            padding: 1.2rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Removed .nav::before rotating flash animation */
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav:hover {
+            animation: jelly-wobble 0.8s ease-in-out, morphing 2s ease-in-out infinite;
+            transform: translateY(-5px);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-item {
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 1rem 2rem;
+            border-radius: 35px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav-item:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.15) translateY(-3px);
+            animation: jelly-wobble 0.6s ease-in-out;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Hero Section with Liquid Morphing */
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            align-items: center;
+        }
+
+        .hero-card {
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 105, 180, 0.15) 0%,
+                    rgba(138, 43, 226, 0.2) 50%,
+                    rgba(65, 105, 225, 0.15) 100%);
+            border-radius: 40px;
+            padding: 4rem;
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Removed .hero-card::before rotating flash animation */
+
+        .hero-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            animation: jelly-wobble 1s ease-in-out, liquid-motion 3s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ff69b4 0%, #00bfff 50%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animated Profile Picture */
+        .profile-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 50%, #00bfff 100%);
+            box-shadow:
+                0 0 50px rgba(255, 105, 180, 0.6),
+                0 0 100px rgba(138, 43, 226, 0.4),
+                0 0 150px rgba(0, 191, 255, 0.3);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .profile-pic::before {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            background: linear-gradient(135deg, #1a0f3d 0%, #2d1b4e 100%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .profile-pic:hover {
+            animation: jelly-wobble 0.8s ease-in-out, morphing 2s ease-in-out infinite, pulse-glow 1s ease-in-out infinite;
+            transform: scale(1.15);
+        }
+
+        /* Orbital Rings */
+        .orbital-ring {
+            position: absolute;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .ring-1 { width: 300px; height: 300px; }
+        .ring-2 { width: 350px; height: 350px; animation-duration: 15s; animation-direction: reverse; }
+        .ring-3 { width: 400px; height: 400px; animation-duration: 20s; }
+
+        /* Enhanced Skills Grid */
+        .skills-section {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #ff69b4 0%, #00bfff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff69b4, #8a2be2, #00bfff);
+            border-radius: 2px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-card {
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 105, 180, 0.1) 0%,
+                    rgba(138, 43, 226, 0.15) 50%,
+                    rgba(65, 105, 225, 0.1) 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 100%);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: morphing 3s ease-in-out infinite;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-20px) scale(1.05) rotate(1deg);
+            animation: jelly-wobble 0.8s ease-in-out, liquid-motion 2s ease-in-out infinite;
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 105, 180, 0.2) 0%,
+                    rgba(138, 43, 226, 0.25) 50%,
+                    rgba(0, 191, 255, 0.2) 100%);
+            box-shadow:
+                0 30px 80px rgba(255, 105, 180, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #ffffff 0%, #ff69b4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-description {
+            opacity: 0.9;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+        }
+
+        /* 3D Floating Projects */
+        .projects-section {
+            margin-bottom: 6rem;
+            perspective: 1000px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background:
+                linear-gradient(135deg,
+                    rgba(65, 105, 225, 0.15) 0%,
+                    rgba(138, 43, 226, 0.2) 100%);
+            border-radius: 25px;
+            padding: 2rem;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, transparent 100%);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(5deg) scale(1.05);
+            animation: jelly-wobble 0.6s ease-in-out;
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 105, 180, 0.2) 0%,
+                    rgba(138, 43, 226, 0.25) 100%);
+            box-shadow:
+                0 25px 60px rgba(255, 105, 180, 0.3),
+                0 0 30px rgba(138, 43, 226, 0.4);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff69b4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-tech {
+            font-size: 1rem;
+            opacity: 0.8;
+            color: #00bfff;
+            font-weight: 500;
+        }
+
+        /* Liquid Buttons */
+        .jelly-btn {
+            background: linear-gradient(135deg, #ff69b4 0%, #8a2be2 50%, #00bfff 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 1.2rem 3rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow:
+                0 15px 35px rgba(255, 105, 180, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            margin: 1.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .jelly-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .jelly-btn:hover::before {
+            left: 100%;
+        }
+
+        .jelly-btn:hover {
+            transform: translateY(-8px) scale(1.1);
+            animation: jelly-wobble 0.6s ease-in-out, morphing 2s ease-in-out infinite;
+            box-shadow:
+                0 25px 50px rgba(255, 105, 180, 0.6),
+                0 0 30px rgba(138, 43, 226, 0.8);
+        }
+
+        .jelly-btn.secondary {
+            background: linear-gradient(135deg, #00bfff 0%, #8a2be2 50%, #ff69b4 100%);
+        }
+
+        /* Glowing Contact Form */
+        .contact-form {
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 105, 180, 0.1) 0%,
+                    rgba(65, 105, 225, 0.15) 100%);
+            border-radius: 35px;
+            padding: 3rem;
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Removed .contact-form::before rotating flash animation */
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff69b4;
+            transform: scale(1.02);
+            animation: jelly-wobble 0.5s ease-in-out;
+            box-shadow:
+                0 0 20px rgba(255, 105, 180, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(0deg, #0f0f23 0%, transparent 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .nav-item {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-card {
+                padding: 2.5rem;
+            }
+
+            .skills-grid, .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .jelly-btn {
+                width: 100%;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <!-- Particles are generated dynamically by JavaScript for more control -->
+
+    <div class="container">
+        <!-- Liquid Navigation -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item" onclick="scrollToSection('home')">🏠 Home</li>
+                <li class="nav-item" onclick="scrollToSection('about')">👨‍💻 About</li>
+                <li class="nav-item" onclick="scrollToSection('projects')">🚀 Projects</li>
+                <li class="nav-item" onclick="scrollToSection('contact')">📱 Contact</li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-card">
+                <h1 class="hero-title">Alex Chen</h1>
+                <p class="hero-subtitle">Creative Full-Stack Developer & Digital Alchemist ✨ Crafting immersive web experiences with cutting-edge technologies, mind-bending animations, and pixel-perfect designs that push the boundaries of what's possible in the digital realm.</p>
+                <div style="margin-top: 3rem;">
+                    <button class="jelly-btn" onclick="downloadResume()">📥 Download Resume</button>
+                    <button class="jelly-btn secondary" onclick="scrollToSection('contact')">💬 Let's Connect</button>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="orbital-ring ring-1"></div>
+                <div class="orbital-ring ring-2"></div>
+                <div class="orbital-ring ring-3"></div>
+                <div class="profile-pic" onclick="profileClick()">🧙‍♂️</div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="about" class="skills-section">
+            <h2 class="section-title">⚡ Superpowers</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 class="skill-title">🎨 Frontend Wizardry</h3>
+                    <p class="skill-description">Master of React, Vue.js, TypeScript, Next.js, and GSAP animations. Creating stunning, responsive interfaces with Tailwind CSS, Framer Motion, and Three.js for immersive 3D experiences that captivate users.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">⚙️ Backend Sorcery</h3>
+                    <p class="skill-description">Architecting scalable systems with Node.js, Python, GraphQL, and microservices. Expert in PostgreSQL, MongoDB, Redis, and cloud deployment with AWS, Vercel, and Docker containerization.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 class="skill-title">🎭 Design Alchemy</h3>
+                    <p class="skill-description">Transforming ideas into pixel-perfect reality with Figma, Adobe Creative Suite, and advanced prototyping. Specializing in user psychology, accessibility, and creating delightful micro-interactions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title">🌟 Featured Creations</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h4 class="project-title">🛍️ Neural Commerce</h4>
+                    <p class="project-tech">React • Node.js • AI • Stripe • MongoDB</p>
+                </div>
+                <div class="project-card">
+                    <h4 class="project-title">⚡ Quantum Tasks</h4>
+                    <p class="project-tech">Vue.js • Firebase • PWA • Machine Learning</p>
+                </div>
+                <div class="project-card">
+                    <h4 class="project-title">🎨 Liquid Portfolio</h4>
+                    <p class="project-tech">Next.js • GSAP • Three.js • Vercel</p>
+                </div>
+                <div class="project-card">
+                    <h4 class="project-title">🌌 AstroSphere Explorer</h4>
+                    <p class="project-tech">Python • Flask • D3.js • REST API</p>
+                </div>
+                 <div class="project-card">
+                    <h4 class="project-title">🎧 Sonic Synthwave</h4>
+                    <p class="project-tech">Vanilla JS • Web Audio API • Tone.js</p>
+                </div>
+                <div class="project-card">
+                    <h4 class="project-title">💡 IdeaForge AI</h4>
+                    <p class="project-tech">TypeScript • Express • OpenAI API • PostgreSQL</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">📬 Let's Connect</h2>
+            <div class="contact-form">
+                <input type="text" class="form-input" placeholder="Your Name" aria-label="Your Name">
+                <input type="email" class="form-input" placeholder="Your Email" aria-label="Your Email">
+                <textarea class="form-input" rows="6" placeholder="Your Message" aria-label="Your Message"></textarea>
+                <button class="jelly-btn" onclick="sendMessage()">🚀 Send Message</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Alex Chen. All rights reserved. Built with passion and code. ✨</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation items
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Placeholder for resume download
+        function downloadResume() {
+            console.log("Resume download initiated!");
+            // In a real application, you'd trigger a file download here.
+            // Example: window.open('/path/to/your/resume.pdf', '_blank');
+            alert("Pretend I just downloaded your awesome resume!"); // Using alert for demo, replace with custom UI
+        }
+
+        // Placeholder for profile picture click
+        function profileClick() {
+            console.log("Profile picture clicked!");
+            alert("You clicked the wizard! 🧙‍♂️"); // Using alert for demo, replace with custom UI
+        }
+
+        // Placeholder for sending a message
+        function sendMessage() {
+            const name = document.querySelector('.contact-form input[type="text"]').value;
+            const email = document.querySelector('.contact-form input[type="email"]').value;
+            const message = document.querySelector('.contact-form textarea').value;
+
+            if (name && email && message) {
+                console.log("Message Sent!");
+                console.log(`Name: ${name}`);
+                console.log(`Email: ${email}`);
+                console.log(`Message: ${message}`);
+                alert("Thanks for your message, I'll get back to you soon!"); // Using alert for demo, replace with custom UI
+                // In a real app, you'd send this data to a backend server.
+            } else {
+                alert("Please fill out all fields."); // Using alert for demo, replace with custom UI
+            }
+        }
+
+        // Dynamic particle generation
+        function generateParticles(numParticles = 20) {
+            const body = document.body;
+            const colors = [
+                'rgba(255, 105, 180, 0.6)', // Pink
+                'rgba(0, 191, 255, 0.5)',  // Deep Sky Blue
+                'rgba(138, 43, 226, 0.4)'  // Blue Violet
+            ];
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 20 + 10; // Size between 10px and 30px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+
+                const top = Math.random() * 100; // Random top position
+                const left = Math.random() * 100; // Random left position
+                particle.style.top = `${top}%`;
+                particle.style.left = `${left}%`;
+
+                const delay = Math.random() * 5; // Random animation delay up to 5s
+                particle.style.animationDelay = `${delay}s`;
+
+                body.appendChild(particle);
+            }
+        }
+
+        // Call generateParticles on window load
+        window.onload = function() {
+            generateParticles();
+        };
+
+    </script>
+</body>
+</html>

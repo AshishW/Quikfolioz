@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Professional Web Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light Blue-Gray Background */
+            color: #1f2937; /* Dark Gray Text */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Lighter scrollbar track */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60a5fa; /* Blue scrollbar thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; /* Darker blue on hover */
+        }
+
+        .section-padding {
+            padding-top: 4rem; /* 64px */
+            padding-bottom: 4rem; /* 64px */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem; /* 96px */
+                padding-bottom: 6rem; /* 96px */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 p-4 fixed w-full z-10 shadow-md">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="text-white text-2xl font-bold tracking-wide">YourName.dev</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#hero" class="text-gray-300 hover:text-white transition duration-300">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition duration-300">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition duration-300">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition duration-300">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none md:hidden">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 mt-4 px-4 pb-4">
+            <a href="#hero" class="block py-2 text-gray-300 hover:text-white transition duration-300">Home</a>
+            <a href="#about" class="block py-2 text-gray-300 hover:text-white transition duration-300">About</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-white transition duration-300">Skills</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-white transition duration-300">Projects</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-white transition duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <main class="pt-16"> <!-- Padding to account for fixed nav -->
+
+        <!-- Hero Section -->
+        <section id="hero" class="section-padding bg-gradient-to-r from-blue-700 to-blue-500 text-white flex items-center justify-center min-h-[calc(100vh-4rem)]">
+            <div class="container mx-auto text-center px-4 md:px-0">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
+                    Hi, I'm <span class="text-yellow-300">[Your Name]</span>
+                </h1>
+                <p class="text-xl sm:text-2xl font-light mb-8 max-w-3xl mx-auto animate-fade-in-up delay-100">
+                    Crafting elegant and efficient web solutions with a focus on user experience and robust functionality.
+                </p>
+                <a href="#projects" class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300 animate-fade-in-up delay-200">
+                    Explore My Work <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4 md:px-0">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <img src="https://placehold.co/300x300/60a5fa/ffffff?text=JP" alt="Your Name - Profile" class="rounded-full w-64 h-64 mx-auto object-cover border-4 border-blue-400 shadow-xl transform transition duration-300 hover:scale-105">
+                    </div>
+                    <div class="md:w-2/3 text-lg text-gray-700 leading-relaxed">
+                        <p class="mb-4">
+                            I'm a dedicated web developer with [X years] of experience in building dynamic and responsive web applications. My journey in development started with a fascination for how digital experiences come to life, and it has evolved into a passion for solving complex problems and creating intuitive interfaces.
+                        </p>
+                        <p class="mb-4">
+                            My expertise spans both **frontend and backend development**, allowing me to tackle projects holistically. I thrive in collaborative environments and am always eager to learn new technologies and best practices to deliver high-quality, scalable solutions.
+                        </p>
+                        <p>
+                            Beyond coding, I enjoy [mention a hobby or two, e.g., exploring new frameworks, contributing to open source, hiking, reading]. I believe continuous learning is key to staying at the forefront of this ever-evolving industry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding bg-white">
+            <div class="container mx-auto px-4 md:px-0">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">My Expertise</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Frontend Skills -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transform transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4 flex items-center"><i class="fas fa-desktop mr-3"></i>Frontend</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>HTML5 & CSS3 (Tailwind CSS, SASS)</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>JavaScript (ES6+)</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>React.js (Hooks, Context API, Redux)</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Responsive Design</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>UI/UX Principles</li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transform transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4 flex items-center"><i class="fas fa-server mr-3"></i>Backend</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Node.js (Express.js)</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Python (Django, Flask)</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>RESTful API Design</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Authentication & Authorization</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Microservices</li>
+                        </ul>
+                    </div>
+
+                    <!-- Database & Tools -->
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200 transform transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4 flex items-center"><i class="fas fa-database mr-3"></i>Databases & Tools</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>MongoDB, PostgreSQL, MySQL</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Git & GitHub/GitLab</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Docker</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>AWS (S3, EC2, Lambda)</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>VS Code, Postman</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-padding bg-gray-50">
+            <div class="container mx-auto px-4 md:px-0">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Project+One" alt="Project One Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">E-commerce Platform</h3>
+                            <p class="text-gray-700 text-sm mb-4">
+                                A full-stack e-commerce solution with user authentication, product management, and a secure checkout process.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">React</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Node.js</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">MongoDB</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <a href="https://github.com/yourusername/ecommerce-project" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition duration-200 flex items-center">
+                                    <i class="fab fa-github mr-2"></i>GitHub
+                                </a>
+                                <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition duration-200 flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Project+Two" alt="Project Two Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Real-time Chat Application</h3>
+                            <p class="text-gray-700 text-sm mb-4">
+                                A real-time messaging app featuring instant communication and user presence indicators.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Vue.js</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Socket.io</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Express.js</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <a href="https://github.com/yourusername/chat-app" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition duration-200 flex items-center">
+                                    <i class="fab fa-github mr-2"></i>GitHub
+                                </a>
+                                <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition duration-200 flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 transform transition duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Project+Three" alt="Project Three Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Task Management API</h3>
+                            <p class="text-gray-700 text-sm mb-4">
+                                A robust backend API for managing tasks, users, and projects, built with scalability in mind.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Django REST</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">PostgreSQL</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-4">
+                                <a href="https://github.com/yourusername/task-api" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition duration-200 flex items-center">
+                                    <i class="fab fa-github mr-2"></i>GitHub
+                                </a>
+                                <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium transition duration-200 flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Documentation
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more project cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Contact Section -->
+        <section id="contact" class="section-padding bg-gradient-to-r from-blue-700 to-blue-500 text-white text-center">
+            <div class="container mx-auto px-4 md:px-0">
+                <h2 class="text-4xl font-bold mb-6">Ready to collaborate?</h2>
+                <p class="text-xl font-light mb-8 max-w-2xl mx-auto">
+                    I'm currently seeking new opportunities and exciting projects. Let's build something amazing together!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="mailto:your.email@example.com" class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transform hover:scale-105 transition duration-300">
+                        <i class="fas fa-envelope mr-2"></i> Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="inline-block bg-blue-800 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-900 transform hover:scale-105 transition duration-300">
+                        <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition duration-300 text-2xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-gray-400 hover:text-white transition duration-300 text-2xl">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/yourtwitter" target="_blank" class="text-gray-400 hover:text-white transition duration-300 text-2xl">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu after clicking a link
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle functionality
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Simple fade-in-up animation for hero section elements
+        // (Tailwind classes `animate-fade-in-up` would typically be defined in custom CSS or config,
+        // but for a single-file example, a simple JS observer is more direct for demonstration)
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        document.querySelectorAll('.animate-fade-in-up').forEach(element => {
+            element.classList.add('opacity-0', 'translate-y-10'); // Initial state for animation
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

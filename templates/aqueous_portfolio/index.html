@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Dev - Aqueous Interface</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #e0f7fa;
+            --accent-color-1: #00e5ff;
+            --accent-color-2: #8e24aa;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --blur-strength: 15px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0c001f;
+            color: var(--primary-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .background-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            filter: blur(100px);
+            opacity: 0.3;
+        }
+        .blob1 { width: 400px; height: 400px; top: -150px; left: -150px; animation: move 25s infinite alternate; }
+        .blob2 { width: 300px; height: 300px; bottom: -100px; right: -100px; animation: move 30s infinite alternate-reverse; }
+        .blob3 { width: 250px; height: 250px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: move 20s infinite alternate; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, -50px) scale(1.2); }
+        }
+
+        .cursor-light {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-strength));
+            -webkit-backdrop-filter: blur(var(--blur-strength));
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-link a:hover, .nav-link a.active {
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--accent-color-1);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 10rem;
+        }
+
+        /* Glass Card Base Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-strength));
+            -webkit-backdrop-filter: blur(var(--blur-strength));
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 2rem;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .project-card p {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form input, .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 15px;
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+        }
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: var(--secondary-color);
+        }
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .navbar {
+                width: calc(100% - 2rem);
+                top: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            .nav-links { gap: 1rem; }
+            .nav-link a { font-size: 0.9rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            .glass-card { padding: 2rem; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+    <div class="cursor-light"></div>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li class="nav-link"><a href="#about" class="active">About</a></li>
+            <li class="nav-link"><a href="#skills">Skills</a></li>
+            <li class="nav-link"><a href="#projects">Projects</a></li>
+            <li class="nav-link"><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <section id="about" class="hero glass-card visible">
+                <h1>Alex Dev</h1>
+                <p>A creative developer and problem solver, crafting beautiful and functional digital experiences. I turn complex ideas into elegant solutions that flow as smoothly as water.</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </section>
+            
+            <section id="skills" class="glass-card">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">Vue.js</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">TypeScript</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">Figma</div>
+                    <div class="skill-item">AWS</div>
+                    <div class="skill-item">Docker</div>
+                </div>
+            </section>
+
+            <section id="projects" class="glass-card">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Project Ripple</h3>
+                        <p>An interactive data visualization platform that uses fluid dynamics to represent complex datasets in an intuitive, engaging way.</p>
+                        <a href="#" class="cta-button">Explore</a>
+                    </div>
+                     <div class="project-card">
+                        <h3>AquaStream</h3>
+                        <p>A decentralized video streaming service with a focus on user privacy and a seamless, high-quality viewing experience.</p>
+                        <a href="#" class="cta-button">Dive In</a>
+                    </div>
+                     <div class="project-card">
+                        <h3>Glass UI Kit</h3>
+                        <p>A component library for React and Vue that enables developers to easily create stunning glassmorphism interfaces.</p>
+                        <a href="#" class="cta-button">Get Started</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="glass-card">
+                <h2 class="section-title">Let's Connect</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <textarea placeholder="Your Message"></textarea>
+                    <button type="submit" class="cta-button" style="align-self: center;">Send Message</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursorLight = document.querySelector('.cursor-light');
+            document.addEventListener('mousemove', (e) => {
+                cursorLight.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
+            });
+
+            const faders = document.querySelectorAll('.glass-card');
+            const navLinks = document.querySelectorAll('.nav-link a');
+
+            const appearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -100px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    
+                    entry.target.classList.add('visible');
+                    
+                    // Highlight nav link
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                    
+                    // Don't unobserve if we want nav highlighting to work on scroll up
+                    // observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+            
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

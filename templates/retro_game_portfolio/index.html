@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Dev - A Developer's Quest</title>
+    
+    <!-- NES.css and Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+
+    <style>
+        /* Custom Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #212529;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cg fill-rule="evenodd"%3E%3Cg fill="%23343a40" fill-opacity="0.4"%3E%3Cpath opacity=".5" d="M96 95h4v1h-4v-1zm-7 5h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1zm-7 0h4v1h-4v-1z"/%3E%3Cpath d="M6 5V0h1v5h-1zm3 20V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 0V5h1v15h-1zm3 20V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1zm3 0V5h1v35h-1z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #212529;
+            padding: 1rem;
+            z-index: 1000;
+            border-bottom: 4px solid #000;
+        }
+
+        .navbar .nes-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff !important;
+            text-decoration: none;
+        }
+        .logo .is-error {
+            color: #e76e55 !important;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #92cc41;
+        }
+        
+        main {
+            padding: 8rem 2rem 2rem;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-avatar .nes-container {
+            width: 200px;
+            height: 200px;
+            padding: 0;
+        }
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+        
+        #typing-text {
+            border-right: 0.15em solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2s steps(22, end), blink-caret .75s step-end infinite;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+        
+        .section-title {
+            margin-bottom: 2rem !important;
+        }
+        
+        .stats-list li {
+            margin-bottom: 1rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category .nes-list li::before {
+            color: #ffca28; /* Star color */
+        }
+        
+        .project-card {
+            margin-bottom: 2rem;
+        }
+        
+        .project-card .nes-container {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card .nes-container:hover {
+            transform: translateY(-5px);
+            background-color: #343a40 !important;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simple solution for mobile, can be replaced with hamburger menu */
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                order: 2;
+            }
+            .hero-avatar {
+                order: 1;
+                margin-bottom: 2rem;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nes-container is-dark with-title is-centered" style="padding: 0; border: none; background: none;">
+            <a href="#" class="logo">Alex<span class="is-error">.</span>Dev</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-text">
+                <p>Greetings, traveler.</p>
+                <h1 id="typing-text">I am Alex the Coder.</h1>
+                <p>Welcome to my realm. Here, I turn caffeine into code and craft digital experiences. Let's begin our quest.</p>
+                <a href="#projects" class="nes-btn is-primary">View Quests</a>
+            </div>
+            <div class="hero-avatar">
+                <div class="nes-container is-dark with-title">
+                    <p class="title">Lvl 28</p>
+                    <img src="https://placehold.co/200x200/212529/92cc41?text=A.D" alt="Pixel art avatar of Alex" />
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <div class="nes-container with-title is-centered is-dark">
+                <p class="title">Character Sheet</p>
+                <p>
+                    After years of journeying through the treacherous lands of vanilla JavaScript and the enchanted forests of React, I've honed my skills as a Full-Stack Developer. My quest is to build elegant, efficient, and user-friendly applications.
+                </p>
+                
+                <div class="lists" style="margin-top: 2rem;">
+                  <ul class="nes-list is-circle stats-list">
+                    <li><span class="nes-text is-primary">Class:</span> Full-Stack Sorcerer</li>
+                    <li><span class="nes-text is-success">XP:</span> 6+ Years of Development</li>
+                    <li><span class="nes-text is-warning">Special Ability:</span> Bug Squashing</li>
+                    <li><span class="nes-text is-error">Current Location:</span> The Digital Frontier</li>
+                  </ul>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                  <p>Caffeine Meter:</p>
+                  <progress class="nes-progress is-success" value="90" max="100"></progress>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="nes-text is-primary section-title">Skill Tree</h2>
+            <div class="skills-grid">
+                <div class="nes-container is-dark with-title skill-category">
+                    <p class="title">Frontend</p>
+                    <ul class="nes-list is-star">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React & Redux</li>
+                        <li>Vue.js</li>
+                        <li>NES.css Wizardry</li>
+                    </ul>
+                </div>
+                <div class="nes-container is-dark with-title skill-category">
+                    <p class="title">Backend</li>
+                    <ul class="nes-list is-star">
+                        <li>Node.js & Express</li>
+                        <li>Python & Django</li>
+                        <li>SQL & NoSQL Databases</li>
+                        <li>RESTful APIs</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+                <div class="nes-container is-dark with-title skill-category">
+                    <p class="title">Tools & DevOps</li>
+                    <ul class="nes-list is-star">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>AWS & Cloud Services</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Webpack & Vite</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="nes-text is-success section-title">Completed Quests</h2>
+            <div class="project-list">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="nes-container is-dark with-title">
+                        <p class="title">The E-commerce Kingdom</p>
+                        <p>Forged a mighty online marketplace with React and Node.js. Features included user authentication, product management, and a Stripe-powered treasury.</p>
+                        <a href="#" class="nes-btn" style="margin-top: 1rem;">Inspect Artifact</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="nes-container is-dark with-title">
+                        <p class="title">The Social Scroll</p>
+                        <p>Crafted a social media dashboard using Vue.js and Firebase, allowing users to post updates, follow fellow adventurers, and view real-time feeds.</p>
+                        <a href="#" class="nes-btn" style="margin-top: 1rem;">View Scroll</a>
+                    </div>
+                </div>
+                 <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="nes-container is-dark with-title">
+                        <p class="title">The Data Dragon's Lair</p>
+                        <p>Tamed a massive dataset with Python and D3.js to build an interactive data visualization tool, revealing the dragon's hidden treasures (insights).</p>
+                        <a href="#" class="nes-btn" style="margin-top: 1rem;">Enter Lair</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <form class="nes-container with-title is-centered is-dark">
+                 <p class="title">Send a Raven</p>
+                 <p>Have a quest for me? Or perhaps you want to join my party? Send a message!</p>
+                 <div class="form-group">
+                     <label for="name_field">Your Name</label>
+                     <input type="text" id="name_field" class="nes-input is-dark">
+                 </div>
+                 <div class="form-group">
+                     <label for="email_field">Your Email</label>
+                     <input type="email" id="email_field" class="nes-input is-dark">
+                 </div>
+                 <div class="form-group">
+                     <label for="textarea_field">Your Message</label>
+                     <textarea id="textarea_field" class="nes-textarea is-dark"></textarea>
+                 </div>
+                 <button type="submit" class="nes-btn is-primary">Dispatch message</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer class="nes-container is-dark is-centered" style="border-width: 4px 0 0 0; padding: 2rem;">
+        <p>&copy; 2024 Alex the Coder. All rights reserved.</p>
+        <div class="nes-social-buttons" style="margin-top:1rem;">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"><i class="nes-icon github is-medium"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="nes-icon twitter is-medium"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="nes-icon linkedin is-medium"></i></a>
+        </div>
+    </footer>
+    
+    <script>
+        // JS for sound effects on hover/click could be added here
+        // For example, using Tone.js as instructed in documentation.
+        // For now, focusing on the visual aspect.
+
+        // Simple script to re-trigger typing animation on visibility for effect
+        const typingElement = document.getElementById('typing-text');
+        const originalText = typingElement.innerHTML;
+        typingElement.innerHTML = ''; // Clear text initially
+
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                typingElement.style.animation = 'none';
+                typingElement.offsetHeight; /* trigger reflow */
+                typingElement.style.animation = null;
+                typingElement.innerHTML = originalText;
+            } else {
+                 typingElement.innerHTML = '';
+            }
+        });
+
+        observer.observe(typingElement);
+
+    </script>
+</body>
+</html>

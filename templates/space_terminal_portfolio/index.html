@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALEX.DEV ::: SECURE TERMINAL</title>
+    
+    <!-- NES.css and Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+
+    <style>
+        /* Custom Styles */
+        :root {
+            --glow-color: #76ff03;
+            --bg-color: #0d0d0d;
+            --text-color: #c6ff00;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Press Start 2P', cursive;
+            color: var(--text-color);
+            text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Scanlines and CRT Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+        
+        @keyframes flicker {
+          0% { opacity: 0.2; }
+          20% { opacity: 0.8; }
+          40% { opacity: 0.3; }
+          60% { opacity: 0.9; }
+          80% { opacity: 0.2; }
+          100% { opacity: 1; }
+        }
+
+        .terminal-window {
+            width: 100%;
+            max-width: 1100px;
+            margin: 2rem;
+            border: 4px solid var(--glow-color);
+            box-shadow: 0 0 20px var(--glow-color), inset 0 0 20px rgba(118, 255, 3, 0.3);
+            background-color: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .terminal-header {
+            background: var(--glow-color);
+            color: var(--bg-color);
+            padding: 0.5rem 1rem;
+            text-shadow: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .terminal-content {
+            padding: 2rem;
+            height: 80vh;
+            overflow-y: auto;
+        }
+        
+        /* Custom scrollbar for the terminal */
+        .terminal-content::-webkit-scrollbar {
+          width: 12px;
+        }
+        .terminal-content::-webkit-scrollbar-track {
+          background: var(--bg-color);
+          box-shadow: inset 0 0 5px var(--glow-color);
+        }
+        .terminal-content::-webkit-scrollbar-thumb {
+          background-color: var(--glow-color);
+          border-radius: 20px;
+          border: 3px solid var(--bg-color);
+        }
+
+        .prompt {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .prompt .user {
+            color: lightblue;
+        }
+        
+        .prompt .command {
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.15em solid var(--glow-color);
+            animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--glow-color); }
+        }
+        
+        .output {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(118, 255, 3, 0.3);
+            white-space: pre-wrap;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 2s; /* Delay to appear after typing */
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .output a {
+            color: var(--text-color);
+        }
+        .output a:hover {
+            background: var(--glow-color);
+            color: var(--bg-color);
+            text-shadow: none;
+        }
+
+        /* Boot-up sequence styles */
+        #boot-sequence {
+            white-space: pre-wrap;
+            opacity: 0;
+            animation: fadeIn 0.5s 0.5s forwards;
+        }
+        
+        .boot-line {
+            opacity: 0;
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terminal-content {
+                padding: 1rem;
+                height: 85vh;
+            }
+            .prompt .command {
+                white-space: normal;
+                word-break: break-all;
+                border-right: none;
+                animation: none;
+            }
+            .output {
+                animation-delay: 0s;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-window nes-container is-dark is-rounded">
+        <header class="terminal-header">
+            <span>ALEX.DEV ::: SECURE TERMINAL</span>
+            <span id="system-status"></span>
+        </header>
+        <div class="terminal-content" id="terminal-content">
+            
+            <div id="boot-sequence"></div>
+
+            <div id="main-content" style="display: none;">
+                <!-- About Section -->
+                <div class="prompt">
+                    <span class="user">guest@alex.dev:~$ </span>
+                    <span class="command"> whoami</span>
+                </div>
+                <div class="output">
+                    <p class="nes-text is-success">// Identity confirmed: ALEX</p>
+                    <p>A software developer navigating the digital cosmos. My mission is to engineer robust, scalable systems and explore the frontiers of technology. I thrive on solving complex problems and turning abstract concepts into tangible realities. Currently orbiting Earth, seeking new challenges.</p>
+                </div>
+                
+                <!-- Skills Section -->
+                <div class="prompt">
+                    <span class="user">guest@alex.dev:~$ </span>
+                    <span class="command"> ls -R /skills</span>
+                </div>
+                <div class="output">
+                    <p class="nes-text is-primary">./protocols:</p>
+                    <div class="lists">
+                      <ul class="nes-list is-circle">
+                        <li>Frontend: React, Vue, Svelte, WebGL</li>
+                        <li>Backend: Node.js, Python, Go, Rust</li>
+                        <li>Databases: PostgreSQL, MongoDB, Redis</li>
+                      </ul>
+                    </div>
+                    <p class="nes-text is-primary" style="margin-top: 1rem">./tools:</p>
+                    <div class="lists">
+                      <ul class="nes-list is-circle">
+                        <li>Containerization: Docker, Kubernetes</li>
+                        <li>Cloud: AWS, Google Cloud, Vercel</li>
+                        <li>CI/CD: GitHub Actions, Jenkins</li>
+                      </ul>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="prompt">
+                    <span class="user">guest@alex.dev:~$ </span>
+                    <span class="command"> cat /var/log/missions.log</span>
+                </div>
+                <div class="output">
+                    <p><span class="nes-text is-warning">[LOG]</span> Project Stargate: Built a real-time data streaming pipeline for inter-dimensional analytics.</p>
+                    <p><span class="nes-text is-warning">[LOG]</span> Operation Nova: Developed a decentralized application for secure asset trading on the blockchain.</p>
+                    <p><span class="nes-text is-warning">[LOG]</span> Mission Deep-Thought: Architected an AI-powered recommendation engine for a content platform.</p>
+                    <a href="#" class="nes-btn is-success" style="margin-top: 1rem">Request Full Logs</a>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="prompt">
+                    <span class="user">guest@alex.dev:~$ </span>
+                    <span class="command"> mail -s "Alliance Proposal" alex@system</span>
+                </div>
+                <div class="output">
+                    <p>// Establishing secure comms channel...</p>
+                    <p>Drop your coordinates and message below to initiate contact. Encrypted transmission guaranteed.</p>
+                    <div class="nes-field" style="margin-top: 1rem">
+                      <input type="email" id="email_field" class="nes-input is-dark" placeholder="your-callsign@domain.com">
+                    </div>
+                     <div class="nes-field" style="margin-top: 1rem">
+                      <textarea id="textarea_field" class="nes-textarea is-dark" placeholder="Your encrypted message..."></textarea>
+                    </div>
+                    <button type="button" class="nes-btn is-primary" style="margin-top: 1rem">Transmit Message</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bootSequenceContainer = document.getElementById('boot-sequence');
+            const mainContent = document.getElementById('main-content');
+            const systemStatus = document.getElementById('system-status');
+            const terminalContent = document.getElementById('terminal-content');
+
+            const bootLines = [
+                'Initializing BIOS...',
+                'Checking memory: 64 PB... OK',
+                'Detecting primary drive... /dev/alex',
+                'Mounting root filesystem... OK',
+                'Starting quantum entanglement services...',
+                'Establishing connection to local stargate...',
+                { text: 'Connection established. Welcome, user.', class: 'nes-text is-success' },
+                'Loading user profile...',
+                { text: 'SYSTEM READY.', class: 'nes-text is-primary' }
+            ];
+
+            let lineIndex = 0;
+            
+            function showBootLine() {
+                if (lineIndex < bootLines.length) {
+                    const lineData = bootLines[lineIndex];
+                    const lineEl = document.createElement('span');
+                    lineEl.classList.add('boot-line');
+                    
+                    if (typeof lineData === 'object') {
+                        lineEl.textContent = lineData.text;
+                        if (lineData.class) {
+                            lineEl.classList.add(...lineData.class.split(' '));
+                        }
+                    } else {
+                        lineEl.textContent = lineData;
+                    }
+
+                    bootSequenceContainer.appendChild(lineEl);
+                    
+                    // Trigger fade in animation
+                    requestAnimationFrame(() => {
+                      lineEl.style.animation = `fadeIn 0.1s forwards`;
+                    });
+
+                    // Scroll to bottom
+                    terminalContent.scrollTop = terminalContent.scrollHeight;
+
+                    lineIndex++;
+                    setTimeout(showBootLine, Math.random() * 150 + 50);
+                } else {
+                    // Boot sequence finished
+                    setTimeout(() => {
+                        bootSequenceContainer.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        // Force reflow for animations to restart properly
+                        mainContent.querySelectorAll('.output').forEach(el => {
+                           el.style.animation = 'none';
+                           el.offsetHeight; /* trigger reflow */
+                           el.style.animation = null; 
+                        });
+                        terminalContent.scrollTop = 0; // scroll to top of main content
+                    }, 500);
+                }
+            }
+
+            // Update system status clock
+            setInterval(() => {
+                const date = new Date();
+                const timeString = date.toTimeString().split(' ')[0];
+                systemStatus.textContent = `STATUS: ONLINE | TIME: ${timeString}`;
+            }, 1000);
+
+            // Start boot sequence
+            showBootLine();
+        });
+    </script>
+</body>
+</html>
