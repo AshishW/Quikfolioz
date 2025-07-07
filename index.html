@@ -144,8 +144,11 @@
     </div>
 
     <script>
-        // Template data
-        const templates = [
+        // Dynamic template loading
+        let templates = [];
+        
+        // Fallback template data (used if templates.json is not available)
+        const fallbackTemplates = [
             {
                 id: 'simple_portfolio',
                 name: 'Simple Portfolio',
@@ -307,6 +310,37 @@
                 folder: 'jiggly_wiggly_portfolio'
             }
         ];
+
+        // Load templates dynamically from templates.json or fallback to hardcoded data
+        async function loadTemplates() {
+            try {
+                const response = await fetch('templates.json');
+                if (response.ok) {
+                    const dynamicTemplates = await response.json();
+                    templates = dynamicTemplates;
+                    console.log('Loaded templates dynamically from templates.json');
+                } else {
+                    throw new Error('templates.json not found');
+                }
+            } catch (error) {
+                console.log('Using fallback template data:', error.message);
+                templates = fallbackTemplates;
+            }
+            
+            // Update template count
+            updateTemplateCount();
+            
+            // Render templates
+            renderTemplates();
+        }
+
+        // Update template count in header
+        function updateTemplateCount() {
+            const countElement = document.getElementById('template-count');
+            if (countElement) {
+                countElement.textContent = templates.length;
+            }
+        }
 
         // DOM elements
         const templatesGrid = document.getElementById('templates-grid');
@@ -540,7 +574,7 @@
         });
 
         // Initialize
-        renderTemplates();
+        loadTemplates();
     </script>
 </body>
 </html>

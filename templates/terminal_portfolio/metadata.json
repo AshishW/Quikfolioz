@@ -1,0 +1,7 @@
+{
+    "name": "Terminal Portfolio",
+    "description": "Command-line inspired interface for developers who love the terminal aesthetic.",
+    "category": "terminal",
+    "technologies": ["HTML5", "CSS3", "JavaScript"],
+    "features": ["Terminal Interface", "Command System", "Theme Switching", "Command History"]
+}
