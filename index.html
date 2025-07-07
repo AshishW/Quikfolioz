@@ -146,6 +146,12 @@
     <script>
         // Dynamic template loading
         let templates = [];
+
+        const DEFAULT_METADATA = {
+            category: 'modern',
+            technologies: ['HTML5', 'CSS3', 'JavaScript'],
+            features: ['Responsive Design', 'Modern UI', 'Clean Code']
+        };
         
         // Fallback template data (used if templates.json is not available)
         const fallbackTemplates = [
