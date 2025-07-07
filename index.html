@@ -144,16 +144,19 @@
     </div>
 
     <script>
-        // Template data
-        const templates = [
+        // Dynamic template loading
+        let templates = [];
+        
+        // Fallback template data (used if templates.json is not available)
+        const fallbackTemplates = [
             {
                 id: 'simple_portfolio',
                 name: 'Simple Portfolio',
                 description: 'Clean and professional portfolio with a focus on content and readability.',
                 category: 'modern',
-                technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
-                features: ['Responsive Design', 'Smooth Scrolling', 'Contact Form'],
-                preview: 'https://placehold.co/400x250/3b82f6/ffffff?text=Simple+Portfolio',
+                technologies: DEFAULT_METADATA.technologies,
+                features: DEFAULT_METADATA.features,
+                preview: 'templates/simple_portfolio/thumbnail.png',
                 folder: 'simple_portfolio'
             },
             {
@@ -163,7 +166,7 @@
                 category: 'modern',
                 technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
                 features: ['Dark Theme', 'Animations', 'Project Showcase'],
-                preview: 'https://placehold.co/400x250/4f46e5/ffffff?text=Modern+Dev',
+                preview: 'templates/modern_dev_portfolio/thumbnail.png',
                 folder: 'modern_dev_portfolio'
             },
             {
@@ -173,7 +176,7 @@
                 category: 'minimalist',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Minimal Design', 'Fast Loading', 'Typography Focus'],
-                preview: 'https://placehold.co/400x250/6b7280/ffffff?text=Minimalist',
+                preview: 'templates/minimalist_portfolio/thumbnail.png',
                 folder: 'minimalist_portfolio'
             },
             {
@@ -183,7 +186,7 @@
                 category: 'modern',
                 technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
                 features: ['Gradient Backgrounds', 'Smooth Transitions', 'Modern Layout'],
-                preview: 'https://placehold.co/400x250/ec4899/ffffff?text=Sleek+Design',
+                preview: 'templates/sleek_portfolio/thumbnail.png',
                 folder: 'sleek_portfolio'
             },
             {
@@ -193,7 +196,7 @@
                 category: 'terminal',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Terminal Interface', 'Command System', 'Theme Switching'],
-                preview: 'https://placehold.co/400x250/000000/00ff00?text=~/portfolio',
+                preview: 'templates/terminal_portfolio/thumbnail.png',
                 folder: 'terminal_portfolio'
             },
             {
@@ -203,7 +206,7 @@
                 category: 'unique',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Neon Effects', 'Cyberpunk Theme', 'Futuristic UI'],
-                preview: 'https://placehold.co/400x250/ff0080/ffffff?text=Cyberpunk',
+                preview: 'templates/cyberpunk_portfolio/thumbnail.png',
                 folder: 'cyberpunk_portfolio'
             },
             {
@@ -213,7 +216,7 @@
                 category: 'creative',
                 technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
                 features: ['Service Showcase', 'Client Testimonials', 'Pricing Section'],
-                preview: 'https://placehold.co/400x250/059669/ffffff?text=Freelance',
+                preview: 'templates/freelance_creative_portfolio/thumbnail.png',
                 folder: 'freelance_creative_portfolio'
             },
             {
@@ -223,7 +226,7 @@
                 category: 'creative',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Hand-drawn Style', 'Playful Animations', 'Creative Layout'],
-                preview: 'https://placehold.co/400x250/f59e0b/ffffff?text=Doodle+Style',
+                preview: 'templates/doodle_portfolio/thumbnail.png',
                 folder: 'doodle_portfolio'
             },
             {
@@ -233,7 +236,7 @@
                 category: 'modern',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Glass Morphism', 'Fluid Animations', 'Modern Design'],
-                preview: 'https://placehold.co/400x250/0ea5e9/ffffff?text=Aqueous',
+                preview: 'templates/aqueous_portfolio/thumbnail.png',
                 folder: 'aqueous_portfolio'
             },
             {
@@ -243,7 +246,7 @@
                 category: 'unique',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Crystal Effects', 'Sharp Design', 'Color Prisms'],
-                preview: 'https://placehold.co/400x250/8b5cf6/ffffff?text=Crystal',
+                preview: 'templates/crystal_portfolio/thumbnail.png',
                 folder: 'crystal_portfolio'
             },
             {
@@ -263,7 +266,7 @@
                 category: 'unique',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Pixel Art', '8-bit Style', 'Gaming Theme'],
-                preview: 'https://placehold.co/400x250/dc2626/ffffff?text=8-BIT+GAME',
+                preview: 'templates/retro_game_portfolio/thumbnail.png',
                 folder: 'retro_game_portfolio'
             },
             {
@@ -273,7 +276,7 @@
                 category: 'terminal',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Space Theme', 'Terminal UI', 'Cosmic Effects'],
-                preview: 'https://placehold.co/400x250/1e1b4b/ffffff?text=SPACE+TERM',
+                preview: 'templates/space_terminal_portfolio/thumbnail.png',
                 folder: 'space_terminal_portfolio'
             },
             {
@@ -283,7 +286,7 @@
                 category: 'creative',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Jelly Animations', 'Wobble Effects', 'Playful Design'],
-                preview: 'https://placehold.co/400x250/f97316/ffffff?text=Jelly+Wobble',
+                preview: 'templates/jelly_wobble_portfolio/thumbnail.png',
                 folder: 'jelly_wobble_portfolio'
             },
             {
@@ -293,7 +296,7 @@
                 category: 'creative',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Jiggly Effects', 'Dynamic Animations', 'Energy Theme'],
-                preview: 'https://placehold.co/400x250/10b981/ffffff?text=Jiggly',
+                preview: 'templates/jiggly_portfolio/thumbnail.png',
                 folder: 'jiggly_portfolio'
             },
             {
@@ -303,10 +306,41 @@
                 category: 'creative',
                 technologies: ['HTML5', 'CSS3', 'JavaScript'],
                 features: ['Complex Animations', 'Interactive Elements', 'Enhanced Effects'],
-                preview: 'https://placehold.co/400x250/8b5cf6/ffffff?text=Jiggly+2.0',
+                preview: 'templates/jiggly_wiggly_portfolio/thumbnail.png',
                 folder: 'jiggly_wiggly_portfolio'
             }
         ];
+
+        // Load templates dynamically from templates.json or fallback to hardcoded data
+        async function loadTemplates() {
+            try {
+                const response = await fetch('templates.json');
+                if (response.ok) {
+                    const dynamicTemplates = await response.json();
+                    templates = dynamicTemplates;
+                    console.log('Loaded templates dynamically from templates.json');
+                } else {
+                    throw new Error('templates.json not found');
+                }
+            } catch (error) {
+                console.log('Using fallback template data:', error.message);
+                templates = fallbackTemplates;
+            }
+            
+            // Update template count
+            updateTemplateCount();
+            
+            // Render templates
+            renderTemplates();
+        }
+
+        // Update template count in header
+        function updateTemplateCount() {
+            const countElement = document.getElementById('template-count');
+            if (countElement) {
+                countElement.textContent = templates.length;
+            }
+        }
 
         // DOM elements
         const templatesGrid = document.getElementById('templates-grid');
@@ -346,7 +380,8 @@
             
             card.innerHTML = `
                 <div class="relative">
-                    <img src="${template.preview}" alt="${template.name}" class="preview-image w-full">
+                    <img src="${template.preview}" alt="${template.name}" class="preview-image w-full" 
+                         onerror="this.src='https://placehold.co/400x250/6b7280/ffffff?text=${encodeURIComponent(template.name)}'; this.onerror=null;">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div class="absolute bottom-4 left-4 right-4">
                             <button class="w-full bg-white text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition duration-300">
@@ -539,7 +574,7 @@
         });
 
         // Initialize
-        renderTemplates();
+        loadTemplates();
     </script>
 </body>
 </html>

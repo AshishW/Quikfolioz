@@ -1,0 +1,292 @@
+[
+    {
+        "id": "aqueous_portfolio",
+        "name": "Aqueous Portfolio",
+        "description": "A beautiful and modern aqueous portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/aqueous_portfolio/thumbnail.png",
+        "folder": "aqueous_portfolio"
+    },
+    {
+        "id": "crystal_portfolio",
+        "name": "Crystal Portfolio",
+        "description": "A beautiful and modern crystal portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/crystal_portfolio/thumbnail.png",
+        "folder": "crystal_portfolio"
+    },
+    {
+        "id": "cyberpunk_portfolio",
+        "name": "Cyberpunk Portfolio",
+        "description": "Futuristic cyberpunk-themed design with neon colors and sci-fi elements.",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Neon Effects",
+            "Cyberpunk Theme",
+            "Futuristic UI",
+            "Glitch Animations"
+        ],
+        "preview": "templates/cyberpunk_portfolio/thumbnail.png",
+        "folder": "cyberpunk_portfolio"
+    },
+    {
+        "id": "doodle_portfolio",
+        "name": "Doodle Portfolio",
+        "description": "A beautiful and modern doodle portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/doodle_portfolio/thumbnail.png",
+        "folder": "doodle_portfolio"
+    },
+    {
+        "id": "freelance_creative_portfolio",
+        "name": "Freelance Creative Portfolio",
+        "description": "A beautiful and modern freelance creative portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/freelance_creative_portfolio/thumbnail.png",
+        "folder": "freelance_creative_portfolio"
+    },
+    {
+        "id": "jelly_wobble_portfolio",
+        "name": "Jelly Wobble Portfolio",
+        "description": "A beautiful and modern jelly wobble portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/jelly_wobble_portfolio/thumbnail.png",
+        "folder": "jelly_wobble_portfolio"
+    },
+    {
+        "id": "jiggly_portfolio",
+        "name": "Jiggly Portfolio",
+        "description": "A beautiful and modern jiggly portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/jiggly_portfolio/thumbnail.png",
+        "folder": "jiggly_portfolio"
+    },
+    {
+        "id": "jiggly_wiggly_portfolio",
+        "name": "Jiggly Wiggly Portfolio",
+        "description": "A beautiful and modern jiggly wiggly portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/jiggly_wiggly_portfolio/thumbnail.png",
+        "folder": "jiggly_wiggly_portfolio"
+    },
+    {
+        "id": "minimalist_portfolio",
+        "name": "Minimalist Portfolio",
+        "description": "A beautiful and modern minimalist portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/minimalist_portfolio/thumbnail.png",
+        "folder": "minimalist_portfolio"
+    },
+    {
+        "id": "modern_dev_portfolio",
+        "name": "Modern Dev Portfolio",
+        "description": "A beautiful and modern modern dev portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/modern_dev_portfolio/thumbnail.png",
+        "folder": "modern_dev_portfolio"
+    },
+    {
+        "id": "paper_portfolio",
+        "name": "Paper Portfolio",
+        "description": "A beautiful and modern paper portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Paper%20Portfolio",
+        "folder": "paper_portfolio"
+    },
+    {
+        "id": "retro_game_portfolio",
+        "name": "Retro Game Portfolio",
+        "description": "A beautiful and modern retro game portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/retro_game_portfolio/thumbnail.png",
+        "folder": "retro_game_portfolio"
+    },
+    {
+        "id": "simple_portfolio",
+        "name": "Simple Portfolio",
+        "description": "A beautiful and modern simple portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/simple_portfolio/thumbnail.png",
+        "folder": "simple_portfolio"
+    },
+    {
+        "id": "sleek_portfolio",
+        "name": "Sleek Portfolio",
+        "description": "A beautiful and modern sleek portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/sleek_portfolio/thumbnail.png",
+        "folder": "sleek_portfolio"
+    },
+    {
+        "id": "space_terminal_portfolio",
+        "name": "Space Terminal Portfolio",
+        "description": "A beautiful and modern space terminal portfolio template with clean design and responsive layout.",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern UI",
+            "Clean Code"
+        ],
+        "preview": "templates/space_terminal_portfolio/thumbnail.png",
+        "folder": "space_terminal_portfolio"
+    },
+    {
+        "id": "terminal_portfolio",
+        "name": "Terminal Portfolio",
+        "description": "Command-line inspired interface for developers who love the terminal aesthetic.",
+        "category": "terminal",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Terminal Interface",
+            "Command System",
+            "Theme Switching",
+            "Command History"
+        ],
+        "preview": "templates/terminal_portfolio/thumbnail.png",
+        "folder": "terminal_portfolio"
+    }
+]

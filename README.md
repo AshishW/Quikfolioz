@@ -48,6 +48,23 @@ git clone https://github.com/AshishW/Quikfolioz.git
 
 4. Deploy to your preferred hosting platform
 
+## 🔧 Adding New Templates
+
+Quikfolioz now supports dynamic template discovery! To add a new template:
+
+1. **Create a template directory** in `templates/`
+2. **Add your template files** (`index.html`, `thumbnail.png`)
+3. **Run the generator**: `node generate-templates.js`
+4. **Refresh the browser** - your template appears automatically!
+
+For detailed instructions, see [TEMPLATE_GUIDE.md](TEMPLATE_GUIDE.md).
+
+## 🛠️ Development Tools
+
+- **Template Generator**: `node generate-templates.js` - Automatically detects and adds new templates
+- **Dynamic Loading**: Templates are loaded from `templates.json` with fallback to hardcoded data
+- **Metadata Support**: Add `metadata.json` to template directories for custom information
+
 ## 🛠️ Customization
 
 Each template can be customized by editing:
