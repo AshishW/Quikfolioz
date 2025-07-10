@@ -36,6 +36,25 @@
         "folder": "crystal_portfolio"
     },
     {
+        "id": "cyber_term_portfolio",
+        "name": "Cyberpunk Terminal Portfolio",
+        "description": "Futuristic cyberpunk-themed Terminal design with sci-fi elements.",
+        "category": "terminal",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript"
+        ],
+        "features": [
+            "Neon Effects",
+            "Cyberpunk Theme",
+            "Futuristic UI",
+            "Glitch Animations"
+        ],
+        "preview": "templates/cyber_term_portfolio/thumbnail.png",
+        "folder": "cyber_term_portfolio"
+    },
+    {
         "id": "cyberpunk_portfolio",
         "name": "Cyberpunk Portfolio",
         "description": "Futuristic cyberpunk-themed design with neon colors and sci-fi elements.",
@@ -71,6 +90,28 @@
         ],
         "preview": "templates/doodle_portfolio/thumbnail.png",
         "folder": "doodle_portfolio"
+    },
+    {
+        "id": "earthy_portfolio",
+        "name": "Earthy Portfolio",
+        "description": "Eco-conscious portfolio with natural colors, particle effects, and sustainability focus",
+        "category": "Minimalist",
+        "technologies": [
+            "HTML5",
+            "TailwindCSS",
+            "GSAP",
+            "Particles.js"
+        ],
+        "features": [
+            "High Contrast Mode",
+            "Particle Effects",
+            "Smooth Animations",
+            "Responsive Design",
+            "Eco-friendly Theme",
+            "Blob Animations"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Earthy%20Portfolio",
+        "folder": "earthy_portfolio"
     },
     {
         "id": "freelance_creative_portfolio",
@@ -195,7 +236,7 @@
             "Modern UI",
             "Clean Code"
         ],
-        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Paper%20Portfolio",
+        "preview": "templates/paper_portfolio/thumbnail.png",
         "folder": "paper_portfolio"
     },
     {
