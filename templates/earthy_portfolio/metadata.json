@@ -1,0 +1,14 @@
+{
+    "name": "Earthy Portfolio",
+    "description": "Eco-conscious portfolio with natural colors, particle effects, and sustainability focus",
+    "category": "Minimalist",
+    "technologies": ["HTML5", "TailwindCSS", "GSAP", "Particles.js"],
+    "features": [
+        "High Contrast Mode",
+        "Particle Effects",
+        "Smooth Animations",
+        "Responsive Design",
+        "Eco-friendly Theme",
+        "Blob Animations"
+    ]
+}

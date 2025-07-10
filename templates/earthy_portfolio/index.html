@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Doe - Eco-conscious Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP (Animation Library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Base theme colors */
+        :root {
+            --bg-primary: #283618; /* Dark Olive Green */
+            --bg-secondary: #FEFAE0; /* Cream */
+            --text-primary: #FEFAE0; /* Cream */
+            --text-secondary: #283618; /* Dark Olive Green */
+            --accent: #606C38; /* Lighter Olive */
+            --accent-light: #DDA15E; /* Muted Orange */
+        }
+
+        /* High-contrast theme colors */
+        .high-contrast {
+            --bg-primary: #000000;
+            --bg-secondary: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #000000;
+            --accent: #cccccc;
+            --accent-light: #a3a3a3;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Particles.js canvas styling */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Custom blob shape using border-radius */
+        .blob {
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            transition: border-radius 0.3s ease-in-out;
+        }
+        .blob:hover {
+            border-radius: 47% 53% 46% 54% / 48% 54% 46% 52%;
+        }
+        
+        /* Accessibility Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: var(--accent);
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--accent);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Particle container -->
+    <div id="particles-js"></div>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10">
+
+        <!-- Header -->
+        <header class="p-4 md:p-8 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold" style="color: var(--text-primary);">JD</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="hover:text-gray-300 transition-colors duration-300">About</a>
+                <a href="#projects" class="hover:text-gray-300 transition-colors duration-300">Projects</a>
+                <a href="#contact" class="hover:text-gray-300 transition-colors duration-300">Contact</a>
+            </nav>
+            <!-- Accessibility Toggle -->
+            <div class="flex items-center space-x-2">
+                <span class="text-sm">Contrast</span>
+                <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                    <input type="checkbox" name="toggle" id="accessibility-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="accessibility-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+            </div>
+        </header>
+
+        <main class="px-4 md:px-8">
+
+            <!-- Hero Section -->
+            <section class="min-h-screen flex flex-col justify-center items-center text-center -mt-20">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight animate-fade-in">Jane Doe</h1>
+                <p class="mt-4 text-xl md:text-2xl animate-fade-in-delay" style="color: var(--text-primary);">Building sustainable and accessible technology for a greener future.</p>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="py-20 md:py-32">
+                <div class="container mx-auto grid md:grid-cols-2 gap-16 items-center">
+                    <div class="gsap-reveal">
+                        <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                        <p class="mb-4" style="color: var(--text-primary);">
+                            I'm a software developer passionate about leveraging technology to create positive environmental impact. With a background in full-stack development, I specialize in building efficient, scalable, and eco-friendly web applications.
+                        </p>
+                        <p style="color: var(--text-primary);">
+                            My goal is to collaborate on projects that prioritize sustainability, from optimizing code for lower energy consumption to developing platforms that support green initiatives.
+                        </p>
+                    </div>
+                    <div class="flex justify-center items-center gsap-reveal-blob">
+                        <div class="w-80 h-80 md:w-96 md:h-96 blob bg-gradient-to-br from-green-300 via-blue-400 to-green-400" style="background-image: linear-gradient(to right top, var(--accent), var(--accent-light));"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="py-20 md:py-32" style="background-color: var(--bg-secondary); color: var(--text-secondary);">
+                <div class="container mx-auto">
+                    <h2 class="text-4xl font-bold text-center mb-12 gsap-reveal">My Work</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Project Card 1 -->
+                        <div class="project-card rounded-lg p-6 shadow-lg transform hover:-translate-y-2 transition-transform duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
+                            <h3 class="text-2xl font-bold mb-2">GreenThumb Connect</h3>
+                            <p class="mb-4">A platform connecting local gardeners to reduce food waste and promote community agriculture.</p>
+                            <a href="#" class="font-bold hover:underline" style="color: var(--accent-light);">View Project &rarr;</a>
+                        </div>
+                        <!-- Project Card 2 -->
+                        <div class="project-card rounded-lg p-6 shadow-lg transform hover:-translate-y-2 transition-transform duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
+                            <h3 class="text-2xl font-bold mb-2">EcoRoute API</h3>
+                            <p class="mb-4">An API that calculates the most fuel-efficient routes for delivery services, reducing carbon emissions.</p>
+                            <a href="#" class="font-bold hover:underline" style="color: var(--accent-light);">View Project &rarr;</a>
+                        </div>
+                        <!-- Project Card 3 -->
+                        <div class="project-card rounded-lg p-6 shadow-lg transform hover:-translate-y-2 transition-transform duration-300" style="background-color: var(--bg-primary); color: var(--text-primary);">
+                            <h3 class="text-2xl font-bold mb-2">Solar Panel ROI Calculator</h3>
+                            <p class="mb-4">A user-friendly tool for homeowners to estimate the return on investment for solar panel installations.</p>
+                            <a href="#" class="font-bold hover:underline" style="color: var(--accent-light);">View Project &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-20 md:py-32">
+                <div class="container mx-auto text-center gsap-reveal">
+                    <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                    <p class="mb-8 max-w-2xl mx-auto" style="color: var(--text-primary);">
+                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of an eco-conscious team.
+                    </p>
+                    <a href="mailto:hello@janedoe.eco" class="inline-block text-lg font-bold py-3 px-8 rounded-lg transition-colors duration-300" style="background-color: var(--accent); color: var(--text-primary); hover:background-color: var(--accent-light);">
+                        Say Hello
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center p-8" style="color: var(--text-primary);">
+            <div class="flex justify-center items-center space-x-4 mb-4">
+                <!-- Carbon Badge -->
+                <a href="https://www.websitecarbon.com/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 border border-gray-500 rounded-full px-3 py-1 text-xs hover:bg-gray-700 transition-colors">
+                    <span>This website is low-carbon</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; 2024 Jane Doe. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Particles.js Configuration ---
+            // This creates a subtle "fireflies" or "floating spores" effect.
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                        }
+                    },
+                    "line_linked": {
+                        "enable": false,
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 0.6,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "bubble"
+                        },
+                        "onclick": {
+                            "enable": false,
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "bubble": {
+                            "distance": 150,
+                            "size": 4,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // --- Accessibility Toggle ---
+            const toggle = document.getElementById('accessibility-toggle');
+            const body = document.body;
+
+            // Check for saved preference in localStorage
+            if (localStorage.getItem('highContrast') === 'true') {
+                toggle.checked = true;
+                body.classList.add('high-contrast');
+            }
+
+            toggle.addEventListener('change', function() {
+                if (this.checked) {
+                    body.classList.add('high-contrast');
+                    localStorage.setItem('highContrast', 'true');
+                } else {
+                    body.classList.remove('high-contrast');
+                    localStorage.setItem('highContrast', 'false');
+                }
+            });
+
+            // --- GSAP Animations ---
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero section text animation
+            gsap.from(".animate-fade-in", { 
+                opacity: 0, 
+                y: 20, 
+                duration: 1, 
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+            gsap.from(".animate-fade-in-delay", { 
+                opacity: 0, 
+                y: 20, 
+                duration: 1, 
+                delay: 0.5,
+                ease: "power3.out"
+            });
+
+            // General section reveal animation
+            const revealElements = document.querySelectorAll('.gsap-reveal');
+            revealElements.forEach(el => {
+                gsap.fromTo(el, 
+                    { opacity: 0, y: 50 }, 
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 80%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+            
+            // Blob reveal animation
+            gsap.from(".gsap-reveal-blob .blob", {
+                scale: 0.5,
+                opacity: 0,
+                duration: 1.2,
+                ease: "elastic.out(1, 0.75)",
+                scrollTrigger: {
+                    trigger: ".gsap-reveal-blob",
+                    start: "top 80%",
+                }
+            });
+            
+            // Project card reveal animation
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 90%",
+                        toggleActions: "play none none none"
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
