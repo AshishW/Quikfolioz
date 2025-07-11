@@ -35,6 +35,16 @@
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-4 py-12">
             <div class="text-center">
+                <div class="flex justify-center items-center gap-3 mb-6">
+                    <!-- GitHub Star Badge -->
+                    <a href="https://github.com/AshishW/Quikfolioz" class="inline-block" target="_blank" rel="noopener">
+                        <img alt="GitHub stars" src="https://img.shields.io/github/stars/AshishW/Quikfolioz?style=social" class="transition-transform hover:scale-105">
+                    </a>
+                    <!-- Info Button -->
+                    <button id="info-button" class="bg-white/20 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <i class="fas fa-info text-sm"></i>
+                    </button>
+                </div>
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">
                     <i class="fas fa-rocket mr-3"></i>Quikfolioz
                 </h1>
@@ -115,6 +125,36 @@
             </div>
         </div>
     </footer>
+
+    <!-- Info Modal -->
+    <div id="info-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-bold text-gray-800">About Quikfolioz</h3>
+                    <button id="close-info-modal" class="text-gray-500 hover:text-gray-700 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="prose max-w-none">
+                    <p class="text-gray-600 mb-4">This project showcases how modern AI tools can accelerate website prototyping. All the templates are built with help of AI assistance.</p>
+                    <p class="text-gray-600 mb-4">Quikfolioz is a curated collection of inspiration, ideas, and ready-to-use portfolio templates designed for developers who want to quickly establish their online presence.</p>
+                    <p class="text-gray-600 mb-4">Each template demonstrates different design styles and approaches to help you find the perfect starting point for your professional portfolio.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-blue-700 mb-2">How it works</h4>
+                        <p class="text-blue-600 text-sm">Simply browse the templates, find one that matches your style, download it, and customize it with your own information. All templates are ready for deployment.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 border-t border-gray-200 bg-gray-50 flex justify-end">
+                <button id="close-info-button" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition duration-300">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Template Modal -->
     <div id="template-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
@@ -359,6 +399,8 @@
         const modalDownload = document.getElementById('modal-download');
         const modalPreview = document.getElementById('modal-preview');
         const closeModal = document.getElementById('close-modal');
+        const infoModal = document.getElementById('info-modal');
+        const closeInfoModal = document.getElementById('close-info-modal');
 
         let currentTemplate = null;
 
@@ -563,6 +605,23 @@
             if (currentTemplate) {
                 previewTemplate(currentTemplate.folder);
             }
+        });
+        
+        closeInfoModal.addEventListener('click', () => {
+            infoModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Add missing event listener for the bottom close button in the info modal
+        document.getElementById('close-info-button').addEventListener('click', () => {
+            infoModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Find the info button and add event listener
+        document.getElementById('info-button').addEventListener('click', () => {
+            document.getElementById('info-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         });
 
         // Close modal on outside click
