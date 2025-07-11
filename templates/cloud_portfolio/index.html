@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Creative Developer</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Custom styles for the 3D canvas and content overlay */
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-color: #0c1424; /* Dark blue background color */
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place canvas behind content */
+        }
+
+        .content-section {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 100px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Text shadow for better readability on the cloud background */
+        h1, h2, h3, p, a {
+            text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0c1424;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-text {
+            color: white;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <p class="loader-text">Summoning clouds...</p>
+    </div>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main Content -->
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 w-full p-6 z-10 flex justify-between items-center text-white">
+            <h3 class="text-xl font-bold">JD</h3>
+            <div class="space-x-6 hidden md:block">
+                <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="content-section">
+            <h1 class="text-5xl md:text-8xl font-black uppercase">[Your Name]</h1>
+            <p class="text-xl md:text-3xl mt-4 text-cyan-300">Creative Developer & Cloud Architect</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <div class="max-w-4xl">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8">Forging Digital Experiences from the Ether.</h2>
+                <p class="text-lg md:text-xl">
+                    I'm a passionate developer who finds joy in building beautiful, intuitive, and high-performance digital solutions. With a keen eye for design and a deep understanding of modern web technologies, I transform complex problems into elegant user experiences. My journey in code is like navigating the skies—always exploring, learning, and reaching for new heights.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section">
+            <div class="max-w-6xl w-full">
+                <h2 class="text-4xl md:text-6xl font-bold mb-12">Featured Voyages</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="project-card rounded-lg p-6 text-left">
+                        <h3 class="text-2xl font-bold text-cyan-300">Project Nebula</h3>
+                        <p class="mt-2 mb-4">An interactive data visualization platform for astronomical data, built with D3.js and React.</p>
+                        <a href="#" class="font-bold hover:text-cyan-400">View Case Study <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card rounded-lg p-6 text-left">
+                        <h3 class="text-2xl font-bold text-cyan-300">E-commerce Skyport</h3>
+                        <p class="mt-2 mb-4">A full-stack e-commerce solution with a custom backend, payment integration, and a sleek user interface.</p>
+                        <a href="#" class="font-bold hover:text-cyan-400">View Case Study <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card rounded-lg p-6 text-left">
+                        <h3 class="text-2xl font-bold text-cyan-300">Real-time Chat App</h3>
+                        <p class="mt-2 mb-4">A scalable chat application using WebSockets and Node.js, delivering messages in the blink of an eye.</p>
+                        <a href="#" class="font-bold hover:text-cyan-400">View Case Study <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8">Let's Connect</h2>
+                <p class="text-lg md:text-xl mb-8">
+                    Have a project in mind or just want to say hello? I'd love to hear from you.
+                </p>
+                <a href="mailto:hello@johndoe.com" class="bg-cyan-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-cyan-400 transition-colors">
+                    Get In Touch
+                </a>
+                <div class="mt-12 text-3xl space-x-8">
+                    <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Third-party Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <script>
+        // --- Three.js Scene Setup ---
+        
+        // Ensure everything is loaded before we start
+        window.addEventListener('load', init);
+
+        function init() {
+            // Hide loader and show content
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('main-content');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                mainContent.style.opacity = '1';
+            }, 500);
+
+            // Scene, Camera, Renderer
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 15; // Start camera a bit further back
+
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.querySelector('#bg-canvas'),
+                alpha: true // Allows for a transparent background on the canvas
+            });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // --- Lighting ---
+            const ambientLight = new THREE.AmbientLight(0x555555);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xff8c19);
+            directionalLight.position.set(0, 0, 1);
+            scene.add(directionalLight);
+            
+            const pointLight1 = new THREE.PointLight(0x6a0dad, 1.5); // Purple light
+            pointLight1.position.set(200, 200, -200);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0x00bfff, 1.5); // Deep sky blue light
+            pointLight2.position.set(-200, -200, -300);
+            scene.add(pointLight2);
+
+            // --- Cloud Creation ---
+            const cloudParticles = [];
+            const textureLoader = new THREE.TextureLoader();
+            // **FIXED**: Using a proper transparent smoke/cloud texture
+            const cloudTextureUrl = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png';
+            
+            textureLoader.load(cloudTextureUrl, (texture) => {
+                createClouds(texture);
+                animate(); // Start animation loop only after texture is loaded
+            }, undefined, (err) => {
+                console.error('An error happened while loading the texture.', err);
+                // Fallback if texture fails to load
+                createFallbackClouds();
+                animate();
+            });
+
+            function createClouds(texture) {
+                const cloudGeo = new THREE.PlaneBufferGeometry(500, 500);
+                const cloudMaterial = new THREE.MeshLambertMaterial({
+                    map: texture,
+                    transparent: true,
+                    depthWrite: false, // Important for correct layering
+                    opacity: 0.6
+                });
+
+                for (let p = 0; p < 40; p++) {
+                    let cloud = new THREE.Mesh(cloudGeo, cloudMaterial);
+                    cloud.position.set(
+                        Math.random() * 800 - 400,
+                        Math.random() * 100 - 50, // **FIXED**: Position clouds vertically around center
+                        Math.random() * 500 - 450 // Position clouds in depth
+                    );
+                    cloud.rotation.x = 1.16;
+                    cloud.rotation.y = -0.12;
+                    cloud.rotation.z = Math.random() * 2 * Math.PI;
+                    
+                    cloudParticles.push(cloud);
+                    scene.add(cloud);
+                }
+            }
+
+            function createFallbackClouds() {
+                 // If texture fails, create simple geometric shapes as fallback
+                const fallbackGeo = new THREE.SphereGeometry(40, 16, 16);
+                const fallbackMaterial = new THREE.MeshLambertMaterial({
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.1
+                });
+                 for (let p = 0; p < 15; p++) {
+                    let cloud = new THREE.Mesh(fallbackGeo, fallbackMaterial);
+                    cloud.position.set(
+                        Math.random() * 800 - 400,
+                        Math.random() * 100 - 50,
+                        Math.random() * 500 - 500
+                    );
+                    cloudParticles.push(cloud);
+                    scene.add(cloud);
+                }
+            }
+            
+            // --- GSAP Scroll Animations ---
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate camera position and rotation on scroll
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 1.5, // Smooth scrubbing
+                }
+            });
+
+            tl.to(camera.position, { z: -50, y: -20 }, 0);
+            tl.to(camera.rotation, { x: -0.25, y: 0.1 }, 0);
+            
+            // --- Animation Loop ---
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Animate clouds rotation
+                cloudParticles.forEach(p => {
+                    p.rotation.z -= 0.0015;
+                });
+                
+                // Animate lights for a dynamic, "breathing" effect
+                const time = Date.now() * 0.0003;
+                pointLight1.position.x = Math.sin(time * 0.7) * 250;
+                pointLight1.position.y = Math.cos(time * 0.5) * 300;
+                pointLight1.position.z = Math.cos(time * 0.4) * -300;
+                
+                pointLight2.position.x = Math.cos(time * 0.3) * -250;
+                pointLight2.position.y = Math.sin(time * 0.5) * -300;
+                pointLight2.position.z = Math.sin(time * 0.4) * -300;
+
+                renderer.render(scene, camera);
+            }
+            
+            // --- Responsive Design ---
+            window.addEventListener('resize', onWindowResize, false);
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        }
+    </script>
+</body>
+</html>

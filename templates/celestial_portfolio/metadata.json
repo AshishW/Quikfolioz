@@ -1,0 +1,21 @@
+{
+    "name": "Celestial Portfolio",
+    "description": "Immersive developer portfolio with cosmic themes, featuring nebula, energy field, and aurora animations",
+    "category": "creative",
+    "technologies": [
+        "HTML5",
+        "TailwindCSS",
+        "Three.js",
+        "JavaScript"
+    ],
+    "features": [
+        "3D Interactive Nebula Background",
+        "Energy Field Particle System",
+        "Realistic Aurora Animation",
+        "Glass Morphism Effects",
+        "Fade-in Animations",
+        "Responsive Navigation",
+        "Scroll-based Section Animations",
+        "Performance Optimized Canvas Rendering"
+    ]
+}

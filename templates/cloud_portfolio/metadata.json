@@ -1,0 +1,23 @@
+{
+    "name": "Cloud Portfolio",
+    "description": "Immersive portfolio design with 3D cloud animations and glass morphism effects",
+    "category": "creative",
+    "technologies": [
+        "HTML5",
+        "CSS3", 
+        "JavaScript",
+        "TailwindCSS",
+        "Three.js",
+        "GSAP"
+    ],
+    "features": [
+        "3D Cloud Animation Background",
+        "Dynamic Lighting Effects",
+        "Loading Screen",
+        "Scroll-based Camera Movements",
+        "Glass Morphism Project Cards",
+        "Responsive Design",
+        "Smooth Scroll Animations"
+    ]
+}
+

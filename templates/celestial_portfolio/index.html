@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] - Immersive Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #02000a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* --- Animation Canvases --- */
+        .effect-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        #hero-canvas { z-index: 0; }
+        #skills-canvas { z-index: 0; opacity: 0.7; }
+        #projects-canvas { z-index: 0; opacity: 0.9; }
+
+        .canvas-section {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        /* --- Content Styling --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Advanced Glassmorphism */
+        .glass-effect {
+            background: rgba(10, 5, 25, 0.5);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(200, 180, 255, 0.1);
+            transition: background 0.4s, border 0.4s, transform 0.4s;
+        }
+
+        .glass-effect:hover {
+            transform: translateY(-5px);
+            background: rgba(15, 10, 35, 0.6);
+            border: 1px solid rgba(200, 180, 255, 0.25);
+        }
+        
+        /* Fade-in Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center glass-effect rounded-b-xl">
+            <a href="#home" class="text-2xl font-bold text-white tracking-wider">[Your Name]</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">About</a>
+                <a href="#skills" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">Skills</a>
+                <a href="#projects" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">Projects</a>
+                <a href="#contact" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">Contact</a>
+            </nav>
+            <a href="#contact" class="px-5 py-2 text-white font-semibold bg-pink-600/80 rounded-lg hover:bg-pink-500 transition-all duration-300 shadow-lg shadow-pink-500/30">
+                Get In Touch
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with 3D Nebula -->
+        <section id="home" class="h-screen canvas-section">
+            <canvas id="hero-canvas" class="effect-canvas"></canvas>
+            <div class="content-wrapper h-full flex items-center justify-center text-center">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-5xl md:text-8xl font-black text-white mb-4 leading-tight fade-in-section">Digital Craftsman</h1>
+                    <p class="text-lg md:text-2xl text-slate-300 max-w-4xl mx-auto fade-in-section" style="transition-delay: 150ms;">
+                        I architect and build immersive web experiences where technology and creativity converge.
+                    </p>
+                    <div class="mt-10 fade-in-section" style="transition-delay: 300ms;">
+                        <a href="#projects" class="bg-purple-600 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-purple-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/40">
+                            Explore My Universe
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 lg:py-40 bg-black bg-opacity-20">
+            <div class="container mx-auto px-6 grid md:grid-cols-5 gap-16 items-center">
+                <div class="md:col-span-2 fade-in-section">
+                    <img src="https://placehold.co/600x600/3A185D/FFFFFF?text=[Your_Name]" alt="[Your Name] Portrait" class="rounded-full shadow-2xl shadow-purple-500/20">
+                </div>
+                <div class="md:col-span-3 fade-in-section" style="transition-delay: 150ms;">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">I Build Digital Worlds</h2>
+                    <p class="text-slate-300 text-lg leading-relaxed mb-4">
+                        Hi, I'm [Your Name]. As a full-stack developer, I'm driven by the challenge of solving complex problems with elegant, high-performance code. My expertise lies in the JavaScript ecosystem, but my passion is for creating user experiences that are intuitive, engaging, and visually stunning.
+                    </p>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        I believe the best applications are born from a blend of technical precision and artistic vision. Let's build something extraordinary together.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section with Energy Field -->
+        <section id="skills" class="py-24 lg:py-40 canvas-section">
+            <canvas id="skills-canvas" class="effect-canvas"></canvas>
+            <div class="content-wrapper container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-3 fade-in-section">Core Technologies</h2>
+                    <p class="text-slate-300 text-lg max-w-2xl mx-auto fade-in-section" style="transition-delay: 150ms;">
+                        The fundamental forces powering my creations.
+                    </p>
+                </div>
+                <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-12">
+                    <!-- Skill Items -->
+                    <div class="text-center fade-in-section"><p class="font-bold text-xl mt-2 text-white">JavaScript (ESNext)</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 100ms;"><p class="font-bold text-xl mt-2 text-white">React & Next.js</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 200ms;"><p class="font-bold text-xl mt-2 text-white">Node.js & Express</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 300ms;"><p class="font-bold text-xl mt-2 text-white">Three.js & WebGL</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 400ms;"><p class="font-bold text-xl mt-2 text-white">Python & Django</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 500ms;"><p class="font-bold text-xl mt-2 text-white">PostgreSQL & MongoDB</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 600ms;"><p class="font-bold text-xl mt-2 text-white">Docker & Kubernetes</p></div>
+                    <div class="text-center fade-in-section" style="transition-delay: 700ms;"><p class="font-bold text-xl mt-2 text-white">CI/CD & GitHub Actions</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section with Realistic Aurora -->
+        <section id="projects" class="py-24 lg:py-40 canvas-section">
+            <canvas id="projects-canvas" class="effect-canvas"></canvas>
+            <div class="content-wrapper container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-white mb-3 fade-in-section">Featured Constellations</h2>
+                    <p class="text-slate-300 text-lg max-w-2xl mx-auto fade-in-section" style="transition-delay: 150ms;">
+                        A selection of projects where I've translated vision into reality.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards -->
+                    <div class="glass-effect rounded-2xl overflow-hidden fade-in-section">
+                        <img src="https://placehold.co/600x400/8A3A7E/FFFFFF?text=Project+Orion" alt="Project 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Project Orion</h3>
+                            <p class="text-slate-300 mb-4">A real-time collaborative code editor built with WebSockets and React.</p>
+                            <a href="#" class="font-semibold text-pink-400 hover:text-pink-300">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-2xl overflow-hidden fade-in-section" style="transition-delay: 150ms;">
+                        <img src="https://placehold.co/600x400/3A185D/FFFFFF?text=Project+Lyra" alt="Project 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Project Lyra</h3>
+                            <p class="text-slate-300 mb-4">An e-commerce platform with a custom recommendation engine using Python.</p>
+                            <a href="#" class="font-semibold text-pink-400 hover:text-pink-300">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="glass-effect rounded-2xl overflow-hidden fade-in-section" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/E05263/FFFFFF?text=Project+Cygnus" alt="Project 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Project Cygnus</h3>
+                            <p class="text-slate-300 mb-4">A generative art application that creates unique visuals based on user input.</p>
+                            <a href="#" class="font-semibold text-pink-400 hover:text-pink-300">View Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 lg:py-40">
+            <div class="container mx-auto px-6 text-center">
+                   <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4 fade-in-section">Let's Connect</h2>
+                   <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-12 fade-in-section" style="transition-delay: 150ms;">
+                    Have an ambitious project or a revolutionary idea? I'm always excited to discuss new possibilities. Let's start a conversation.
+                </p>
+                <div class="fade-in-section" style="transition-delay: 300ms;">
+                       <a href="mailto:hello@yourname.com" class="bg-pink-600 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-pink-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-pink-500/40">
+                            hello@yourname.com
+                        </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-20">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+            <p>&copy; 2025 [Your Name]. Forged in the fires of code and creativity.</p>
+        </div>
+    </footer>
+
+    <script>
+    // --- MASTER ANIMATION & UTILITY SCRIPT ---
+
+    // --- Utility: Intersection Observer for animations ---
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Start animation if canvas is in view
+                if (entry.target.dataset.anim === 'true') {
+                    const canvasId = entry.target.querySelector('canvas')?.id;
+                    if (canvasId && window.animationStates) {
+                        window.animationStates[canvasId] = true;
+                    }
+                }
+            } else {
+                // Stop animation if canvas is out of view
+                if (entry.target.dataset.anim === 'true') {
+                    const canvasId = entry.target.querySelector('canvas')?.id;
+                    if (canvasId && window.animationStates) {
+                        window.animationStates[canvasId] = false;
+                    }
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-section, .canvas-section').forEach(el => {
+        if (el.classList.contains('canvas-section')) {
+            el.dataset.anim = 'true';
+        }
+        observer.observe(el);
+    });
+
+    // Global state to control animations
+    window.animationStates = {
+        'hero-canvas': false,
+        'skills-canvas': false,
+        'projects-canvas': false,
+    };
+    
+    // --- 1. Hero Section: 3D Interactive Nebula ---
+    const heroCanvas = document.getElementById('hero-canvas');
+    if (heroCanvas) {
+        let scene, camera, renderer, particles;
+        let mouseX = 0, mouseY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        function initHero() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+            camera.position.z = 1000;
+
+            const particleCount = 20000;
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            const color = new THREE.Color();
+
+            for (let i = 0; i < positions.length; i += 3) {
+                positions[i] = Math.random() * 2000 - 1000;
+                positions[i + 1] = Math.random() * 2000 - 1000;
+                positions[i + 2] = Math.random() * 2000 - 1000;
+
+                const t = Math.random();
+                color.setHSL(0.5 + t * 0.2, 0.7, 0.5 + t * 0.2); // Hues from blue to magenta
+                colors[i] = color.r;
+                colors[i + 1] = color.g;
+                colors[i + 2] = color.b;
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 2,
+                vertexColors: true,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+
+            renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            document.addEventListener('mousemove', onDocumentMouseMove, false);
+            window.addEventListener('resize', onWindowResize, false);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - windowHalfX) / 2;
+            mouseY = (event.clientY - windowHalfY) / 2;
+        }
+
+        function animateHero() {
+            if (!window.animationStates['hero-canvas']) {
+                requestAnimationFrame(animateHero);
+                return;
+            }
+            requestAnimationFrame(animateHero);
+            const time = Date.now() * 0.00005;
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+            particles.rotation.x = Math.sin(time * 0.7) * 0.1;
+            particles.rotation.y = Math.cos(time * 0.5) * 0.1;
+            renderer.render(scene, camera);
+        }
+        initHero();
+        animateHero();
+    }
+    
+    // --- 2. Skills Section: Energy Field ---
+    const skillsCanvas = document.getElementById('skills-canvas');
+    if (skillsCanvas) {
+        const ctx = skillsCanvas.getContext('2d');
+        let w, h, particles, particleCount = 100;
+        
+        function setSkillsSize() {
+            w = skillsCanvas.width = skillsCanvas.offsetWidth;
+            h = skillsCanvas.height = skillsCanvas.offsetHeight;
+        }
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.vx = Math.random() * 1 - 0.5;
+                this.vy = Math.random() * 1 - 0.5;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(224, 82, 99, 0.8)';
+                ctx.fill();
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) {
+                    this.reset();
+                }
+            }
+        }
+        
+        function initSkills() {
+            setSkillsSize();
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animateSkills() {
+            if (!window.animationStates['skills-canvas']) {
+                requestAnimationFrame(animateSkills);
+                return;
+            }
+            requestAnimationFrame(animateSkills);
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach(p => p.draw());
+
+            for (let i = 0; i < particleCount; i++) {
+                for (let j = i + 1; j < particleCount; j++) {
+                    const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(224, 82, 99, ${1 - dist / 100})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        initSkills();
+        animateSkills();
+        window.addEventListener('resize', initSkills);
+    }
+    
+    // --- 3. Projects Section: Realistic Aurora ---
+    const projectsCanvas = document.getElementById('projects-canvas');
+    if (projectsCanvas) {
+        const ctx = projectsCanvas.getContext('2d');
+        let w, h, time = 0;
+        const rays = 150;
+        const colors = [
+            [60, 255, 180], // Green
+            [180, 255, 200], // Cyan
+            [220, 180, 255]  // Purple
+        ];
+
+        function setProjectsSize() {
+            w = projectsCanvas.width = projectsCanvas.offsetWidth;
+            h = projectsCanvas.height = projectsCanvas.offsetHeight;
+        }
+
+        function noise(x, y, t) {
+            // Sum of three sine/cosine waves for a more organic noise pattern
+            return Math.sin(x * 0.02 + t) + Math.cos(y * 0.02 + t) + Math.sin((x+y)*0.01 + t);
+        }
+
+        function drawAurora() {
+            if (!window.animationStates['projects-canvas']) {
+                requestAnimationFrame(drawAurora);
+                return;
+            }
+            requestAnimationFrame(drawAurora);
+            time += 0.01;
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgba(2, 0, 10, 0.1)'; // Fade effect for trailing aurora
+            ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = 'lighter'; // Blending mode for aurora glow
+
+            for (let i = 0; i < rays; i++) {
+                const x = (i / rays) * w;
+                // Calculate noise value, which ranges from -3 to 3
+                const rawNoise = noise(x, i, time);
+                
+                // Normalize noise to a [0, 1) range to safely map to colors array indices.
+                // The rawNoise range is [-3, 3]. Add 3 to shift it to [0, 6], then divide by 6.
+                // Math.min is used to ensure the value is strictly less than 1, preventing out-of-bounds access.
+                let n = Math.min(0.999999, Math.max(0, (rawNoise + 3) / 6)); 
+
+                const y = n * h * 0.5; // Base height for the aurora ray, influenced by noise
+                // Dynamic height for the ray, also influenced by noise
+                const height = (noise(x, i, time + 10) * 0.5 + 0.5) * h * 0.6; 
+
+                // Select color based on normalized noise, ensuring index is within bounds (0, 1, or 2)
+                const colorIndex = Math.floor(n * colors.length);
+                const color = colors[colorIndex];
+                
+                // Create a linear gradient for the aurora ray
+                const grad = ctx.createLinearGradient(x, y, x, y + height);
+                grad.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`); // Top (transparent)
+                grad.addColorStop(0.5, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${n * 0.3})`); // Middle (most opaque)
+                grad.addColorStop(1, `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`); // Bottom (transparent)
+                
+                ctx.fillStyle = grad;
+                ctx.fillRect(x - 5, y, 10, height); // Draw the aurora ray
+            }
+        }
+        setProjectsSize();
+        drawAurora();
+        window.addEventListener('resize', setProjectsSize);
+    }
+    </script>
+</body>
+</html>

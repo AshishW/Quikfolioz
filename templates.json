@@ -18,6 +18,55 @@
         "folder": "aqueous_portfolio"
     },
     {
+        "id": "celestial_portfolio",
+        "name": "Celestial Portfolio",
+        "description": "Immersive developer portfolio with cosmic themes, featuring nebula, energy field, and aurora animations",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "TailwindCSS",
+            "Three.js",
+            "JavaScript"
+        ],
+        "features": [
+            "3D Interactive Nebula Background",
+            "Energy Field Particle System",
+            "Realistic Aurora Animation",
+            "Glass Morphism Effects",
+            "Fade-in Animations",
+            "Responsive Navigation",
+            "Scroll-based Section Animations",
+            "Performance Optimized Canvas Rendering"
+        ],
+        "preview": "templates/celestial_portfolio/thumbnail.png",
+        "folder": "celestial_portfolio"
+    },
+    {
+        "id": "cloud_portfolio",
+        "name": "Cloud Portfolio",
+        "description": "Immersive portfolio design with 3D cloud animations and glass morphism effects",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "TailwindCSS",
+            "Three.js",
+            "GSAP"
+        ],
+        "features": [
+            "3D Cloud Animation Background",
+            "Dynamic Lighting Effects",
+            "Loading Screen",
+            "Scroll-based Camera Movements",
+            "Glass Morphism Project Cards",
+            "Responsive Design",
+            "Smooth Scroll Animations"
+        ],
+        "preview": "templates/cloud_portfolio/thumbnail.png",
+        "folder": "cloud_portfolio"
+    },
+    {
         "id": "crystal_portfolio",
         "name": "Crystal Portfolio",
         "description": "A beautiful and modern crystal portfolio template with clean design and responsive layout.",
@@ -110,7 +159,7 @@
             "Eco-friendly Theme",
             "Blob Animations"
         ],
-        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Earthy%20Portfolio",
+        "preview": "templates/earthy_portfolio/thumbnail.png",
         "folder": "earthy_portfolio"
     },
     {
@@ -184,6 +233,26 @@
         ],
         "preview": "templates/jiggly_wiggly_portfolio/thumbnail.png",
         "folder": "jiggly_wiggly_portfolio"
+    },
+    {
+        "id": "lightning_portfolio",
+        "name": "Lightning Portfolio",
+        "description": "Atmospheric portfolio design with dynamic lightning effects and glass morphism.",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "TailwindCSS"
+        ],
+        "features": [
+            "Dynamic Lightning Animation",
+            "Scroll Fade Animations",
+            "Responsive Design",
+            "Glow Effects"
+        ],
+        "preview": "templates/lightning_portfolio/thumbnail.png",
+        "folder": "lightning_portfolio"
     },
     {
         "id": "minimalist_portfolio",

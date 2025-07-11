@@ -1,0 +1,12 @@
+{
+    "name": "Lightning Portfolio",
+    "description": "Atmospheric portfolio design with dynamic lightning effects and glass morphism.",
+    "category": "creative",
+    "technologies": ["HTML5", "CSS3", "JavaScript", "TailwindCSS"],
+    "features": [
+        "Dynamic Lightning Animation",
+        "Scroll Fade Animations",
+        "Responsive Design",
+        "Glow Effects"
+    ]
+}

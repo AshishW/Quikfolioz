@@ -36,9 +36,8 @@ Your template directory should contain:
 #### Optional Files:
 - **`metadata.json`** - Custom template information (see below)
 - **`README.md`** - Template-specific documentation
-- **CSS/JS files** - Additional assets for your template
 
-### 3. Create metadata.json (Optional)
+### 3. Create metadata.json (Optional but recommended)
 
 Add a `metadata.json` file to customize how your template appears in the UI:
 

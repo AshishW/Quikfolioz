@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Spectacles - Lightning Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d081a; /* Darker base for contrast */
+            color: #e0e0e0;
+        }
+
+        /* The canvas for our lightning effect */
+        #lightning-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        /* Ensure content is on top of the canvas */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Modified glass effect for better readability over the animation */
+        .glass-effect {
+            background: rgba(18, 12, 38, 0.6); /* More opaque */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animation for elements fading in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .glow-shadow {
+            box-shadow: 0 0 15px rgba(192, 38, 211, 0.3), 0 0 30px rgba(219, 39, 119, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Canvas for the lightning effect -->
+    <canvas id="lightning-canvas"></canvas>
+
+    <div class="content-wrapper">
+        <!-- Header and Navigation -->
+        <header class="glass-effect fixed top-0 left-0 right-0 z-50">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-white tracking-wider">AURA</h1>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#phenomena" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">Phenomena</a>
+                    <a href="#gallery" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">Gallery</a>
+                    <a href="#about" class="text-slate-200 hover:text-pink-400 transition-colors duration-300">About</a>
+                </nav>
+                <button class="px-5 py-2 text-white font-semibold bg-pink-600/80 rounded-lg hover:bg-pink-500 transition-all duration-300 shadow-lg shadow-pink-500/30">
+                    Explore
+                </button>
+            </div>
+        </header>
+
+        <main class="pt-24">
+            <!-- Hero Section -->
+            <section class="min-h-[70vh] flex items-center text-center">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-5xl md:text-7xl font-black text-white mb-4 leading-tight fade-in-section">Ride the Lightning</h2>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto fade-in-section" style="transition-delay: 150ms;">
+                        Witness the raw, untamed energy that illuminates the upper atmosphere in fleeting, brilliant flashes.
+                    </p>
+                    <div class="mt-8 fade-in-section" style="transition-delay: 300ms;">
+                        <a href="#phenomena" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-purple-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/40">
+                            Begin Journey
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phenomena Section -->
+            <section id="phenomena" class="py-20 lg:py-32">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h3 class="text-4xl font-bold text-white mb-3 fade-in-section">Celestial Spectacles</h3>
+                        <p class="text-slate-300 max-w-2xl mx-auto fade-in-section" style="transition-delay: 150ms;">
+                            High above the clouds, transient luminous events paint the sky in breathtaking colors.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Cards remain the same as previous version -->
+                        <div class="glass-effect rounded-2xl p-8 text-center flex flex-col items-center hover:border-pink-400/50 transition-all duration-300 fade-in-section">
+                            <div class="w-16 h-16 mb-6 rounded-full bg-red-500/20 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400 h-8 w-8"><path d="m12 3-1.9 4.2-4.1.6 3 2.9-.7 4.1 3.7-2 3.7 2-.7-4.1 3-2.9-4.1-.6Z"/><path d="M12 8V5"/><path d="M5.2 6.2 7 8"/><path d="m2 12 3-1"/><path d="m5.2 17.8 1.8-1.8"/><path d="M12 16v3"/><path d="M18.8 17.8 17 16"/><path d="m22 12-3 1"/><path d="m18.8 6.2-1.8 1.8"/></svg>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">Red Sprites</h4>
+                            <p class="text-slate-300 leading-relaxed">Vast, jellyfish-like flashes of red light that occur directly above active thunderstorms.</p>
+                        </div>
+                        <div class="glass-effect rounded-2xl p-8 text-center flex flex-col items-center hover:border-purple-400/50 transition-all duration-300 fade-in-section" style="transition-delay: 150ms;">
+                            <div class="w-16 h-16 mb-6 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400 h-8 w-8"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">Blue Jets</h4>
+                            <p class="text-slate-300 leading-relaxed">Cones of blue light that are ejected upward from the electrically active cores of thunderstorms.</p>
+                        </div>
+                        <div class="glass-effect rounded-2xl p-8 text-center flex flex-col items-center hover:border-slate-400/50 transition-all duration-300 fade-in-section" style="transition-delay: 300ms;">
+                             <div class="w-16 h-16 mb-6 rounded-full bg-slate-500/20 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 h-8 w-8"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 12c-3.314 0-6-1.79-6-4s2.686-4 6-4 6 1.79 6 4-2.686 4-6 4z"/></svg>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">ELVES</h4>
+                            <p class="text-slate-300 leading-relaxed">Expanding rings of reddish light in the ionosphere, caused by an electromagnetic pulse from lightning.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="py-20 lg:py-32">
+                <!-- Gallery remains the same -->
+                 <div class="container mx-auto px-6">
+                 <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-white mb-3 fade-in-section">Light and Shadow</h3>
+                    <p class="text-slate-300 max-w-2xl mx-auto fade-in-section" style="transition-delay: 150ms;">
+                        A curated collection of moments captured from the edge of our world.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid gap-4 fade-in-section">
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x800/8A3A7E/FFFFFF?text=Aura+1" alt="Atmospheric phenomenon 1">
+                        </div>
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x500/3A185D/FFFFFF?text=Aura+2" alt="Atmospheric phenomenon 2">
+                        </div>
+                    </div>
+                    <div class="grid gap-4 fade-in-section" style="transition-delay: 150ms;">
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x500/E05263/FFFFFF?text=Aura+3" alt="Atmospheric phenomenon 3">
+                        </div>
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow--shadow" src="https://placehold.co/500x800/26113b/FFFFFF?text=Aura+4" alt="Atmospheric phenomenon 4">
+                        </div>
+                    </div>
+                    <div class="grid gap-4 fade-in-section" style="transition-delay: 300ms;">
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x800/8A3A7E/FFFFFF?text=Aura+5" alt="Atmospheric phenomenon 5">
+                        </div>
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x500/3A185D/FFFFFF?text=Aura+6" alt="Atmospheric phenomenon 6">
+                        </div>
+                    </div>
+                    <div class="grid gap-4 fade-in-section" style="transition-delay: 450ms;">
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x500/E05263/FFFFFF?text=Aura+7" alt="Atmospheric phenomenon 7">
+                        </div>
+                        <div>
+                            <img class="h-auto max-w-full rounded-lg glow-shadow" src="https://placehold.co/500x800/26113b/FFFFFF?text=Aura+8" alt="Atmospheric phenomenon 8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="about" class="bg-slate-900/40 mt-20">
+            <!-- Footer remains the same -->
+            <div class="container mx-auto px-6 py-12 text-center">
+                <h4 class="text-3xl font-bold text-white mb-4">Join the Exploration</h4>
+                <p class="text-slate-300 max-w-xl mx-auto mb-8">
+                    Stay connected and be the first to know about new discoveries and stunning visuals from the upper atmosphere.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"></path></svg></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2.04C6.5,2.04 2,6.53 2,12C2,17.47 6.5,21.96 12,21.96C17.5,21.96 22,17.47 22,12C22,6.53 17.5,2.04 12,2.04M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M16.5,12C16.5,14.48 14.48,16.5 12,16.5C9.52,16.5 7.5,14.48 7.5,12C7.5,9.52 9.52,7.5 12,7.5C14.48,7.5 16.5,9.52 16.5,12M12,14.5C13.38,14.5 14.5,13.38 14.5,12C14.5,10.62 13.38,9.5 12,9.5C10.62,9.5 9.5,10.62 9.5,12C9.5,13.38 10.62,14.5 12,14.5M17.5,8C17.5,8.55 17.05,9 16.5,9C15.95,9 15.5,8.55 15.5,8C15.5,7.45 15.95,7 16.5,7C17.05,7 17.5,7.45 17.5,8Z"></path></svg></a>
+                </div>
+                <p class="text-sm text-slate-500 mt-10">&copy; 2025 [Your Name]. All rights reserved. Inspired by the cosmos.</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <script>
+        // --- Lightning Canvas Script ---
+        const canvas = document.getElementById('lightning-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+
+        // All active lightning bolts
+        let bolts = [];
+        // Timer for creating new bolts
+        let boltTimer = 0;
+        let boltCreationTime = 0;
+
+        // Set initial canvas size
+        function setSize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        setSize();
+
+        // Listen for window resize
+        window.addEventListener('resize', setSize);
+
+        // A single segment of a lightning bolt
+        class Segment {
+            constructor(x, y, length, angle) {
+                this.x = x;
+                this.y = y;
+                this.length = length;
+                this.angle = angle;
+            }
+            getEndX() {
+                return this.x + this.length * Math.cos(this.angle);
+            }
+            getEndY() {
+                return this.y + this.length * Math.sin(this.angle);
+            }
+        }
+
+        // The main lightning bolt class
+        class LightningBolt {
+            constructor(x, y, maxSegments, main) {
+                this.x = x;
+                this.y = y;
+                this.maxSegments = maxSegments;
+                this.main = main; // Is this a main bolt or a branch?
+                this.segments = [new Segment(this.x, this.y, 20, Math.PI / 2)];
+                this.life = 0;
+                this.maxLife = 50 + Math.random() * 50; // Frames
+                this.createBolt();
+            }
+
+            // Procedurally generate the bolt path
+            createBolt() {
+                for (let i = 1; i < this.maxSegments; i++) {
+                    let lastSeg = this.segments[i - 1];
+                    let newX = lastSeg.getEndX();
+                    let newY = lastSeg.getEndY();
+                    let newAngle = lastSeg.angle + (Math.random() * 0.6 - 0.3);
+                    let newLength = Math.random() * 10 + 10;
+
+                    this.segments.push(new Segment(newX, newY, newLength, newAngle));
+
+                    // Create branches
+                    if (this.main && Math.random() > 0.8 && bolts.length < 20) {
+                        bolts.push(new LightningBolt(newX, newY, 5, false));
+                    }
+                }
+            }
+
+            update() {
+                this.life++;
+            }
+
+            draw() {
+                if (this.life >= this.maxLife) return;
+                
+                // Fade out effect
+                let opacity = 1 - (this.life / this.maxLife);
+                if (opacity < 0) opacity = 0;
+
+                ctx.beginPath();
+                ctx.moveTo(this.segments[0].x, this.segments[0].y);
+                this.segments.forEach(seg => {
+                    ctx.lineTo(seg.getEndX(), seg.getEndY());
+                });
+
+                // Glowing effect
+                ctx.strokeStyle = `rgba(255, 200, 255, ${opacity * 0.8})`;
+                ctx.lineWidth = this.main ? 3 : 1;
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = `rgba(255, 0, 255, ${opacity * 0.5})`;
+                ctx.stroke();
+                
+                // Inner core
+                ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+                ctx.lineWidth = this.main ? 1 : 0.5;
+                ctx.shadowBlur = 0;
+                ctx.stroke();
+            }
+        }
+
+        function animate() {
+            // Clear canvas
+            ctx.clearRect(0, 0, w, h);
+            
+            // Background flash effect when a new bolt is created
+            if (boltTimer >= boltCreationTime) {
+                 ctx.fillStyle = `rgba(138, 58, 126, ${Math.random() * 0.2})`;
+                 ctx.fillRect(0, 0, w, h);
+            }
+
+            // Update and draw bolts
+            bolts.forEach(bolt => {
+                bolt.update();
+                bolt.draw();
+            });
+
+            // Remove dead bolts
+            bolts = bolts.filter(bolt => bolt.life < bolt.maxLife);
+
+            // Create new bolts periodically
+            boltTimer++;
+            if (boltTimer >= boltCreationTime) {
+                boltTimer = 0;
+                boltCreationTime = 100 + Math.random() * 200; // 1.5 to 5 seconds
+                let startX = w * 0.2 + Math.random() * w * 0.6;
+                bolts.push(new LightningBolt(startX, 0, 30, true));
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+
+
+        // --- Scroll Fade-in Script ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

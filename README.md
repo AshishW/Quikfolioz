@@ -8,6 +8,7 @@ Quikfolioz is a collection of ready-to-use vibe-coded portfolio website template
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
+![App Screenshot](./app_screenshot.png)
 
 ## 🎨 Available Templates
 
