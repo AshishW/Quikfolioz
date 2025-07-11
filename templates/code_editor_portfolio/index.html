@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Developer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons (e.g., social media) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Prism.js CSS for syntax highlighting - Okaidia theme (dark) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <style>
+        /* Custom CSS for animations and specific styles not easily done with Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Editor Container Border Animation */
+        .editor-container-border {
+            position: relative;
+            padding: 2px; /* Space for the border */
+            background: linear-gradient(to right, #2d3748, #1a202c); /* Inner background for rounded corners */
+            border-radius: 1rem; /* Rounded corners */
+            overflow: hidden; /* Hide overflow of the pseudo-element */
+        }
+
+        .editor-container-border::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: conic-gradient(from 0deg at 50% 50%,
+                        #8b5cf6 0%, /* Violet */
+                        #ec4899 20%, /* Pink */
+                        #f97316 40%, /* Orange */
+                        #eab308 60%, /* Yellow */
+                        #8b5cf6 80%, /* Violet */
+                        #ec4899 100% /* Pink */
+                    );
+            animation: rotateBorder 8s linear infinite; /* Animation duration and type */
+            z-index: -1; /* Behind the content */
+            border-radius: inherit; /* Inherit border-radius from parent */
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Typewriter Effect */
+        .typewriter-text {
+            overflow: hidden; /* Ensures the text is hidden until typed */
+            white-space: nowrap; /* Keeps the text on a single line */
+            border-right: .15em solid #63b3ed; /* The blinking cursor */
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* The typing animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #63b3ed; }
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2d3748;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #63b3ed;
+        }
+
+        /* Project card hover effect */
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Active navigation link */
+        .nav-link.active {
+            background-color: #2d3748;
+            border-left: 3px solid #63b3ed;
+            color: #63b3ed;
+        }
+
+        /* Prism.js specific adjustments for background and overflow */
+        pre[class*="language-"] {
+            background-color: #1e293b !important; /* Deeper dark blue-gray for code blocks */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto; /* Ensure horizontal scroll for long lines of code */
+        }
+        code[class*="language-"] {
+            font-size: 0.875rem; /* Smaller font size for code */
+        }
+
+        /* Mobile specific adjustments for sidebar */
+        @media (max-width: 767px) {
+            .sidebar-hidden {
+                display: none;
+            }
+            .main-content-expanded {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8">
+
+    <div class="editor-container-border w-full max-w-7xl mx-auto shadow-2xl">
+        <div class="bg-gray-800 rounded-xl flex flex-col md:flex-row min-h-[80vh] overflow-hidden">
+
+            <!-- Sidebar (File Explorer) -->
+            <aside class="w-full md:w-64 bg-gray-900 p-4 border-r border-gray-700 flex flex-col rounded-t-xl md:rounded-l-xl md:rounded-tr-none">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-semibold text-blue-400">Explorer</h2>
+                    <button id="toggleSidebar" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <nav id="sidebarNav" class="flex-grow space-y-2 sidebar-hidden md:block">
+                    <a href="#about" class="nav-link flex items-center py-2 px-3 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors duration-200 active" data-section="about">
+                        <i class="fas fa-user mr-3 text-yellow-400"></i> About.js
+                    </a>
+                    <a href="#skills" class="nav-link flex items-center py-2 px-3 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors duration-200" data-section="skills">
+                        <i class="fas fa-code mr-3 text-green-400"></i> Skills.json
+                    </a>
+                    <a href="#projects" class="nav-link flex items-center py-2 px-3 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors duration-200" data-section="projects">
+                        <i class="fas fa-folder-open mr-3 text-purple-400"></i> Projects/
+                    </a>
+                    <a href="#contact" class="nav-link flex items-center py-2 px-3 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors duration-200" data-section="contact">
+                        <i class="fas fa-envelope mr-3 text-red-400"></i> Contact.html
+                    </a>
+                </nav>
+                <div class="mt-auto pt-4 border-t border-gray-700 text-xs text-gray-500">
+                    <p>&copy; 2025 Your Name. All rights reserved.</p>
+                </div>
+            </aside>
+
+            <!-- Main Editor Content Area -->
+            <main class="flex-1 p-6 md:p-8 overflow-y-auto relative main-content-expanded">
+                <!-- Editor Header (Tab Bar) -->
+                <div class="bg-gray-700 px-4 py-2 rounded-t-md flex items-center mb-6 sticky top-0 z-10">
+                    <div class="flex items-center text-sm font-medium text-gray-400 mr-4">
+                        <i class="fas fa-file-code mr-2 text-blue-300"></i> <span id="currentFileName">About.js</span>
+                    </div>
+                    <div class="flex-grow"></div>
+                    <div class="flex space-x-2">
+                        <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                        <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                    </div>
+                </div>
+
+                <!-- Content Sections -->
+                <section id="about" class="content-section active">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                        <span class="text-blue-400">const</span> <span class="text-green-400">developer</span> <span class="text-blue-400">=</span> <span class="typewriter-text">"Your Name"</span><span class="text-blue-400">;</span>
+                    </h1>
+                    <p class="text-lg leading-relaxed mb-6">
+                        Hello! I'm <span class="text-blue-300 font-medium">Your Name</span>, a passionate <span class="text-purple-300 font-medium">Software Engineer</span> with a knack for building robust and scalable applications. I specialize in <span class="text-yellow-300 font-medium">Full-Stack Development</span>, focusing on creating intuitive user experiences and efficient backend systems.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8 items-start sm:items-center">
+                        <img src="https://placehold.co/300x200/4A5568/CBD5E0?text=Your+Profile+Pic" alt="Your Profile" class="rounded-lg shadow-lg w-full max-w-[200px] h-auto object-cover">
+                        <p class="flex-1 text-base leading-relaxed">
+                            My journey in tech began with a curiosity for how things work, evolving into a drive to build them. I thrive in dynamic environments, constantly learning and adapting to new technologies. When I'm not coding, you can find me exploring new frameworks, contributing to open source, or enjoying a good book.
+                        </p>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <pre><code class="language-javascript">
+// About Me
+class YourName {
+    constructor() {
+        this.name = "Your Name";
+        this.role = "Full-Stack Developer";
+        this.location = "Global";
+        this.passion = "Building innovative solutions";
+    }
+
+    getExperience() {
+        return [
+            "Web Development (Frontend & Backend)",
+            "Cloud Computing (AWS/GCP)",
+            "Database Management (SQL/NoSQL)",
+            "API Design & Integration"
+        ];
+    }
+
+    connect() {
+        console.log("Let's build something amazing together!");
+    }
+}
+
+const me = new YourName();
+me.connect();
+</code></pre>
+                    </div>
+                </section>
+
+                <section id="skills" class="content-section hidden">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                        <span class="text-blue-400">const</span> <span class="text-green-400">skills</span> <span class="text-blue-400">=</span> <span class="text-yellow-400">[</span><span class="typewriter-text">"My Expertise"</span><span class="text-yellow-400">];</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- Frontend Skills -->
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3 text-blue-300">Frontend</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                                <li>React.js, Vue.js, Angular</li>
+                                <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                                <li>Tailwind CSS, Bootstrap</li>
+                                <li>Responsive Design</li>
+                            </ul>
+                        </div>
+                        <!-- Backend Skills -->
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3 text-green-300">Backend</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                                <li>Node.js, Express.js</li>
+                                <li>Python, Django, Flask</li>
+                                <li>Java, Spring Boot</li>
+                                <li>RESTful APIs, GraphQL</li>
+                            </ul>
+                        </div>
+                        <!-- Database Skills -->
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3 text-purple-300">Databases</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                                <li>PostgreSQL, MySQL</li>
+                                <li>MongoDB, Firestore</li>
+                                <li>Redis, Kafka</li>
+                            </ul>
+                        </div>
+                        <!-- Tools & Cloud -->
+                        <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-3 text-red-300">Tools & Cloud</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                                <li>Git, Docker, Kubernetes</li>
+                                <li>AWS, Google Cloud Platform</li>
+                                <li>CI/CD, Jenkins</li>
+                                <li>Jira, Trello</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <pre><code class="language-json">
+{
+  "programmingLanguages": ["JavaScript", "Python", "Java", "TypeScript"],
+  "frontendFrameworks": ["React", "Vue", "Angular"],
+  "backendFrameworks": ["Node.js", "Express.js", "Django", "Spring Boot"],
+  "databases": ["PostgreSQL", "MongoDB", "Firestore"],
+  "cloudPlatforms": ["AWS", "GCP"],
+  "tools": ["Git", "Docker", "Kubernetes", "Jira"]
+}
+</code></pre>
+                    </div>
+                </section>
+
+                <section id="projects" class="content-section hidden">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                        <span class="text-blue-400">const</span> <span class="text-green-400">projects</span> <span class="text-blue-400">=</span> <span class="text-yellow-400">[</span><span class="typewriter-text">"My Work"</span><span class="text-yellow-400">];</span>
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <!-- Project 1 -->
+                        <div class="project-card bg-gray-900 p-6 rounded-lg shadow-md flex flex-col">
+                            <img src="https://placehold.co/600x400/2D3748/A0AEC0?text=Project+Image+1" alt="Project 1" class="rounded-md mb-4 w-full h-48 object-cover">
+                            <h3 class="text-xl font-semibold mb-2 text-blue-300">E-commerce Platform</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">
+                                Developed a full-stack e-commerce platform with user authentication, product management, shopping cart functionality, and secure payment integration.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-sm mb-4">
+                                <span class="bg-purple-700 text-white px-3 py-1 rounded-full">React</span>
+                                <span class="bg-green-700 text-white px-3 py-1 rounded-full">Node.js</span>
+                                <span class="bg-blue-700 text-white px-3 py-1 rounded-full">MongoDB</span>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors duration-200"><i class="fas fa-link mr-1"></i> Live Demo</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200"><i class="fab fa-github mr-1"></i> GitHub</a>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-card bg-gray-900 p-6 rounded-lg shadow-md flex flex-col">
+                            <img src="https://placehold.co/600x400/2D3748/A0AEC0?text=Project+Image+2" alt="Project 2" class="rounded-md mb-4 w-full h-48 object-cover">
+                            <h3 class="text-xl font-semibold mb-2 text-green-300">Real-time Chat Application</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">
+                                Built a real-time chat application using WebSockets, allowing instant messaging and group chats with user presence indicators.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-sm mb-4">
+                                <span class="bg-red-700 text-white px-3 py-1 rounded-full">Vue.js</span>
+                                <span class="bg-indigo-700 text-white px-3 py-1 rounded-full">Socket.IO</span>
+                                <span class="bg-yellow-700 text-white px-3 py-1 rounded-full">Express</span>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors duration-200"><i class="fas fa-link mr-1"></i> Live Demo</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200"><i class="fab fa-github mr-1"></i> GitHub</a>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-card bg-gray-900 p-6 rounded-lg shadow-md flex flex-col">
+                            <img src="https://placehold.co/600x400/2D3748/A0AEC0?text=Project+Image+3" alt="Project 3" class="rounded-md mb-4 w-full h-48 object-cover">
+                            <h3 class="text-xl font-semibold mb-2 text-purple-300">Data Visualization Dashboard</h3>
+                            <p class="text-gray-400 mb-4 flex-grow">
+                                Created an interactive dashboard to visualize complex datasets, utilizing D3.js for dynamic charts and graphs.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-sm mb-4">
+                                <span class="bg-orange-700 text-white px-3 py-1 rounded-full">D3.js</span>
+                                <span class="bg-cyan-700 text-white px-3 py-1 rounded-full">Python</span>
+                                <span class="bg-teal-700 text-white px-3 py-1 rounded-full">Flask</span>
+                            </div>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors duration-200"><i class="fas fa-link mr-1"></i> Live Demo</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200"><i class="fab fa-github mr-1"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <pre><code class="language-javascript">
+// My Projects
+const myProjects = [
+    {
+        name: "E-commerce Platform",
+        technologies: ["React", "Node.js", "MongoDB"],
+        description: "Full-stack platform for online shopping.",
+        link: "#",
+        github: "#"
+    },
+    {
+        name: "Real-time Chat App",
+        technologies: ["Vue.js", "Socket.IO", "Express"],
+        description: "Instant messaging with WebSockets.",
+        link: "#",
+        github: "#"
+    },
+    // Add more projects here
+];
+
+function displayProjects(projects) {
+    projects.forEach(project => {
+        console.log(`Project: ${project.name}`);
+        console.log(`  Tech: ${project.technologies.join(', ')}`);
+        console.log(`  Desc: ${project.description}`);
+    });
+}
+
+displayProjects(myProjects);
+</code></pre>
+                    </div>
+                </section>
+
+                <section id="contact" class="content-section hidden">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                        <span class="text-blue-400">const</span> <span class="text-green-400">contact</span> <span class="text-blue-400">=</span> <span class="text-yellow-400">{</span><span class="typewriter-text">"Get In Touch"</span><span class="text-yellow-400">};</span>
+                    </h2>
+                    <p class="text-lg leading-relaxed mb-6">
+                        I'm always open to new opportunities and collaborations. Feel free to reach out!
+                    </p>
+
+                    <form class="bg-gray-900 p-6 rounded-lg shadow-md max-w-lg mx-auto">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name:</label>
+                            <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600 focus:border-blue-500" placeholder="Your Name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email:</label>
+                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600 focus:border-blue-500" placeholder="your.email@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message:</label>
+                            <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600 focus:border-blue-500" placeholder="Your message..."></textarea>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-8 text-center">
+                        <h3 class="text-xl font-semibold mb-4 text-white">Find me on:</h3>
+                        <div class="flex justify-center space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-blue-500 text-3xl transition-colors duration-200" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gray-200 text-3xl transition-colors duration-200" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-400 text-3xl transition-colors duration-200" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Message Box for Alerts (instead of alert()) -->
+                <div id="messageBox" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+                        <h3 id="messageBoxTitle" class="text-xl font-bold mb-4 text-white"></h3>
+                        <p id="messageBoxContent" class="text-gray-300 mb-6"></p>
+                        <button id="messageBoxClose" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                            OK
+                        </button>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Prism.js JS for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Load specific language components for Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const currentFileName = document.getElementById('currentFileName');
+            const toggleSidebarBtn = document.getElementById('toggleSidebar');
+            const sidebarNav = document.getElementById('sidebarNav');
+            const messageBox = document.getElementById('messageBox');
+            const messageBoxTitle = document.getElementById('messageBoxTitle');
+            const messageBoxContent = document.getElementById('messageBoxContent');
+            const messageBoxClose = document.getElementById('messageBoxClose');
+
+            // Function to show custom message box
+            function showMessageBox(title, message) {
+                messageBoxTitle.textContent = title;
+                messageBoxContent.textContent = message;
+                messageBox.classList.remove('hidden');
+            }
+
+            // Close message box
+            messageBoxClose.addEventListener('click', () => {
+                messageBox.classList.add('hidden');
+            });
+
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Remove active class from all links
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    // Add active class to clicked link
+                    link.classList.add('active');
+
+                    // Hide all content sections
+                    contentSections.forEach(section => section.classList.add('hidden'));
+
+                    // Show the target section
+                    const targetId = link.getAttribute('data-section');
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden');
+                        // Scroll to the top of the main content area
+                        document.querySelector('main').scrollTo(0, 0);
+                        // Re-highlight code blocks in the newly visible section
+                        Prism.highlightAll();
+                    }
+
+                    // Update the file name in the editor header
+                    currentFileName.textContent = link.textContent.trim().split(' ')[1]; // e.g., "About.js"
+
+                    // Hide sidebar on mobile after selection
+                    if (window.innerWidth < 768) { // Tailwind's 'md' breakpoint is 768px
+                        sidebarNav.classList.add('sidebar-hidden'); // Use a class to hide
+                        document.querySelector('main').classList.add('main-content-expanded'); // Expand main content
+                    }
+                });
+            });
+
+            // Toggle sidebar visibility on mobile
+            toggleSidebarBtn.addEventListener('click', () => {
+                sidebarNav.classList.toggle('sidebar-hidden');
+                document.querySelector('main').classList.toggle('main-content-expanded');
+            });
+
+            // Set initial active state based on URL hash or default to 'about'
+            const initialHash = window.location.hash.substring(1);
+            let activeSectionFound = false;
+            if (initialHash) {
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-section') === initialHash) {
+                        link.click(); // Simulate click to activate
+                        activeSectionFound = true;
+                    }
+                });
+            }
+
+            // If no hash or invalid hash, default to 'about'
+            if (!activeSectionFound) {
+                document.querySelector('.nav-link[data-section="about"]').click();
+            }
+
+            // Handle form submission (example: prevent default and show message)
+            const contactForm = document.querySelector('#contact form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // In a real application, you would send this data to a server
+                    console.log('Form submitted!');
+                    showMessageBox('Message Sent!', 'Thank you for your message. I will get back to you soon!');
+                    contactForm.reset(); // Clear the form
+                });
+            }
+
+            // Initial highlighting of all code blocks on page load
+            Prism.highlightAll();
+        });
+    </script>
+</body>
+</html>

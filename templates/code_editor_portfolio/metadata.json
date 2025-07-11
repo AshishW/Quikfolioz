@@ -1,0 +1,26 @@
+{
+    "name": "Code Editor Portfolio",
+    "description": "Modern portfolio design that mimics a code editor interface with syntax highlighting and file explorer",
+    "category": "unique",
+    "technologies": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "TailwindCSS",
+        "Prism.js",
+        "Font Awesome"
+    ],
+    "features": [
+        "Code Editor Interface",
+        "Syntax Highlighting",
+        "File Explorer Sidebar",
+        "Animated Border Effects",
+        "Typewriter Text Effects",
+        "Custom Scrollbar",
+        "Project Cards with Hover Effects",
+        "Responsive Design",
+        "Contact Form",
+        "Social Media Links",
+        "Custom Message Box"
+    ]
+}

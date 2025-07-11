@@ -67,6 +67,35 @@
         "folder": "cloud_portfolio"
     },
     {
+        "id": "code_editor_portfolio",
+        "name": "Code Editor Portfolio",
+        "description": "Modern portfolio design that mimics a code editor interface with syntax highlighting and file explorer",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "TailwindCSS",
+            "Prism.js",
+            "Font Awesome"
+        ],
+        "features": [
+            "Code Editor Interface",
+            "Syntax Highlighting",
+            "File Explorer Sidebar",
+            "Animated Border Effects",
+            "Typewriter Text Effects",
+            "Custom Scrollbar",
+            "Project Cards with Hover Effects",
+            "Responsive Design",
+            "Contact Form",
+            "Social Media Links",
+            "Custom Message Box"
+        ],
+        "preview": "templates/code_editor_portfolio/thumbnail.png",
+        "folder": "code_editor_portfolio"
+    },
+    {
         "id": "crystal_portfolio",
         "name": "Crystal Portfolio",
         "description": "A beautiful and modern crystal portfolio template with clean design and responsive layout.",
