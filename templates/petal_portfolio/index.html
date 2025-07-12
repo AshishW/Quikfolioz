@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Doe - Developer Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFF8F9; /* A very light pink background */
+        }
+        
+        /* Use Playfair Display for headings for an elegant touch */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Canvas for petal animation */
+        #petal-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind all content */
+            pointer-events: none; /* Make it unclickable */
+        }
+
+        /* Scroll-based animation classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Petal Animation Canvas -->
+    <canvas id="petal-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-pink-500">JD</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-pink-500 transition-colors duration-300">About</a>
+                <a href="#projects" class="text-gray-600 hover:text-pink-500 transition-colors duration-300">Projects</a>
+                <a href="#skills" class="text-gray-600 hover:text-pink-500 transition-colors duration-300">Skills</a>
+                <a href="#contact" class="text-gray-600 hover:text-pink-500 transition-colors duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-pink-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#about" class="block py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300">About</a>
+             <a href="#projects" class="block py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300">Projects</a>
+             <a href="#skills" class="block py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300">Skills</a>
+             <a href="#contact" class="block py-2 text-gray-600 hover:text-pink-500 transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-800 leading-tight">Jane Doe</h1>
+            <p class="mt-4 text-xl md:text-2xl text-pink-500">Creative Frontend Developer</p>
+            <p class="mt-6 max-w-2xl text-gray-600">
+                I craft beautiful and intuitive web experiences, blending elegant design with powerful code to bring ideas to life.
+            </p>
+            <a href="#projects" class="mt-8 px-8 py-3 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-all duration-300 transform hover:scale-105">
+                View My Work
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img src="https://placehold.co/400x400/FFC0CB/FFFFFF?text=Jane" alt="Jane Doe" class="rounded-full shadow-2xl mx-auto border-8 border-white">
+                </div>
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-semibold text-pink-500 mb-4">Crafting Digital Gardens</h3>
+                    <p class="text-gray-600 mb-4">
+                        Hello! I'm Jane, a developer with a passion for front-end technology and user-centric design. I believe that the best websites are like gardens: carefully cultivated, beautiful to behold, and easy to navigate. My journey into code started with a fascination for how things work, and it has blossomed into a career of building responsive, accessible, and engaging web applications.
+                    </p>
+                    <p class="text-gray-600">
+                        When I'm not at my keyboard, you can find me tending to my actual garden, exploring new hiking trails, or sketching in my notebook.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/FFE4E1/333333?text=Project+One" alt="Project One" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">A modern, responsive e-commerce site built with React and Tailwind CSS, featuring a seamless shopping experience.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-pink-500 hover:underline">Live Demo</a>
+                            <a href="#" class="text-pink-500 hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/FFDAB9/333333?text=Project+Two" alt="Project Two" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                        <p class="text-gray-600 mb-4">A productivity app using Vue.js and Firebase for real-time collaboration and task tracking.</p>
+                         <div class="flex space-x-4">
+                            <a href="#" class="text-pink-500 hover:underline">Live Demo</a>
+                            <a href="#" class="text-pink-500 hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://placehold.co/600x400/E6E6FA/333333?text=Project+Three" alt="Project Three" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio Website</h3>
+                        <p class="text-gray-600 mb-4">A personal portfolio (like this one!) designed with a focus on animation and aesthetic appeal using vanilla JS.</p>
+                         <div class="flex space-x-4">
+                            <a href="#" class="text-pink-500 hover:underline">Live Demo</a>
+                            <a href="#" class="text-pink-500 hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-12">My Toolkit</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4">
+                        <img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-icon.svg" alt="HTML5" class="h-16 w-16 mb-2">
+                        <span class="font-semibold">HTML5</span>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4">
+                        <img src="https://www.vectorlogo.zone/logos/w3_css/w3_css-icon.svg" alt="CSS3" class="h-16 w-16 mb-2">
+                        <span class="font-semibold">CSS3</span>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4">
+                        <img src="https://www.vectorlogo.zone/logos/javascript/javascript-icon.svg" alt="JavaScript" class="h-16 w-16 mb-2">
+                        <span class="font-semibold">JavaScript</span>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4">
+                        <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" alt="React" class="h-16 w-16 mb-2">
+                        <span class="font-semibold">React</span>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4">
+                        <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="h-16 w-16 mb-2">
+                        <span class="font-semibold">Tailwind CSS</span>
+                    </div>
+                     <!-- Skill Item -->
+                    <div class="flex flex-col items-center p-4">
+                        <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma" class="h-16 w-16 mb-2">
+                        <span class="font-semibold">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-4">Get In Touch</h2>
+            <p class="text-center text-gray-600 mb-12">I'm currently open to new opportunities. Feel free to reach out!</p>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <form action="#">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="px-8 py-3 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-all duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-pink-500 transition-colors duration-300">GitHub</a>
+                <a href="#" class="hover:text-pink-500 transition-colors duration-300">LinkedIn</a>
+                <a href="#" class="hover:text-pink-500 transition-colors duration-300">Twitter</a>
+            </div>
+            <p>&copy; 2024 Jane Doe. Designed with &hearts;.</p>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript for Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Smooth Scrolling ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu on click
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // --- Scroll-based Fade-in Animation ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // --- Realistic Petal Animation ---
+            const canvas = document.getElementById('petal-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let petals = [];
+            const petalCount = 40;
+            const petalImage = new Image();
+            // A simple, elegant petal shape drawn with SVG and converted to a data URL
+            petalImage.src = 'data:image/svg+xml;base64,' + btoa(`
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                    <path d="M25,0 C40,10 40,30 25,50 C10,30 10,10 25,0 Z" fill="#FFB7C5" opacity="0.7"/>
+                </svg>
+            `);
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createPetal() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height * 2 - canvas.height, // Start above the screen
+                    w: 15 + Math.random() * 10, // width
+                    h: 20 + Math.random() * 10, // height
+                    opacity: Math.random() * 0.5 + 0.4,
+                    speedX: Math.random() * 2 - 1, // Sideways drift
+                    speedY: Math.random() * 1 + 0.5, // Fall speed
+                    rotation: Math.random() * 360,
+                    rotationSpeed: Math.random() * 2 - 1
+                };
+            }
+
+            function initPetals() {
+                petals = [];
+                for (let i = 0; i < petalCount; i++) {
+                    petals.push(createPetal());
+                }
+            }
+
+            function drawPetal(petal) {
+                ctx.save();
+                ctx.translate(petal.x, petal.y);
+                ctx.rotate(petal.rotation * Math.PI / 180);
+                ctx.globalAlpha = petal.opacity;
+                ctx.drawImage(petalImage, -petal.w / 2, -petal.h / 2, petal.w, petal.h);
+                ctx.restore();
+            }
+
+            function updatePetals() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                petals.forEach((petal, index) => {
+                    petal.y += petal.speedY;
+                    petal.x += petal.speedX;
+                    petal.rotation += petal.rotationSpeed;
+
+                    // Reset petal when it goes off screen
+                    if (petal.y > canvas.height + petal.h) {
+                        petals[index] = createPetal();
+                        petals[index].y = -petal.h; // Start just above screen
+                    }
+                    
+                    drawPetal(petal);
+                });
+                requestAnimationFrame(updatePetals);
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                initPetals();
+            });
+
+            // Initialize on load
+            resizeCanvas();
+            initPetals();
+            petalImage.onload = () => {
+                updatePetals();
+            };
+        });
+    </script>
+
+</body>
+</html>

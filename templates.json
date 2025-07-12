@@ -284,6 +284,30 @@
         "folder": "lightning_portfolio"
     },
     {
+        "id": "magic_portfolio",
+        "name": "Magic Portfolio",
+        "description": "A mystical portfolio design with parchment textures and magical scroll animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "TailwindCSS",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Parchment Texture Background",
+            "Scroll Reveal Animations",
+            "Interactive Project Modal",
+            "Custom Scrollbar Design",
+            "Responsive Layout",
+            "Timeline Experience Section",
+            "Skill Progress Bars",
+            "Magical Typography"
+        ],
+        "preview": "templates/magic_portfolio/thumbnail.png",
+        "folder": "magic_portfolio"
+    },
+    {
         "id": "minimalist_portfolio",
         "name": "Minimalist Portfolio",
         "description": "A beautiful and modern minimalist portfolio template with clean design and responsive layout.",
@@ -336,6 +360,55 @@
         ],
         "preview": "templates/paper_portfolio/thumbnail.png",
         "folder": "paper_portfolio"
+    },
+    {
+        "id": "pastel_portfolio",
+        "name": "Pastel Portfolio",
+        "description": "Modern portfolio with soft pastel colors, blob animations, and smooth transitions",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "TailwindCSS",
+            "Font Awesome",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Mobile Menu",
+            "Smooth Section Transitions",
+            "Card Hover Effects",
+            "Custom Scrollbar",
+            "Contact Form",
+            "Social Media Integration"
+        ],
+        "preview": "templates/pastel_portfolio/thumbnail.png",
+        "folder": "pastel_portfolio"
+    },
+    {
+        "id": "petal_portfolio",
+        "name": "Petal Portfolio",
+        "description": "Elegant portfolio template with floating petal animations and pink theme, featuring smooth fade-in sections",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "TailwindCSS",
+            "JavaScript",
+            "Google Fonts",
+            "Canvas API"
+        ],
+        "features": [
+            "Responsive Design",
+            "Mobile Menu",
+            "Scroll-based Fade Animations",
+            "Floating Petal Animation",
+            "Project Cards with Hover Effects",
+            "Skills Showcase",
+            "Contact Form",
+            "Social Media Links",
+            "Smooth Scroll Navigation"
+        ],
+        "preview": "templates/petal_portfolio/thumbnail.png",
+        "folder": "petal_portfolio"
     },
     {
         "id": "retro_game_portfolio",

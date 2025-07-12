@@ -1,0 +1,16 @@
+{
+    "name": "Magic Portfolio",
+    "description": "A mystical portfolio design with parchment textures and magical scroll animations",
+    "category": "unique",
+    "technologies": ["HTML5", "TailwindCSS", "JavaScript", "Google Fonts"],
+    "features": [
+        "Parchment Texture Background",
+        "Scroll Reveal Animations",
+        "Interactive Project Modal",
+        "Custom Scrollbar Design",
+        "Responsive Layout",
+        "Timeline Experience Section",
+        "Skill Progress Bars",
+        "Magical Typography"
+    ]
+}

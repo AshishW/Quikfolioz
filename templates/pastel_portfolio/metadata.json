@@ -1,0 +1,20 @@
+{
+    "name": "Pastel Portfolio",
+    "description": "Modern portfolio with soft pastel colors, blob animations, and smooth transitions",
+    "category": "minimalist",
+    "technologies": [
+        "HTML5",
+        "TailwindCSS",
+        "Font Awesome",
+        "Google Fonts"
+    ],
+    "features": [
+        "Responsive Design",
+        "Mobile Menu",
+        "Smooth Section Transitions",
+        "Card Hover Effects",
+        "Custom Scrollbar",
+        "Contact Form",
+        "Social Media Integration"
+    ]
+}
