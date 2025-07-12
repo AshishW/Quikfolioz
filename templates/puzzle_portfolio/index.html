@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playful Puzzle Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0f8ff; /* AliceBlue */
+            --primary-color: #ff6b6b; /* Coral */
+            --secondary-color: #48dbfb; /* Light Blue */
+            --accent-color: #feca57; /* Yellow */
+            --text-color: #4b4b4b;
+            --white-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .puzzle-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+        }
+
+        .puzzle-piece {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            color: var(--white-color);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+            padding: 20px;
+            box-sizing: border-box;
+            /* Add a drop-shadow for depth. This works better with clip-path than box-shadow */
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.15));
+            transition: filter 0.3s ease;
+        }
+
+        .puzzle-piece:hover {
+            filter: drop-shadow(8px 8px 8px rgba(0,0,0,0.2));
+        }
+
+        /* Jigsaw piece styling using new, more realistic clip-paths */
+        #about { 
+            background-color: var(--primary-color);
+            clip-path: url(#p1);
+        }
+        #projects { 
+            background-color: var(--secondary-color);
+            clip-path: url(#p2);
+        }
+        #skills { 
+            background-color: var(--accent-color);
+            clip-path: url(#p3);
+        }
+        #contact { 
+            background-color: #5dd39e; /* Mint Green */
+            clip-path: url(#p4);
+        }
+        
+        .puzzle-piece.dragging {
+            cursor: grabbing;
+            z-index: 1000;
+            filter: drop-shadow(15px 15px 15px rgba(0,0,0,0.25));
+        }
+
+        .puzzle-title {
+            font-weight: 700;
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+
+        .puzzle-icon {
+            font-size: 3.5em;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .puzzle-hint {
+            font-size: 0.8em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .content-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+        }
+
+        .content-box {
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 800px;
+            height: 80%;
+            max-height: 600px;
+            overflow-y: auto;
+            transform: scale(0.7);
+            opacity: 0;
+            position: relative;
+        }
+        
+        .content-box h2 {
+            font-weight: 700;
+            text-align: center;
+            margin-top: 0;
+            font-size: 2.5em;
+        }
+        #modal-title.c1 { color: var(--primary-color); }
+        #modal-title.c2 { color: var(--secondary-color); }
+        #modal-title.c3 { color: var(--accent-color); }
+        #modal-title.c4 { color: #5dd39e; }
+        
+        .content-box p, .content-box li {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2.5em;
+            color: #aaa;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            color: var(--primary-color);
+        }
+
+        /* Intro Screen */
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .intro-title {
+            font-weight: 700;
+            font-size: 3em;
+            color: var(--text-color);
+            opacity: 0;
+        }
+
+        .intro-subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0;
+        }
+        
+        .start-btn {
+            margin-top: 40px;
+            padding: 15px 35px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2em;
+            background: var(--primary-color);
+            border: none;
+            color: var(--white-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .puzzle-piece {
+                width: 180px;
+                height: 180px;
+            }
+            .intro-title {
+                font-size: 2.2em;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .puzzle-piece {
+                width: 150px;
+                height: 150px;
+            }
+             .puzzle-title {
+                font-size: 1.2em;
+            }
+            .puzzle-icon {
+                font-size: 2.5em;
+            }
+            .intro-title {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Definitions for Jigsaw Pieces -->
+    <svg width="0" height="0">
+      <defs>
+        <!-- p1: Top-Left piece (outie right, outie bottom) -->
+        <clipPath id="p1" clipPathUnits="objectBoundingBox">
+          <path d="M 0,0 H1 V0.375 C 0.85,0.375 0.85,0.625 1,0.625 V1 H0.625 C 0.625,0.85 0.375,0.85 0.375,1 H0 V0 Z" />
+        </clipPath>
+        <!-- p2: Top-Right piece (innie left, outie bottom) -->
+        <clipPath id="p2" clipPathUnits="objectBoundingBox">
+          <path d="M 0,0.375 C 0.15,0.375 0.15,0.625 0,0.625 V0 H1 V1 H0.625 C 0.625,0.85 0.375,0.85 0.375,1 H0 V0.625 Z" />
+        </clipPath>
+        <!-- p3: Bottom-Left piece (outie right, innie top) -->
+        <clipPath id="p3" clipPathUnits="objectBoundingBox">
+          <path d="M 0,0 H0.375 C 0.375,0.15 0.625,0.15 0.625,0 H1 V1 H0 V0.625 C 0.15,0.625 0.15,0.375 0,0.375 V0 Z" />
+        </clipPath>
+        <!-- p4: Bottom-Right piece (innie left, innie top) -->
+        <clipPath id="p4" clipPathUnits="objectBoundingBox">
+          <path d="M 0,0.375 C 0.15,0.375 0.15,0.625 0,0.625 V1 H1 V0 H0.625 C 0.625,0.15 0.375,0.15 0.375,0 H0 V0.375 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="intro-screen">
+        <h1 class="intro-title">Jane Doe's Portfolio</h1>
+        <p class="intro-subtitle">Let's build something fun together!</p>
+        <button class="start-btn">Start the Fun!</button>
+    </div>
+
+    <div class="puzzle-container">
+        <div id="about" class="puzzle-piece">
+            <div class="puzzle-icon">👋</div>
+            <div class="puzzle-title">About Me</div>
+            <div class="puzzle-hint">(Click me!)</div>
+        </div>
+        <div id="projects" class="puzzle-piece">
+            <div class="puzzle-icon">🚀</div>
+            <div class="puzzle-title">Projects</div>
+            <div class="puzzle-hint">(Click me!)</div>
+        </div>
+        <div id="skills" class="puzzle-piece">
+            <div class="puzzle-icon">💡</div>
+            <div class="puzzle-title">Skills</div>
+            <div class="puzzle-hint">(Click me!)</div>
+        </div>
+        <div id="contact" class="puzzle-piece">
+            <div class="puzzle-icon">📨</div>
+            <div class="puzzle-title">Contact</div>
+            <div class="puzzle-hint">(Click me!)</div>
+        </div>
+    </div>
+
+    <div id="modal" class="content-modal">
+        <div id="modal-content-box" class="content-box">
+            <span id="close-modal-btn" class="close-btn">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/Draggable.min.js"></script>
+
+    <script>
+        // --- Three.js Background ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const bubbleColors = [0xff6b6b, 0x48dbfb, 0xfeca57, 0x5dd39e];
+        const geometry = new THREE.SphereGeometry(1, 32, 16);
+        const bubbles = [];
+
+        for (let i = 0; i < 100; i++) {
+            const material = new THREE.MeshBasicMaterial({ 
+                color: bubbleColors[Math.floor(Math.random() * bubbleColors.length)],
+                transparent: true,
+                opacity: 0.6
+            });
+            const bubble = new THREE.Mesh(geometry, material);
+            
+            bubble.position.x = (Math.random() - 0.5) * 20;
+            bubble.position.y = (Math.random() - 0.5) * 20;
+            bubble.position.z = (Math.random() - 0.5) * 20;
+            
+            const scale = Math.random() * 0.5 + 0.1;
+            bubble.scale.set(scale, scale, scale);
+            
+            bubble.userData.velocity = new THREE.Vector3(
+                (Math.random() - 0.5) * 0.005,
+                Math.random() * 0.01 + 0.005,
+                (Math.random() - 0.5) * 0.005
+            );
+            
+            bubbles.push(bubble);
+            scene.add(bubble);
+        }
+
+        camera.position.z = 10;
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            
+            bubbles.forEach(bubble => {
+                bubble.position.add(bubble.userData.velocity);
+                if (bubble.position.y > 10) {
+                    bubble.position.y = -10;
+                    bubble.position.x = (Math.random() - 0.5) * 20;
+                }
+            });
+
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(animate);
+        };
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Portfolio Content ---
+        const portfolioContent = {
+            about: { title: "About Me", class: 'c1', content: `<p>Hey there! I'm a creative developer who loves building delightful things for the web. My passion lies in blending clean code with beautiful design to create user experiences that are both intuitive and fun. This portfolio is my playground, where code and creativity come together!</p><p>When I'm not coding, you'll find me sketching, trying out new recipes, or exploring the great outdoors.</p>` },
+            projects: { title: "My Projects", class: 'c2', content: `<h3>Project One: Storybook App</h3><p>A colorful and interactive web app for kids that tells stories with fun animations and sound effects. Built with React and GSAP.</p><h3>Project Two: Recipe Finder</h3><p>A cheerful app that helps you find new recipes based on the ingredients you have at home. Features a playful UI and animations.</p><h3>Project Three: This Portfolio!</h3><p>Putting the pieces together to showcase my love for fun, interactive web development using Three.js and GSAP.</p>` },
+            skills: { title: "My Skills", class: 'c3', content: `<ul><li><strong>Languages:</strong> JavaScript (ES6+), HTML5, CSS3</li><li><strong>Magic Wands (Libraries):</strong> React, GSAP, Three.js, Framer Motion</li><li><strong>Toolbox:</strong> Git, Figma, Webpack, Vite</li><li><strong>Superpowers:</strong> Responsive Design, UI/UX Animation, Creative Problem Solving</li></ul>` },
+            contact: { title: "Let's Chat!", class: 'c4', content: `<p>Have a fun project in mind or just want to say hello? I'd love to hear from you! Let's create something amazing together.</p><p><strong>Email:</strong> jane.doe@example.com</p><p><strong>Dribbble:</strong> dribbble.com/janedoe</p><p><strong>GitHub:</strong> github.com/janedoe</p>` }
+        };
+
+        // --- GSAP Animations & Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(Draggable);
+            const introScreen = document.querySelector('.intro-screen');
+            const startBtn = document.querySelector('.start-btn');
+            const puzzlePieces = gsap.utils.toArray(".puzzle-piece");
+            const modal = document.getElementById('modal');
+            const modalContentBox = document.getElementById('modal-content-box');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+
+            // Intro animation
+            const tlIntro = gsap.timeline();
+            tlIntro.to('.intro-title', { opacity: 1, duration: 1, y: -10, ease: 'power2.out' })
+                   .to('.intro-subtitle', { opacity: 1, duration: 1, y: -10, ease: 'power2.out' }, "-=0.7")
+                   .to('.start-btn', { opacity: 1, duration: 1, ease: 'power2.out' }, "-=0.5");
+
+            startBtn.addEventListener('click', () => {
+                const tlStart = gsap.timeline();
+                tlStart.to(introScreen, { 
+                    opacity: 0, 
+                    duration: 0.8, 
+                    ease: 'power2.inOut', 
+                    onComplete: () => introScreen.style.display = 'none' 
+                })
+                .fromTo(puzzlePieces, {
+                    opacity: 0,
+                    scale: 0,
+                    x: 0,
+                    y: 0,
+                    visibility: 'visible'
+                }, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1,
+                    ease: 'elastic.out(1, 0.5)',
+                    stagger: {
+                        each: 0.1,
+                        from: 'center'
+                    },
+                    onComplete: scatterAndEnable
+                }, "-=0.3");
+            });
+
+            function scatterAndEnable() {
+                gsap.to(puzzlePieces, {
+                    x: () => (Math.random() - 0.5) * (window.innerWidth * 0.6),
+                    y: () => (Math.random() - 0.5) * (window.innerHeight * 0.6),
+                    rotation: () => Math.random() * 40 - 20,
+                    duration: 1.2,
+                    ease: 'power2.out',
+                    onComplete: makeDraggable
+                });
+            }
+            
+            function makeDraggable() {
+                puzzlePieces.forEach(piece => {
+                    Draggable.create(piece, {
+                        bounds: ".puzzle-container",
+                        onPress: function() {
+                            gsap.to(this.target, { scale: 1.15, duration: 0.3, ease: 'back.out(4)' });
+                            this.target.classList.add('dragging');
+                        },
+                        onRelease: function() {
+                            gsap.to(this.target, { scale: 1, duration: 0.3, ease: 'back.out(4)' });
+                            this.target.classList.remove('dragging');
+                        },
+                        onClick: function() {
+                            openModal(this.target.id);
+                        }
+                    });
+
+                    // Fun hover effect
+                    piece.addEventListener('mouseenter', () => {
+                        if (!piece.classList.contains('dragging')) {
+                           gsap.to(piece, { rotation: '+=10', duration: 0.3, ease: 'power2.out' });
+                        }
+                    });
+                    piece.addEventListener('mouseleave', () => {
+                        if (!piece.classList.contains('dragging')) {
+                           gsap.to(piece, { rotation: '-=10', duration: 0.3, ease: 'power2.out' });
+                        }
+                    });
+                });
+            }
+
+            function openModal(id) {
+                const content = portfolioContent[id];
+                if (!content) return;
+
+                modalTitle.textContent = content.title;
+                modalTitle.className = content.class;
+                modalBody.innerHTML = content.content;
+
+                modal.style.display = 'flex';
+                gsap.to(modal, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+                gsap.fromTo(modalContentBox, 
+                    { opacity: 0, scale: 0.7, y: 50 },
+                    { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.7)', delay: 0.1 }
+                );
+            }
+
+            function closeModal() {
+                 gsap.to(modalContentBox, { opacity: 0, scale: 0.8, duration: 0.3, ease: 'power2.in' });
+                 gsap.to(modal, { opacity: 0, duration: 0.4, ease: 'power2.in', delay: 0.1, onComplete: () => modal.style.display = 'none' });
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>
