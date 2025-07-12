@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Pastel Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Poppins (for headings) and Open Sans (for body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for Pastel Theme, Structure, and Animations */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom right, #fdfcfb, #e2e8f0); /* Very light off-white to light blue-gray */
+            color: #4a5568; /* Dark muted blue-gray for body text */
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem; /* Overall padding */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #5a67d8; /* Indigo/Soft Purple for headings */
+        }
+
+        /* Background Blob Animations */
+        .blob {
+            position: absolute;
+            background: radial-gradient(circle at center, var(--color1), var(--color2));
+            border-radius: 50%;
+            opacity: 0.3; /* Subtle transparency */
+            filter: blur(50px); /* Soft blur effect */
+            animation: blobAnimation 20s infinite ease-in-out alternate;
+            pointer-events: none; /* Allows clicks to pass through */
+            z-index: -1; /* Behind content */
+        }
+
+        /* Define custom properties for colors and sizes for each blob */
+        .blob:nth-child(1) {
+            --color1: #FFC0CB; /* Light Pink */
+            --color2: #FFB6C1; /* Lighter Pink */
+            width: 200px; height: 200px;
+            top: 10%; left: 5%;
+            animation-delay: 0s;
+        }
+        .blob:nth-child(2) {
+            --color1: #B0E0E6; /* Powder Blue */
+            --color2: #AFEEEE; /* Pale Turquoise */
+            width: 250px; height: 250px;
+            top: 30%; right: 10%;
+            animation-delay: 5s;
+        }
+        .blob:nth-child(3) {
+            --color1: #E6E6FA; /* Lavender */
+            --color2: #D8BFD8; /* Thistle */
+            width: 180px; height: 180px;
+            bottom: 15%; left: 20%;
+            animation-delay: 10s;
+        }
+        .blob:nth-child(4) {
+            --color1: #FFFACD; /* Lemon Chiffon */
+            --color2: #F0E68C; /* Khaki */
+            width: 220px; height: 220px;
+            top: 5%; right: 30%;
+            animation-delay: 15s;
+        }
+
+        @keyframes blobAnimation {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -30px) scale(1.05); }
+            50% { transform: translate(-15px, 25px) scale(0.95); }
+            75% { transform: translate(30px, 10px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Section Entry Animation */
+        .content-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .content-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Hover Effect */
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Soft shadow on hover */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f4f8; /* Light background for track */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a7d9ed; /* Soft blue for thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8ec3e6; /* Slightly darker blue on hover */
+        }
+
+        /* Fixed Bottom Navigation for Desktop */
+        .desktop-nav {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 9999px; /* Pill shape */
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 1rem;
+        }
+        .desktop-nav .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            color: #6b7280; /* Gray-500 */
+        }
+        .desktop-nav .nav-link:hover {
+            background-color: #e0e7ff; /* Indigo-100 */
+            color: #5a67d8; /* Indigo-600 */
+        }
+        .desktop-nav .nav-link.active {
+            background-color: #c7d2fe; /* Indigo-200 */
+            color: #5a67d8; /* Indigo-600 */
+            font-weight: 600;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-menu-overlay .nav-link {
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            color: #5a67d8;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-overlay .nav-link:hover {
+            background-color: #e0e7ff;
+            border-radius: 0.5rem;
+        }
+        .mobile-menu-overlay .nav-link.active {
+            background-color: #c7d2fe;
+            font-weight: 600;
+            border-radius: 0.5rem;
+        }
+
+        /* Hide desktop nav on small screens, show mobile menu button */
+        @media (max-width: 1023px) { /* Tailwind's 'lg' breakpoint */
+            .desktop-nav {
+                display: none;
+            }
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+        /* Hide mobile menu button on large screens */
+        @media (min-width: 1024px) {
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Background Blob Animations -->
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+
+    <div class="max-w-4xl w-full mx-auto bg-white rounded-3xl shadow-xl p-6 md:p-10 relative z-10">
+        <!-- Mobile Menu Toggle Button -->
+        <button id="toggleMobileMenu" class="mobile-menu-button fixed top-4 right-4 bg-white p-3 rounded-full shadow-md text-gray-700 z-50">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+
+        <!-- Main Content Area - Scrollable -->
+        <main class="overflow-y-auto max-h-[calc(100vh-8rem)] lg:max-h-none pb-20">
+            <section id="about" class="content-section active bg-pink-50 rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-indigo-600">Hello, I'm <span class="text-pink-500">Your Name</span>.</h1>
+                <p class="text-lg leading-relaxed mb-8 text-gray-700">
+                    I'm a <span class="font-semibold text-purple-600">Full-Stack Developer</span> passionate about crafting elegant and efficient digital experiences. My work focuses on building intuitive interfaces and robust backend systems that bring ideas to life.
+                </p>
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+                    <img src="https://placehold.co/250x250/F0F8FF/5A67D8?text=Your+Profile" alt="Your Profile Picture" class="rounded-full shadow-lg w-40 h-40 md:w-48 md:h-48 object-cover border-4 border-white transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-base leading-relaxed text-gray-600 flex-1">
+                        My journey in tech is fueled by continuous learning and a drive to innovate. I enjoy solving complex challenges and collaborating on projects that make a real impact. Outside of coding, I love exploring new places, photography, and spending time in nature.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-pink-400 to-purple-400 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        Let's Chat <i class="fas fa-comment-dots ml-2"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section id="skills" class="content-section hidden bg-blue-50 rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-indigo-600">My <span class="text-blue-500">Expertise</span>.</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover-effect">
+                        <h3 class="text-2xl font-semibold mb-3 text-indigo-500"><i class="fas fa-code mr-3"></i> Frontend</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>React, Vue, Svelte</li>
+                            <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                            <li>Tailwind CSS, Styled Components</li>
+                            <li>Responsive Design, UI/UX Principles</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover-effect">
+                        <h3 class="text-2xl font-semibold mb-3 text-purple-500"><i class="fas fa-server mr-3"></i> Backend</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Node.js, Express.js</li>
+                            <li>Python (Django, Flask)</li>
+                            <li>Go, Gin</li>
+                            <li>RESTful APIs, Microservices</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover-effect">
+                        <h3 class="text-2xl font-semibold mb-3 text-pink-500"><i class="fas fa-database mr-3"></i> Data & Cloud</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>PostgreSQL, MongoDB, Firestore</li>
+                            <li>AWS (EC2, S3, Lambda), GCP</li>
+                            <li>Docker, Kubernetes</li>
+                            <li>CI/CD, Git</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="content-section hidden bg-purple-50 rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-indigo-600">My <span class="text-purple-500">Creations</span>.</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover-effect flex flex-col">
+                        <img src="https://placehold.co/600x400/E6E6FA/5A67D8?text=Project+1+Image" alt="Project 1" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-2xl font-semibold mb-2 text-indigo-500">Bloom Analytics Dashboard</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            An interactive data visualization dashboard for tracking website metrics, built with React and D3.js.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-sm mb-4">
+                            <span class="bg-pink-200 text-pink-800 px-3 py-1 rounded-full">React</span>
+                            <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full">D3.js</span>
+                            <span class="bg-purple-200 text-purple-800 px-3 py-1 rounded-full">Node.js</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-pink-500 hover:text-pink-700 transition-colors duration-200"><i class="fas fa-link mr-1"></i> Live Demo</a>
+                            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200"><i class="fab fa-github mr-1"></i> GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover-effect flex flex-col">
+                        <img src="https://placehold.co/600x400/F0F8FF/5A67D8?text=Project+2+Image" alt="Project 2" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-2xl font-semibold mb-2 text-indigo-500">Cloud Blossom API Gateway</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Designed and implemented a scalable API gateway using Go and AWS Lambda for microservice orchestration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-sm mb-4">
+                            <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full">Go</span>
+                            <span class="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full">AWS Lambda</span>
+                            <span class="bg-red-200 text-red-800 px-3 py-1 rounded-full">DynamoDB</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-pink-500 hover:text-pink-700 transition-colors duration-200"><i class="fas fa-link mr-1"></i> Live Demo</a>
+                            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200"><i class="fab fa-github mr-1"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="content-section hidden bg-yellow-50 rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-indigo-600">Let's <span class="text-yellow-500">Connect</span>.</h2>
+                <p class="text-lg leading-relaxed mb-8 text-gray-700">
+                    I'm always open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!
+                </p>
+
+                <form class="bg-white p-8 rounded-xl shadow-md max-w-lg mx-auto">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200" placeholder="Your Name">
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200" placeholder="your.email@example.com">
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
+                        <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200" placeholder="Your message..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-12 text-center">
+                    <h3 class="text-2xl font-semibold mb-6 text-indigo-600">Find me on:</h3>
+                    <div class="flex justify-center space-x-8">
+                        <a href="#" class="text-gray-600 hover:text-blue-500 text-4xl transition-colors duration-200" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-gray-800 text-4xl transition-colors duration-200" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-blue-400 text-4xl transition-colors duration-200" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Fixed Bottom Navigation (Desktop Only) -->
+        <nav class="desktop-nav hidden lg:flex">
+            <a href="#about" class="nav-link flex items-center" data-section="about">
+                <i class="fas fa-user-circle mr-2"></i> About
+            </a>
+            <a href="#skills" class="nav-link flex items-center" data-section="skills">
+                <i class="fas fa-lightbulb mr-2"></i> Skills
+            </a>
+            <a href="#projects" class="nav-link flex items-center" data-section="projects">
+                <i class="fas fa-project-diagram mr-2"></i> Projects
+            </a>
+            <a href="#contact" class="nav-link flex items-center" data-section="contact">
+                <i class="fas fa-paper-plane mr-2"></i> Contact
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenuOverlay" class="mobile-menu-overlay">
+            <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-700 text-4xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav class="flex flex-col items-center space-y-6">
+                <a href="#about" class="nav-link" data-section="about">About Me</a>
+                <a href="#skills" class="nav-link" data-section="skills">My Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Message Box for Alerts -->
+        <div id="messageBox" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white p-8 rounded-xl shadow-xl max-w-sm w-full text-center">
+                <h3 id="messageBoxTitle" class="text-2xl font-bold mb-4 text-gray-800"></h3>
+                <p id="messageBoxContent" class="text-gray-700 mb-6"></p>
+                <button id="messageBoxClose" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105">
+                    Got it!
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            const toggleMobileMenuBtn = document.getElementById('toggleMobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+            const messageBox = document.getElementById('messageBox');
+            const messageBoxTitle = document.getElementById('messageBoxTitle');
+            const messageBoxContent = document.getElementById('messageBoxContent');
+            const messageBoxClose = document.getElementById('messageBoxClose');
+
+            // Function to show custom message box
+            function showMessageBox(title, message) {
+                messageBoxTitle.textContent = title;
+                messageBoxContent.textContent = message;
+                messageBox.classList.remove('hidden');
+            }
+
+            // Close message box
+            messageBoxClose.addEventListener('click', () => {
+                messageBox.classList.add('hidden');
+            });
+
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Remove active class from all links
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    // Add active class to clicked link
+                    link.classList.add('active');
+
+                    // Hide all content sections and remove active class
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        section.classList.add('hidden'); // Hide immediately to prevent flicker
+                    });
+
+                    // Show the target section with animation
+                    const targetId = link.getAttribute('data-section');
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden'); // Show first
+                        // Trigger reflow to restart animation
+                        void targetSection.offsetWidth;
+                        targetSection.classList.add('active');
+                        // Scroll to the top of the main content area (smoothly)
+                        document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    // Close mobile menu if open
+                    if (mobileMenuOverlay.classList.contains('active')) {
+                        mobileMenuOverlay.classList.remove('active');
+                    }
+                });
+            });
+
+            // Toggle mobile menu visibility
+            toggleMobileMenuBtn.addEventListener('click', () => {
+                mobileMenuOverlay.classList.add('active');
+            });
+
+            // Close mobile menu
+            closeMobileMenuBtn.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+            });
+
+            // Set initial active state based on URL hash or default to 'about'
+            const initialHash = window.location.hash.substring(1);
+            let activeSectionFound = false;
+            if (initialHash) {
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-section') === initialHash) {
+                        link.click(); // Simulate click to activate
+                        activeSectionFound = true;
+                    }
+                });
+            }
+
+            // If no hash or invalid hash, default to 'about'
+            if (!activeSectionFound) {
+                document.querySelector('.nav-link[data-section="about"]').click();
+            }
+
+            // Handle form submission (example: prevent default and show message)
+            const contactForm = document.querySelector('#contact form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // In a real application, you would send this data to a server
+                    console.log('Form submitted!');
+                    showMessageBox('Message Sent!', 'Thank you for your message. I will get back to you soon!');
+                    contactForm.reset(); // Clear the form
+                });
+            }
+        });
+    </script>
+</body>
+</html>

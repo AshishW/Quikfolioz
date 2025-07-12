@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Creative Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Define custom fonts and theme styles */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #f3e9d8; /* Parchment base color */
+            color: #4a2c2a; /* Dark brown text */
+            /* Applying a realistic parchment texture */
+            background-image: url('https://www.transparenttextures.com/patterns/old-parchment.png');
+            position: relative;
+        }
+
+        /* Add a vignette effect to deepen the edges */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.4);
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .font-magic {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+
+        /* Custom scrollbar for a more thematic feel */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #c7bca1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #8a6c4a;
+            border-radius: 20px;
+            border: 3px solid #c7bca1;
+        }
+
+        /* Animations for elements revealed on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styling for the project modal */
+        .modal-content {
+            background-color: #f3e9d8;
+            background-image: url('https://www.transparenttextures.com/patterns/old-parchment.png');
+        }
+        
+        /* Underline effect for nav links */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #8a6c4a;
+            transition: width 0.4s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Button hover effect */
+        .btn-magic {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .btn-magic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Project card styling */
+        .project-card {
+            border: 2px solid transparent;
+            border-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%234A2C2Aff' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e") 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-transparent backdrop-blur-sm p-4 fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="font-magic text-2xl tracking-wider">DA</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-lg hover:text-[#8a6c4a]">About Me</a>
+                <a href="#projects" class="nav-link text-lg hover:text-[#8a6c4a]">Projects</a>
+                <a href="#experience" class="nav-link text-lg hover:text-[#8a6c4a]">Experience</a>
+                <a href="#contact" class="nav-link text-lg hover:text-[#8a6c4a]">Contact</a>
+            </nav>
+            <div class="md:hidden">
+                <!-- Mobile menu can be added here if needed -->
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24 md:pt-32">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center min-h-[70vh] flex flex-col justify-center items-center reveal">
+            <h1 class="font-magic text-5xl md:text-8xl tracking-wider">Your Name</h1>
+            <p class="text-xl md:text-3xl mt-4 italic">Crafting Engaging Digital Experiences</p>
+            <p class="max-w-3xl mt-8 text-lg md:text-xl leading-relaxed">
+                A passionate developer crafting intricate code into seamless and captivating user experiences. I leverage modern technologies to build innovative and impactful digital solutions.
+            </p>
+            <a href="#projects" class="btn-magic font-magic mt-12 bg-[#8a6c4a] text-[#f3e9d8] py-3 px-8 rounded-lg text-xl tracking-wide hover:bg-[#6b533a]">
+                Explore My Work
+            </a>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32 reveal">
+            <h2 class="font-magic text-4xl md:text-6xl text-center tracking-wide">About Me</h2>
+            <div class="mt-16 grid md:grid-cols-3 gap-12 items-center">
+                <div class="md:col-span-2 text-lg leading-loose">
+                    <p>
+                        Hello! I'm a dedicated software developer, transforming concepts into robust and user-centric applications. My journey began with a simple "Hello, World!" and has since evolved into a pursuit of mastery in both frontend and backend development.
+                    </p>
+                    <p class="mt-6">
+                        I thrive on challenges, approaching each project as an opportunity to innovate and refine. My philosophy centers on writing clean, efficient, and maintainable code, ensuring robust and scalable solutions.
+                    </p>
+                </div>
+                <!-- Skills -->
+                <div class="space-y-6">
+                    <h3 class="font-magic text-2xl mb-4">Core Skills</h3>
+                    <div>
+                        <p>JavaScript (ES6+)</p>
+                        <div class="w-full bg-[#c7bca1] rounded-full h-2.5"><div class="bg-[#8a6c4a] h-2.5 rounded-full" style="width: 90%"></div></div>
+                    </div>
+                    <div>
+                        <p>React & Next.js</p>
+                        <div class="w-full bg-[#c7bca1] rounded-full h-2.5"><div class="bg-[#8a6c4a] h-2.5 rounded-full" style="width: 85%"></div></div>
+                    </div>
+                    <div>
+                        <p>Node.js & Express</p>
+                        <div class="w-full bg-[#c7bca1] rounded-full h-2.5"><div class="bg-[#8a6c4a] h-2.5 rounded-full" style="width: 75%"></div></div>
+                    </div>
+                     <div>
+                        <p>HTML & CSS</p>
+                        <div class="w-full bg-[#c7bca1] rounded-full h-2.5"><div class="bg-[#8a6c4a] h-2.5 rounded-full" style="width: 95%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32 reveal">
+            <h2 class="font-magic text-4xl md:text-6xl text-center tracking-wide">My Projects</h2>
+            <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Project Card 1 -->
+                <div class="project-card p-6 rounded-xl cursor-pointer" onclick="openModal('project1')">
+                    <h3 class="font-magic text-2xl">E-commerce Platform</h3>
+                    <p class="mt-2 italic">A comprehensive e-commerce platform.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">React</span>
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Firebase</span>
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Tailwind CSS</span>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card p-6 rounded-xl cursor-pointer" onclick="openModal('project2')">
+                    <h3 class="font-magic text-2xl">Collaborative Editor</h3>
+                    <p class="mt-2 italic">A real-time collaborative document editor.</p>
+                     <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Vue.js</span>
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Socket.io</span>
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Express</span>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="project-card p-6 rounded-xl cursor-pointer" onclick="openModal('project3')">
+                    <h3 class="font-magic text-2xl">Data Visualization Dashboard</h3>
+                    <p class="mt-2 italic">An interactive data visualization dashboard.</p>
+                     <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">D3.js</span>
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Python</span>
+                        <span class="bg-[#c7bca1] text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Flask</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 md:py-32 reveal">
+            <h2 class="font-magic text-4xl md:text-6xl text-center tracking-wide">Experience</h2>
+            <div class="mt-16 max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-dashed border-[#8a6c4a] space-y-16">
+                    <!-- Experience Item 1 -->
+                    <div class="pl-10 relative">
+                        <div class="absolute -left-4 top-1 w-8 h-8 bg-[#8a6c4a] rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-[#f3e9d8]" fill="currentColor" viewBox="0 0 20 20"><path d="M10.364 2.273a1 1 0 00-1.091-.909l-7 1A1 1 0 001.273 4.273l3 15a1 1 0 00.91.727h10.634a1 1 0 00.91-.727l3-15a1 1 0 00-1.09-1.364l-7-1zM14.727 17H5.273l-2.4-12 5.6.8 5.6-.8-2.4 12z"></path><path d="M10 12a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+                        </div>
+                        <h3 class="font-magic text-2xl">Lead Developer</h3>
+                        <p class="italic text-lg">Tech Solutions Inc. | 2021 - Present</p>
+                        <p class="mt-2">Led a team of developers in creating web applications for high-profile clients. Mentored junior developers and optimized development workflows by 30%.</p>
+                    </div>
+                    <!-- Experience Item 2 -->
+                    <div class="pl-10 relative">
+                        <div class="absolute -left-4 top-1 w-8 h-8 bg-[#8a6c4a] rounded-full flex items-center justify-center">
+                             <svg class="w-5 h-5 text-[#f3e9d8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path></svg>
+                        </div>
+                        <h3 class="font-magic text-2xl">Junior Developer</h3>
+                        <p class="italic text-lg">Innovate Digital | 2019 - 2021</p>
+                        <p class="mt-2">Crafted beautiful and responsive user interfaces, transforming static designs into dynamic, interactive experiences. Assisted senior developers in debugging complex issues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 text-center reveal">
+            <h2 class="font-magic text-4xl md:text-6xl tracking-wide">Get in Touch</h2>
+            <p class="mt-6 max-w-2xl mx-auto text-lg">
+                Have a project idea, a collaboration opportunity, or just want to connect? Feel free to reach out.
+            </p>
+            <div class="mt-10">
+                <a href="mailto:youremail@example.com" class="btn-magic font-magic bg-[#8a6c4a] text-[#f3e9d8] py-3 px-8 rounded-lg text-xl tracking-wide hover:bg-[#6b533a]">
+                    Contact Me
+                </a>
+            </div>
+            <div class="mt-12 flex justify-center space-x-8">
+                <a href="#" target="_blank" class="text-[#4a2c2a] hover:text-[#8a6c4a] transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" target="_blank" class="text-[#4a2c2a] hover:text-[#8a6c4a] transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center py-8 mt-16 border-t border-dashed border-[#8a6c4a]">
+        <p>Crafted with Code & Creativity by Your Name © 2024</p>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4 transition-opacity duration-300">
+        <div id="modalContent" class="modal-content max-w-2xl w-full rounded-xl p-8 border-2 border-[#4a2c2a] relative transform scale-95 transition-transform duration-300">
+            <!-- Content will be injected by JS -->
+        </div>
+    </div>
+    
+    <!-- Project Details Templates -->
+    <div id="project1-details" class="hidden">
+        <h2 class="font-magic text-3xl">E-commerce Platform</h2>
+        <p class="italic mt-1">A comprehensive e-commerce platform.</p>
+        <p class="mt-4 leading-relaxed">This was a full-stack endeavor to create a robust online marketplace for various products. The platform features secure authentication, real-time inventory updates via Firebase, and a fully responsive design for all devices.</p>
+        <div class="mt-4">
+            <strong class="font-bold">Technologies Used:</strong> React, Firebase, Tailwind CSS, Stripe API
+        </div>
+        <div class="mt-6 flex space-x-4">
+            <a href="#" class="btn-magic font-magic bg-[#8a6c4a] text-[#f3e9d8] py-2 px-5 rounded-lg text-lg tracking-wide hover:bg-[#6b533a]">Live Demo</a>
+            <a href="#" class="btn-magic font-magic bg-transparent border border-[#8a6c4a] text-[#4a2c2a] py-2 px-5 rounded-lg text-lg tracking-wide hover:bg-[#c7bca1]">Source Code</a>
+        </div>
+    </div>
+    <div id="project2-details" class="hidden">
+        <h2 class="font-magic text-3xl">Collaborative Editor</h2>
+        <p class="italic mt-1">A real-time collaborative document editor.</p>
+        <p class="mt-4 leading-relaxed">Inspired by the need for collaborative content creation, this application allows multiple users to edit the same document simultaneously. It uses WebSockets via Socket.io to ensure that changes are broadcast to all connected clients in real-time, providing a seamless co-editing experience.</p>
+        <div class="mt-4">
+            <strong class="font-bold">Technologies Used:</strong> Vue.js, Node.js, Express, Socket.io, MongoDB
+        </div>
+        <div class="mt-6 flex space-x-4">
+            <a href="#" class="btn-magic font-magic bg-[#8a6c4a] text-[#f3e9d8] py-2 px-5 rounded-lg text-lg tracking-wide hover:bg-[#6b533a]">Live Demo</a>
+            <a href="#" class="btn-magic font-magic bg-transparent border border-[#8a6c4a] text-[#4a2c2a] py-2 px-5 rounded-lg text-lg tracking-wide hover:bg-[#c7bca1]">Source Code</a>
+        </div>
+    </div>
+    <div id="project3-details" class="hidden">
+        <h2 class="font-magic text-3xl">Data Visualization Dashboard</h2>
+        <p class="italic mt-1">An interactive data visualization dashboard.</p>
+        <p class="mt-4 leading-relaxed">This project leverages data science to provide actionable insights. By fetching data from a custom Python/Flask API, it uses the D3.js library to create interactive charts and graphs. This allows users to visualize trends and key metrics, enabling more informed decision-making.</p>
+        <div class="mt-4">
+            <strong class="font-bold">Technologies Used:</strong> D3.js, Python, Flask, Pandas
+        </div>
+        <div class="mt-6 flex space-x-4">
+            <a href="#" class="btn-magic font-magic bg-[#8a6c4a] text-[#f3e9d8] py-2 px-5 rounded-lg text-lg tracking-wide hover:bg-[#6b533a]">Live Demo</a>
+            <a href="#" class="btn-magic font-magic bg-transparent border border-[#8a6c4a] text-[#4a2c2a] py-2 px-5 rounded-lg text-lg tracking-wide hover:bg-[#c7bca1]">Source Code</a>
+        </div>
+    </div>
+
+    <script>
+        // --- Scroll Animation Logic ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after revealing
+                    // revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        // --- Project Modal Logic ---
+        const modal = document.getElementById('projectModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(projectId) {
+            const projectDetails = document.getElementById(`${projectId}-details`).innerHTML;
+            modalContent.innerHTML = projectDetails;
+            
+            // Add a close button dynamically
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '&times;';
+            closeButton.className = 'absolute top-4 right-5 text-4xl font-bold text-[#4a2c2a] hover:text-red-700 transition-colors';
+            closeButton.onclick = closeModal;
+            modalContent.appendChild(closeButton);
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.style.opacity = '1';
+                modalContent.style.transform = 'scale(1)';
+            }, 10); // Small delay to allow CSS transition
+        }
+
+        function closeModal() {
+            modal.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300); // Match transition duration
+        }
+
+        // Close modal on outside click
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+</html>

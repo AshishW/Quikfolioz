@@ -1,0 +1,23 @@
+{
+    "name": "Petal Portfolio",
+    "description": "Elegant portfolio template with floating petal animations and pink theme, featuring smooth fade-in sections",
+    "category": "minimalist",
+    "technologies": [
+        "HTML5",
+        "TailwindCSS",
+        "JavaScript",
+        "Google Fonts",
+        "Canvas API"
+    ],
+    "features": [
+        "Responsive Design",
+        "Mobile Menu",
+        "Scroll-based Fade Animations",
+        "Floating Petal Animation",
+        "Project Cards with Hover Effects",
+        "Skills Showcase",
+        "Contact Form",
+        "Social Media Links",
+        "Smooth Scroll Navigation"
+    ]
+}
