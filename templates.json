@@ -411,6 +411,33 @@
         "folder": "petal_portfolio"
     },
     {
+        "id": "puzzle_portfolio",
+        "name": "Playful Puzzle Portfolio",
+        "description": "Interactive portfolio template featuring draggable puzzle pieces with playful animations and a floating bubble background",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Three.js",
+            "GSAP",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "3D Bubble Background",
+            "Draggable Puzzle Pieces",
+            "Interactive Modal Windows",
+            "Intro Animation Sequence",
+            "Custom SVG Puzzle Shapes",
+            "Elastic Animations",
+            "Hover Effects",
+            "Mobile-Friendly Layout"
+        ],
+        "preview": "templates/puzzle_portfolio/thumbnail.png",
+        "folder": "puzzle_portfolio"
+    },
+    {
         "id": "retro_game_portfolio",
         "name": "Retro Game Portfolio",
         "description": "A beautiful and modern retro game portfolio template with clean design and responsive layout.",
