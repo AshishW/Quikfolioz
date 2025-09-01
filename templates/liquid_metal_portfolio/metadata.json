@@ -1,0 +1,19 @@
+{
+  "name": "Liquid Metal Portfolio",
+  "description": "Futuristic portfolio with chrome reflections, mercury-like fluid animations, and metallic surface effects",
+  "category": "modern",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Liquid-metal Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

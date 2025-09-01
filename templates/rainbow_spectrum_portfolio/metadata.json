@@ -1,0 +1,19 @@
+{
+  "name": "Rainbow Spectrum Portfolio",
+  "description": "Vibrant portfolio celebrating the full color spectrum with rainbow gradients and chromatic animations",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Rainbow Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

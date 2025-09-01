@@ -1,0 +1,19 @@
+{
+  "name": "Platinum Elite Portfolio",
+  "description": "Ultra-modern portfolio with platinum aesthetics, chrome reflections, and premium animations",
+  "category": "modern",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Platinum Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

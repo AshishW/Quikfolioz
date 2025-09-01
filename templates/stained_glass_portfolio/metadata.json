@@ -1,0 +1,19 @@
+{
+  "name": "Stained Glass Portfolio",
+  "description": "Cathedral-inspired portfolio with stained glass patterns, light refractions, and Gothic design elements",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Stained-glass Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

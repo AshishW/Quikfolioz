@@ -1,0 +1,19 @@
+{
+  "name": "Neon Gaming Portfolio",
+  "description": "Gaming-inspired portfolio with HUD elements, health bars, power-ups, and RGB lighting effects",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Gaming Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

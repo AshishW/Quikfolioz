@@ -1,0 +1,19 @@
+{
+  "name": "Circuit Board Portfolio",
+  "description": "Tech portfolio with printed circuit board patterns, electrical pathways, and electronic component styling",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Circuit Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Origami Paper Portfolio",
+  "description": "Paper craft portfolio with origami folds, layered paper effects, and dimensional shadow play",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Origami Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

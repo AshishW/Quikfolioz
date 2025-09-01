@@ -1,0 +1,19 @@
+{
+  "name": "Art Deco Portfolio",
+  "description": "Elegant portfolio template inspired by 1920s Art Deco design with geometric patterns, gold accents, and sophisticated animations",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Art-deco Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

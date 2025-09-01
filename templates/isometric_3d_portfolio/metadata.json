@@ -1,0 +1,19 @@
+{
+  "name": "Isometric 3D Portfolio",
+  "description": "Three-dimensional isometric portfolio with 3D blocks, perspective animations, and spatial depth",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Isometric Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

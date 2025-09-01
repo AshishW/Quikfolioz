@@ -1,0 +1,19 @@
+{
+  "name": "Ocean Waves Portfolio",
+  "description": "Fluid ocean-inspired design with wave animations, underwater bubbles, and marine color gradients",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Ocean Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

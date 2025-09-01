@@ -1,0 +1,19 @@
+{
+  "name": "Concrete Brutalist Portfolio",
+  "description": "Industrial portfolio with concrete textures, brutalist architecture, and raw material aesthetics",
+  "category": "modern",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Concrete Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

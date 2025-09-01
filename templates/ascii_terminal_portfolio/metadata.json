@@ -1,0 +1,19 @@
+{
+  "name": "ASCII Terminal Portfolio",
+  "description": "Text-based portfolio using ASCII art, terminal aesthetics, and command-line interface styling",
+  "category": "terminal",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Ascii Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

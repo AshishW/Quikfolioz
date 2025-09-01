@@ -1,5 +1,27 @@
 [
     {
+        "id": "abstract_expressionist_portfolio",
+        "name": "Abstract Expressionist Portfolio",
+        "description": "Artistic portfolio inspired by abstract expressionism with paint splashes, brush strokes, and artistic chaos",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Abstract Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Abstract%20Expressionist%20Portfolio",
+        "folder": "abstract_expressionist_portfolio"
+    },
+    {
         "id": "aqueous_portfolio",
         "name": "Aqueous Portfolio",
         "description": "A beautiful and modern aqueous portfolio template with clean design and responsive layout.",
@@ -16,6 +38,72 @@
         ],
         "preview": "templates/aqueous_portfolio/thumbnail.png",
         "folder": "aqueous_portfolio"
+    },
+    {
+        "id": "art_deco_portfolio",
+        "name": "Art Deco Portfolio",
+        "description": "Elegant portfolio template inspired by 1920s Art Deco design with geometric patterns, gold accents, and sophisticated animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Art-deco Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Art%20Deco%20Portfolio",
+        "folder": "art_deco_portfolio"
+    },
+    {
+        "id": "ascii_terminal_portfolio",
+        "name": "ASCII Terminal Portfolio",
+        "description": "Text-based portfolio using ASCII art, terminal aesthetics, and command-line interface styling",
+        "category": "terminal",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Ascii Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=ASCII%20Terminal%20Portfolio",
+        "folder": "ascii_terminal_portfolio"
+    },
+    {
+        "id": "blockchain_crypto_portfolio",
+        "name": "Blockchain Crypto Portfolio",
+        "description": "Cryptocurrency-themed portfolio with blockchain visualizations, crypto symbols, and digital currency aesthetics",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Blockchain Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Blockchain%20Crypto%20Portfolio",
+        "folder": "blockchain_crypto_portfolio"
     },
     {
         "id": "celestial_portfolio",
@@ -40,6 +128,28 @@
         ],
         "preview": "templates/celestial_portfolio/thumbnail.png",
         "folder": "celestial_portfolio"
+    },
+    {
+        "id": "circuit_board_portfolio",
+        "name": "Circuit Board Portfolio",
+        "description": "Tech portfolio with printed circuit board patterns, electrical pathways, and electronic component styling",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Circuit Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Circuit%20Board%20Portfolio",
+        "folder": "circuit_board_portfolio"
     },
     {
         "id": "cloud_portfolio",
@@ -96,6 +206,50 @@
         "folder": "code_editor_portfolio"
     },
     {
+        "id": "comic_pop_art_portfolio",
+        "name": "Comic Pop Art Portfolio",
+        "description": "Pop art inspired portfolio with comic book aesthetics, Ben-Day dots, speech bubbles, and vibrant colors",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Comic Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Comic%20Pop%20Art%20Portfolio",
+        "folder": "comic_pop_art_portfolio"
+    },
+    {
+        "id": "concrete_brutalist_portfolio",
+        "name": "Concrete Brutalist Portfolio",
+        "description": "Industrial portfolio with concrete textures, brutalist architecture, and raw material aesthetics",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Concrete Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Concrete%20Brutalist%20Portfolio",
+        "folder": "concrete_brutalist_portfolio"
+    },
+    {
         "id": "crystal_portfolio",
         "name": "Crystal Portfolio",
         "description": "A beautiful and modern crystal portfolio template with clean design and responsive layout.",
@@ -112,6 +266,28 @@
         ],
         "preview": "templates/crystal_portfolio/thumbnail.png",
         "folder": "crystal_portfolio"
+    },
+    {
+        "id": "cyber_grid_portfolio",
+        "name": "Cyber Grid Portfolio",
+        "description": "Digital landscape portfolio with glowing wireframes, matrix-style code rain, and futuristic UI elements",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Cyber-grid Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Cyber%20Grid%20Portfolio",
+        "folder": "cyber_grid_portfolio"
     },
     {
         "id": "cyber_term_portfolio",
@@ -152,6 +328,72 @@
         "folder": "cyberpunk_portfolio"
     },
     {
+        "id": "datamosh_digital_portfolio",
+        "name": "Datamosh Digital Portfolio",
+        "description": "Digital artifact portfolio with compression glitches, data corruption effects, and broken pixel aesthetics",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Datamosh Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Datamosh%20Digital%20Portfolio",
+        "folder": "datamosh_digital_portfolio"
+    },
+    {
+        "id": "desert_dunes_portfolio",
+        "name": "Desert Dunes Portfolio",
+        "description": "Warm desert landscape with sand dune shapes, cactus graphics, and sunset color transitions",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Desert Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Desert%20Dunes%20Portfolio",
+        "folder": "desert_dunes_portfolio"
+    },
+    {
+        "id": "diamond_crystal_portfolio",
+        "name": "Diamond Crystal Portfolio",
+        "description": "Sparkling portfolio with diamond-cut layouts, crystal refractions, and prismatic color effects",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Crystal Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Diamond%20Crystal%20Portfolio",
+        "folder": "diamond_crystal_portfolio"
+    },
+    {
         "id": "doodle_portfolio",
         "name": "Doodle Portfolio",
         "description": "A beautiful and modern doodle portfolio template with clean design and responsive layout.",
@@ -168,6 +410,28 @@
         ],
         "preview": "templates/doodle_portfolio/thumbnail.png",
         "folder": "doodle_portfolio"
+    },
+    {
+        "id": "earth_tone_portfolio",
+        "name": "Earth Tone Portfolio",
+        "description": "Grounded portfolio with warm earth tones, natural color harmony, and organic color transitions",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Earth-tone Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Earth%20Tone%20Portfolio",
+        "folder": "earth_tone_portfolio"
     },
     {
         "id": "earthy_portfolio",
@@ -192,6 +456,94 @@
         "folder": "earthy_portfolio"
     },
     {
+        "id": "fabric_textile_portfolio",
+        "name": "Fabric Textile Portfolio",
+        "description": "Textile-inspired portfolio with fabric textures, weaving patterns, and soft material effects",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Fabric Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Fabric%20Textile%20Portfolio",
+        "folder": "fabric_textile_portfolio"
+    },
+    {
+        "id": "floating_islands_portfolio",
+        "name": "Floating Islands Portfolio",
+        "description": "Fantastical portfolio with floating island animations, cloud movements, and magical atmosphere",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Floating Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Floating%20Islands%20Portfolio",
+        "folder": "floating_islands_portfolio"
+    },
+    {
+        "id": "forest_whisper_portfolio",
+        "name": "Forest Whisper Portfolio",
+        "description": "Mystical forest-themed portfolio with tree silhouettes, morning mist effects, and woodland creature animations",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Forest Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Forest%20Whisper%20Portfolio",
+        "folder": "forest_whisper_portfolio"
+    },
+    {
+        "id": "fractal_patterns_portfolio",
+        "name": "Fractal Patterns Portfolio",
+        "description": "Mathematical beauty portfolio with fractal patterns, infinite zoom effects, and sacred geometry",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Fractal Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Fractal%20Patterns%20Portfolio",
+        "folder": "fractal_patterns_portfolio"
+    },
+    {
         "id": "freelance_creative_portfolio",
         "name": "Freelance Creative Portfolio",
         "description": "A beautiful and modern freelance creative portfolio template with clean design and responsive layout.",
@@ -208,6 +560,160 @@
         ],
         "preview": "templates/freelance_creative_portfolio/thumbnail.png",
         "folder": "freelance_creative_portfolio"
+    },
+    {
+        "id": "geometric_minimalist_portfolio",
+        "name": "Geometric Minimalist Portfolio",
+        "description": "Clean geometric portfolio with perfect shapes, mathematical precision, and minimalist color schemes",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Geometric Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Geometric%20Minimalist%20Portfolio",
+        "folder": "geometric_minimalist_portfolio"
+    },
+    {
+        "id": "glass_prism_portfolio",
+        "name": "Glass Prism Portfolio",
+        "description": "Transparent portfolio with glass morphism, light refraction effects, and prismatic color separations",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Glass Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Glass%20Prism%20Portfolio",
+        "folder": "glass_prism_portfolio"
+    },
+    {
+        "id": "glitch_matrix_portfolio",
+        "name": "Glitch Matrix Portfolio",
+        "description": "Digital corruption-inspired portfolio with glitch effects, RGB splitting, and matrix-style animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Glitch Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Glitch%20Matrix%20Portfolio",
+        "folder": "glitch_matrix_portfolio"
+    },
+    {
+        "id": "hologram_interference_portfolio",
+        "name": "Hologram Interference Portfolio",
+        "description": "Holographic portfolio with interference patterns, RGB chromatic aberration, and digital noise effects",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Hologram Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Hologram%20Interference%20Portfolio",
+        "folder": "hologram_interference_portfolio"
+    },
+    {
+        "id": "holographic_iridescent_portfolio",
+        "name": "Holographic Iridescent Portfolio",
+        "description": "Futuristic portfolio with holographic effects, iridescent colors, and rainbow reflections",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Holographic Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Holographic%20Iridescent%20Portfolio",
+        "folder": "holographic_iridescent_portfolio"
+    },
+    {
+        "id": "ink_splash_portfolio",
+        "name": "Ink Splash Portfolio",
+        "description": "Dynamic portfolio with ink splashes, fluid dynamics, black ink spreading effects, and artistic chaos",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Ink-splash Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Ink%20Splash%20Portfolio",
+        "folder": "ink_splash_portfolio"
+    },
+    {
+        "id": "isometric_3d_portfolio",
+        "name": "Isometric 3D Portfolio",
+        "description": "Three-dimensional isometric portfolio with 3D blocks, perspective animations, and spatial depth",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Isometric Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Isometric%203D%20Portfolio",
+        "folder": "isometric_3d_portfolio"
     },
     {
         "id": "jelly_wobble_portfolio",
@@ -264,6 +770,28 @@
         "folder": "jiggly_wiggly_portfolio"
     },
     {
+        "id": "kinetic_typography_portfolio",
+        "name": "Kinetic Typography Portfolio",
+        "description": "Text-focused portfolio with animated typography, moving letters, and dynamic text compositions",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Kinetic Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Kinetic%20Typography%20Portfolio",
+        "folder": "kinetic_typography_portfolio"
+    },
+    {
         "id": "lightning_portfolio",
         "name": "Lightning Portfolio",
         "description": "Atmospheric portfolio design with dynamic lightning effects and glass morphism.",
@@ -282,6 +810,50 @@
         ],
         "preview": "templates/lightning_portfolio/thumbnail.png",
         "folder": "lightning_portfolio"
+    },
+    {
+        "id": "liquid_metal_portfolio",
+        "name": "Liquid Metal Portfolio",
+        "description": "Futuristic portfolio with chrome reflections, mercury-like fluid animations, and metallic surface effects",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Liquid-metal Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Liquid%20Metal%20Portfolio",
+        "folder": "liquid_metal_portfolio"
+    },
+    {
+        "id": "luxury_gold_portfolio",
+        "name": "Luxury Gold Portfolio",
+        "description": "Premium portfolio with gold foil effects, marble textures, and elegant transitions for high-end presentations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Luxury Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Luxury%20Gold%20Portfolio",
+        "folder": "luxury_gold_portfolio"
     },
     {
         "id": "magic_portfolio",
@@ -344,6 +916,204 @@
         "folder": "modern_dev_portfolio"
     },
     {
+        "id": "monochrome_grayscale_portfolio",
+        "name": "Monochrome Grayscale Portfolio",
+        "description": "Elegant black and white portfolio with grayscale photography aesthetics and high contrast design",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Monochrome Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Monochrome%20Grayscale%20Portfolio",
+        "folder": "monochrome_grayscale_portfolio"
+    },
+    {
+        "id": "morphing_shapes_portfolio",
+        "name": "Morphing Shapes Portfolio",
+        "description": "Dynamic portfolio with constantly morphing shapes, fluid transformations, and organic animations",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Morphing Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Morphing%20Shapes%20Portfolio",
+        "folder": "morphing_shapes_portfolio"
+    },
+    {
+        "id": "mountain_peaks_portfolio",
+        "name": "Mountain Peaks Portfolio",
+        "description": "Majestic mountain-themed portfolio with peak silhouettes, snow effects, and alpine color schemes",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Mountain Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Mountain%20Peaks%20Portfolio",
+        "folder": "mountain_peaks_portfolio"
+    },
+    {
+        "id": "neon_electric_portfolio",
+        "name": "Neon Electric Portfolio",
+        "description": "High-energy portfolio with electric neon colors, rave aesthetics, and pulsating light effects",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Neon-electric Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Neon%20Electric%20Portfolio",
+        "folder": "neon_electric_portfolio"
+    },
+    {
+        "id": "neon_gaming_portfolio",
+        "name": "Neon Gaming Portfolio",
+        "description": "Gaming-inspired portfolio with HUD elements, health bars, power-ups, and RGB lighting effects",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Gaming Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Neon%20Gaming%20Portfolio",
+        "folder": "neon_gaming_portfolio"
+    },
+    {
+        "id": "neon_retrowave_portfolio",
+        "name": "Neon Retrowave Portfolio",
+        "description": "Outrun-inspired portfolio with neon palm trees, sunset gradients, and retro grid animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Retrowave Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Neon%20Retrowave%20Portfolio",
+        "folder": "neon_retrowave_portfolio"
+    },
+    {
+        "id": "ocean_waves_portfolio",
+        "name": "Ocean Waves Portfolio",
+        "description": "Fluid ocean-inspired design with wave animations, underwater bubbles, and marine color gradients",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Ocean Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Ocean%20Waves%20Portfolio",
+        "folder": "ocean_waves_portfolio"
+    },
+    {
+        "id": "organic_nature_portfolio",
+        "name": "Organic Nature Portfolio",
+        "description": "Earth-friendly portfolio with organic shapes, natural color palettes, floating leaf animations, and sustainable design principles",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Organic Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Organic%20Nature%20Portfolio",
+        "folder": "organic_nature_portfolio"
+    },
+    {
+        "id": "origami_paper_portfolio",
+        "name": "Origami Paper Portfolio",
+        "description": "Paper craft portfolio with origami folds, layered paper effects, and dimensional shadow play",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Origami Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Origami%20Paper%20Portfolio",
+        "folder": "origami_paper_portfolio"
+    },
+    {
         "id": "paper_portfolio",
         "name": "Paper Portfolio",
         "description": "A beautiful and modern paper portfolio template with clean design and responsive layout.",
@@ -360,6 +1130,50 @@
         ],
         "preview": "templates/paper_portfolio/thumbnail.png",
         "folder": "paper_portfolio"
+    },
+    {
+        "id": "particle_explosion_portfolio",
+        "name": "Particle Explosion Portfolio",
+        "description": "Energetic portfolio with particle systems, explosive animations, and dynamic physics simulations",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Particle Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Particle%20Explosion%20Portfolio",
+        "folder": "particle_explosion_portfolio"
+    },
+    {
+        "id": "pastel_dreamy_portfolio",
+        "name": "Pastel Dreamy Portfolio",
+        "description": "Soft pastel portfolio with dreamy colors, cotton candy aesthetics, and gentle animations",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Pastel Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Pastel%20Dreamy%20Portfolio",
+        "folder": "pastel_dreamy_portfolio"
     },
     {
         "id": "pastel_portfolio",
@@ -411,6 +1225,50 @@
         "folder": "petal_portfolio"
     },
     {
+        "id": "pixel_art_portfolio",
+        "name": "Pixel Art Portfolio",
+        "description": "8-bit inspired portfolio with pixelated graphics, retro game aesthetics, and chiptune-style animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Pixel Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Pixel%20Art%20Portfolio",
+        "folder": "pixel_art_portfolio"
+    },
+    {
+        "id": "platinum_elite_portfolio",
+        "name": "Platinum Elite Portfolio",
+        "description": "Ultra-modern portfolio with platinum aesthetics, chrome reflections, and premium animations",
+        "category": "modern",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Platinum Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Platinum%20Elite%20Portfolio",
+        "folder": "platinum_elite_portfolio"
+    },
+    {
         "id": "puzzle_portfolio",
         "name": "Playful Puzzle Portfolio",
         "description": "Interactive portfolio template featuring draggable puzzle pieces with playful animations and a floating bubble background",
@@ -438,6 +1296,50 @@
         "folder": "puzzle_portfolio"
     },
     {
+        "id": "quantum_computing_portfolio",
+        "name": "Quantum Computing Portfolio",
+        "description": "Quantum-inspired portfolio with particle effects, quantum entanglement visuals, and scientific aesthetics",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Quantum Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Quantum%20Computing%20Portfolio",
+        "folder": "quantum_computing_portfolio"
+    },
+    {
+        "id": "rainbow_spectrum_portfolio",
+        "name": "Rainbow Spectrum Portfolio",
+        "description": "Vibrant portfolio celebrating the full color spectrum with rainbow gradients and chromatic animations",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Rainbow Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Rainbow%20Spectrum%20Portfolio",
+        "folder": "rainbow_spectrum_portfolio"
+    },
+    {
         "id": "retro_game_portfolio",
         "name": "Retro Game Portfolio",
         "description": "A beautiful and modern retro game portfolio template with clean design and responsive layout.",
@@ -454,6 +1356,28 @@
         ],
         "preview": "templates/retro_game_portfolio/thumbnail.png",
         "folder": "retro_game_portfolio"
+    },
+    {
+        "id": "royal_purple_portfolio",
+        "name": "Royal Purple Portfolio",
+        "description": "Majestic portfolio design with royal purple gradients, crown motifs, and regal animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Royal Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Royal%20Purple%20Portfolio",
+        "folder": "royal_purple_portfolio"
     },
     {
         "id": "simple_portfolio",
@@ -510,6 +1434,72 @@
         "folder": "space_terminal_portfolio"
     },
     {
+        "id": "spiral_galaxy_portfolio",
+        "name": "Spiral Galaxy Portfolio",
+        "description": "Cosmic portfolio with spiral galaxy animations, star formations, and deep space aesthetics",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Galaxy Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Spiral%20Galaxy%20Portfolio",
+        "folder": "spiral_galaxy_portfolio"
+    },
+    {
+        "id": "stained_glass_portfolio",
+        "name": "Stained Glass Portfolio",
+        "description": "Cathedral-inspired portfolio with stained glass patterns, light refractions, and Gothic design elements",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Stained-glass Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Stained%20Glass%20Portfolio",
+        "folder": "stained_glass_portfolio"
+    },
+    {
+        "id": "synthwave_portfolio",
+        "name": "Synthwave Portfolio",
+        "description": "Retro-futuristic portfolio inspired by 80s synthwave aesthetics with neon grids, glowing effects, and cyberpunk styling",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Synthwave Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Synthwave%20Portfolio",
+        "folder": "synthwave_portfolio"
+    },
+    {
         "id": "terminal_portfolio",
         "name": "Terminal Portfolio",
         "description": "Command-line inspired interface for developers who love the terminal aesthetic.",
@@ -527,5 +1517,115 @@
         ],
         "preview": "templates/terminal_portfolio/thumbnail.png",
         "folder": "terminal_portfolio"
+    },
+    {
+        "id": "tessellation_portfolio",
+        "name": "Tessellation Portfolio",
+        "description": "Pattern-based portfolio with tessellating shapes, M.C. Escher-inspired designs, and seamless patterns",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Tessellation Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Tessellation%20Portfolio",
+        "folder": "tessellation_portfolio"
+    },
+    {
+        "id": "tron_legacy_portfolio",
+        "name": "TRON Legacy Portfolio",
+        "description": "TRON-inspired portfolio with electric blue circuits, digital patterns, and sci-fi animations",
+        "category": "unique",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Tron Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=TRON%20Legacy%20Portfolio",
+        "folder": "tron_legacy_portfolio"
+    },
+    {
+        "id": "vaporwave_aesthetic_portfolio",
+        "name": "Vaporwave Aesthetic Portfolio",
+        "description": "Nostalgic vaporwave design with pastel gradients, Greek statues, and dreamy 90s aesthetics",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Vaporwave Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Vaporwave%20Aesthetic%20Portfolio",
+        "folder": "vaporwave_aesthetic_portfolio"
+    },
+    {
+        "id": "watercolor_artistic_portfolio",
+        "name": "Watercolor Artistic Portfolio",
+        "description": "Artistic portfolio with watercolor paint effects, color bleeding, soft brush strokes, and artistic textures",
+        "category": "creative",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Watercolor Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Watercolor%20Artistic%20Portfolio",
+        "folder": "watercolor_artistic_portfolio"
+    },
+    {
+        "id": "wood_grain_portfolio",
+        "name": "Wood Grain Portfolio",
+        "description": "Natural portfolio with wood textures, grain patterns, carved elements, and rustic charm",
+        "category": "minimalist",
+        "technologies": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Google Fonts"
+        ],
+        "features": [
+            "Responsive Design",
+            "Modern Animations",
+            "Smooth Scrolling",
+            "Wood Aesthetics",
+            "Interactive Elements",
+            "Cross-browser Compatible"
+        ],
+        "preview": "https://placehold.co/400x250/6b7280/ffffff?text=Wood%20Grain%20Portfolio",
+        "folder": "wood_grain_portfolio"
     }
 ]

@@ -1,0 +1,19 @@
+{
+  "name": "Pixel Art Portfolio",
+  "description": "8-bit inspired portfolio with pixelated graphics, retro game aesthetics, and chiptune-style animations",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Pixel Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

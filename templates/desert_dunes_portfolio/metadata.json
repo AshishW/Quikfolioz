@@ -1,0 +1,19 @@
+{
+  "name": "Desert Dunes Portfolio",
+  "description": "Warm desert landscape with sand dune shapes, cactus graphics, and sunset color transitions",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Desert Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

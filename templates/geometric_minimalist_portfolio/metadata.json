@@ -1,0 +1,19 @@
+{
+  "name": "Geometric Minimalist Portfolio",
+  "description": "Clean geometric portfolio with perfect shapes, mathematical precision, and minimalist color schemes",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Geometric Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

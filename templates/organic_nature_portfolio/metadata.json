@@ -1,0 +1,19 @@
+{
+  "name": "Organic Nature Portfolio",
+  "description": "Earth-friendly portfolio with organic shapes, natural color palettes, floating leaf animations, and sustainable design principles",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Organic Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

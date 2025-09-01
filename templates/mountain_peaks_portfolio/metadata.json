@@ -1,0 +1,19 @@
+{
+  "name": "Mountain Peaks Portfolio",
+  "description": "Majestic mountain-themed portfolio with peak silhouettes, snow effects, and alpine color schemes",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Mountain Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Tessellation Portfolio",
+  "description": "Pattern-based portfolio with tessellating shapes, M.C. Escher-inspired designs, and seamless patterns",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Tessellation Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

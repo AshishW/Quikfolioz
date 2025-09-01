@@ -1,0 +1,19 @@
+{
+  "name": "Monochrome Grayscale Portfolio",
+  "description": "Elegant black and white portfolio with grayscale photography aesthetics and high contrast design",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Monochrome Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

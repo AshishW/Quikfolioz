@@ -1,0 +1,19 @@
+{
+  "name": "TRON Legacy Portfolio",
+  "description": "TRON-inspired portfolio with electric blue circuits, digital patterns, and sci-fi animations",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Tron Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

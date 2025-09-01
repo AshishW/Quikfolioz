@@ -1,0 +1,19 @@
+{
+  "name": "Watercolor Artistic Portfolio",
+  "description": "Artistic portfolio with watercolor paint effects, color bleeding, soft brush strokes, and artistic textures",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Watercolor Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

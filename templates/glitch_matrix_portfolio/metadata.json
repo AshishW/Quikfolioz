@@ -1,0 +1,19 @@
+{
+  "name": "Glitch Matrix Portfolio",
+  "description": "Digital corruption-inspired portfolio with glitch effects, RGB splitting, and matrix-style animations",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Glitch Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

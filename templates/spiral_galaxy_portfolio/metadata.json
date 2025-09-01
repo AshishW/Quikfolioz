@@ -1,0 +1,19 @@
+{
+  "name": "Spiral Galaxy Portfolio",
+  "description": "Cosmic portfolio with spiral galaxy animations, star formations, and deep space aesthetics",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Galaxy Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

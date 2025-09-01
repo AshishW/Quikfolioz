@@ -1,0 +1,19 @@
+{
+  "name": "Ink Splash Portfolio",
+  "description": "Dynamic portfolio with ink splashes, fluid dynamics, black ink spreading effects, and artistic chaos",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Ink-splash Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

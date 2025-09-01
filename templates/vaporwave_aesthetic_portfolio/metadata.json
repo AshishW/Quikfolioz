@@ -1,0 +1,19 @@
+{
+  "name": "Vaporwave Aesthetic Portfolio",
+  "description": "Nostalgic vaporwave design with pastel gradients, Greek statues, and dreamy 90s aesthetics",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Vaporwave Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Abstract Expressionist Portfolio",
+  "description": "Artistic portfolio inspired by abstract expressionism with paint splashes, brush strokes, and artistic chaos",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Abstract Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Earth Tone Portfolio",
+  "description": "Grounded portfolio with warm earth tones, natural color harmony, and organic color transitions",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Earth-tone Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

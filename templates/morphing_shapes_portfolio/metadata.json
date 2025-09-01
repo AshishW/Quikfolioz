@@ -1,0 +1,19 @@
+{
+  "name": "Morphing Shapes Portfolio",
+  "description": "Dynamic portfolio with constantly morphing shapes, fluid transformations, and organic animations",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Morphing Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

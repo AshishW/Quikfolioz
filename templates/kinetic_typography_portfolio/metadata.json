@@ -1,0 +1,19 @@
+{
+  "name": "Kinetic Typography Portfolio",
+  "description": "Text-focused portfolio with animated typography, moving letters, and dynamic text compositions",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Kinetic Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

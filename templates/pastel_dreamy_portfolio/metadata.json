@@ -1,0 +1,19 @@
+{
+  "name": "Pastel Dreamy Portfolio",
+  "description": "Soft pastel portfolio with dreamy colors, cotton candy aesthetics, and gentle animations",
+  "category": "minimalist",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Pastel Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

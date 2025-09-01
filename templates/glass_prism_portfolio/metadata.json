@@ -1,0 +1,19 @@
+{
+  "name": "Glass Prism Portfolio",
+  "description": "Transparent portfolio with glass morphism, light refraction effects, and prismatic color separations",
+  "category": "modern",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Glass Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

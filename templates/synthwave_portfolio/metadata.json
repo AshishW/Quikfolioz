@@ -1,0 +1,19 @@
+{
+  "name": "Synthwave Portfolio",
+  "description": "Retro-futuristic portfolio inspired by 80s synthwave aesthetics with neon grids, glowing effects, and cyberpunk styling",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Synthwave Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

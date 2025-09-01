@@ -1,0 +1,19 @@
+{
+  "name": "Particle Explosion Portfolio",
+  "description": "Energetic portfolio with particle systems, explosive animations, and dynamic physics simulations",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Particle Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

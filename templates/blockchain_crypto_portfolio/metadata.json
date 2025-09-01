@@ -1,0 +1,19 @@
+{
+  "name": "Blockchain Crypto Portfolio",
+  "description": "Cryptocurrency-themed portfolio with blockchain visualizations, crypto symbols, and digital currency aesthetics",
+  "category": "modern",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Blockchain Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

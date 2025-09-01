@@ -1,0 +1,19 @@
+{
+  "name": "Floating Islands Portfolio",
+  "description": "Fantastical portfolio with floating island animations, cloud movements, and magical atmosphere",
+  "category": "creative",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Floating Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

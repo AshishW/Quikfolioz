@@ -1,0 +1,19 @@
+{
+  "name": "Datamosh Digital Portfolio",
+  "description": "Digital artifact portfolio with compression glitches, data corruption effects, and broken pixel aesthetics",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Datamosh Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}

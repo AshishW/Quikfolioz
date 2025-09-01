@@ -1,0 +1,19 @@
+{
+  "name": "Comic Pop Art Portfolio",
+  "description": "Pop art inspired portfolio with comic book aesthetics, Ben-Day dots, speech bubbles, and vibrant colors",
+  "category": "unique",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "Google Fonts"
+  ],
+  "features": [
+    "Responsive Design",
+    "Modern Animations",
+    "Smooth Scrolling",
+    "Comic Aesthetics",
+    "Interactive Elements",
+    "Cross-browser Compatible"
+  ]
+}
