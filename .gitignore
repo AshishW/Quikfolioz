@@ -1,0 +1,16 @@
+# VS Code settings files
+.vs/
+.vscode/
+
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+*.tmp
